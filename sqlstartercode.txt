@@ -1,0 +1,23 @@
+DROP TABLE IF EXISTS courses;
+create table courses (
+company_name varchar(100) not null,
+course_format varchar(100) not null,
+course_name varchar(200) not null,
+length_of_course varchar(100) not null,
+cost double not null,
+description_of_bootcamp  varchar(10000) default null,
+id integer not null,
+review_score double null,
+course_type  varchar(100) null,
+primary key (course_name,id)
+) engine = innodb;
+
+
+insert into courses values
+('Codesmith', 'Online', "Software Engineering Immersive Program", '12 weeks', 19950, "The Codesmith program teaches computer science, full-stack JavaScript (notably React and Node), software architecture, Dev Ops, and machine learning, preparing graduates for mid to senior engineering positions. ",1,4,"SWE"),
+('Coding Dojo', "Online", "Software Development Online Full-Time", "12 weeks",13495, "Full-time immersive experience in which you will master the fundamentals of web and software development, and 3 full stacks - Python, MERN, and Java or C#.", 1,4.2,"SWE"),
+("Devmountain", "Online", "Java Software Engineering", "16 weeks", 7900, "The 16-week Java Software Engineering course is designed to teach you how to use the programming language Java as well as other languages to become a software engineer.",1 ,4.4,"SWE"),
+("Avocademy", "Online", "UX Immersive Program","8 Weeks", 1997, "Avocademy’s core program is an 8-week UX/UI Foundations course. Each expert-curated lesson in the curriculum builds on the previous content, helping students gain the knowledge and skill required to land a Junior UX/UI Designer job in a relatively short time frame. The UX/UI Foundations lessons consist of video and reading material.",1,5,"UI/UX"),
+("Careerfoundry", "Online","UX Design Program", "10 months", 7900, "CareerFoundry is an online bootcamp that offers flexibly paced programs for career changers in web development, UX design, UI design, and data analytics. Headquartered in Berlin but with a global student base, CareerFoundry has provided tech education since 2013.",1,4.7,"UI/UX"),
+("Designlab","Online", "UX & UI Design", "4 weeks",399, "In this 4-week online course built for design beginners, you'll learn about the fundamentals of color theory, typography, and layout in web design. You'll have 4 weekly sessions with your mentor and receive additional written feedback from them on all your project pieces and assignments.",1,3.5,"UI/UX" )
+;
