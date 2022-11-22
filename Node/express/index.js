@@ -8,10 +8,22 @@ var con = mysql.createConnection({
     password: "" //put local password to mysql here if you want to test
   });
 
-  con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
-  });
+
+// for bypassing cors policy
+const cors = require('cors');
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
+
+
+
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
   
 app.get("/hello", function(req,res) {
 
@@ -117,7 +129,5 @@ app.get("/search", function(req,res) {
 
             return query;
         }
-
-
 
 app.listen(8080);
