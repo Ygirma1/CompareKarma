@@ -84,10 +84,22 @@ p {
     margin: 0px;
     padding: 0px;
     display: inline;
- }
+}
 
- .container {
+/* styling course type --> cost  */
+.container {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-evenly;
- }
+}
+
+.custom-select {
+    border-radius: 0.5em;
+    font-size: 0.8rem;
+    font-family: 'Poppins', sans-serif;
+    color: gray;
+    padding: 0.25em 0.5em;
+    border: 2px solid lightgray;
+    margin-top: 0.5em;
+}
+

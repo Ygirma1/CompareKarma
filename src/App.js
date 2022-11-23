@@ -61,9 +61,8 @@ function App() {
                 onChange={(e) => {
                     setFilterParam(e.target.value);
                 }}
-                className="custom-select"
-                aria-label='Filter by Course Type'>
-                    <option value="All">Filter by Course Type</option>
+                className="custom-select">
+                    <option value="All">Course Type</option>
                     <option value="UI/UX">UI/UX</option>
                     <option value="SWE">SWE</option>
             </select>
