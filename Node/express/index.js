@@ -33,13 +33,14 @@ res.send("hello there!!!");
 
 
 app.get("/query", function(req,res) {
-
+    // const { q } = req.query; 
     con.query("select * from comparekarma.courses;", function (err, result) {
         if (err) throw err;
         res.send(JSON.stringify(result));
       });
-    
     });
+
+
 app.get("/search", function(req,res) {
     var company_name = req.query.company_name;
     console.log(company_name)

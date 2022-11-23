@@ -8,42 +8,36 @@ const base_url = "http://localhost:8080"
 
 
 function App() {
-    // const [data, setData] = useState([]);
-
-    // useEffect(() => {
-    //     var getBootCamps = async() => {
-    //         try {
-    //             const url = `${base_url}/query`;
-    //                 const { data } = await axios.get(url);
-    //                 console.log(data);
-                    
-    //             } catch(err) {
-    //                 console.log(err);
-    //             }
-    //         }
-    // })
     const [query, setQuery] = useState("");
+    const [data, setData] = useState([]);
+
     const keys = ["company_name", "course_name", "course_type"];
     const search = (data) => {
-        // currently searches for company name only 
         return data.filter(
             (item) =>
-                keys.some(key=>item[key].toLowerCase().includes(query))
+              keys.some((key)=>item[key].toLowerCase().includes(query))
         );
-    };
+    }
+
+    useEffect(() => {
+        const fetchBootCamps = async() => {
+            const res = await axios.get(`${base_url}/query`);
+            setData(res.data);
+        };
+        fetchBootCamps()
+    }, []); //no dependencies
 
     return (
         <div className='app'>
             <input 
-                type='text' 
                 placeholder='Search...' 
                 className='search' 
                 onChange={e=> setQuery(e.target.value)}>
             </input>
-            <Table data={search(Bootcamps)}/>
+            {<Table data={search(data)}/>}
         </div>
-    )
-}
+    );
+};
 
 export default App;
 
