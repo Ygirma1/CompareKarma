@@ -2,11 +2,16 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Table from './components/Table';
+import SearchIcon from '@material-ui/icons/Search';
+
 
 const base_url = "http://localhost:8080"
 
 
 function App() {
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+</style>
     const [query, setQuery] = useState("");
     const [data, setData] = useState([]);
 
@@ -28,11 +33,16 @@ function App() {
 
     return (
         <div className='app'>
+            <form className='search'>
             <input 
                 placeholder='Search...' 
-                className='search' 
+                className='search-input' 
                 onChange={e=> setQuery(e.target.value)}>
             </input>
+            <button className='search-button'>
+                <SearchIcon/>
+            </button>
+            </form>
             {<Table data={search(data)}/>}
         </div>
     );

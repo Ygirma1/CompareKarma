@@ -1,3 +1,6 @@
+/* import font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
 .app {
     display: flex;
     flex-direction: column;
@@ -6,13 +9,44 @@
 
 /* styling for search bar */
 .search {
-    width: 100%;
-}
+    width: 95%;
+    border: 2px solid whitesmoke;
+    overflow: hidden;
+    font-size: 1rem;
+    display: flex;
+    flex-flow: row nowrap;
+  }
+  
+  .search:focus-within {
+    box-shadow: 2px 2px 2px gray;
+  }
+  
+  .search-button,
+  .search-input {
+    background-color: white;
+    border: none;
+    outline: none;
+  }
+  
+  .search-input {
+    padding: 1em;
+    width: 85%;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .search-button {
+    width: 15%;
+    color: #ed6e2e;
+    display: grid;
+    place-content: center;
+  }
 
 /* styling for global font and bg color */
 body {
     background-color: #fdf8f4;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
 }
 
 /* styling for result */

@@ -1,3 +1,5 @@
+// post is each search result
+
 const Post = ({ post }) => {
     return (
         <article>
