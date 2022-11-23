@@ -2,6 +2,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import {Bootcamps} from "./bootcamps";
+import Table from './Table';
 
 const base_url = "http://localhost:8080"
 
@@ -22,6 +23,15 @@ function App() {
     //         }
     // })
     const [query, setQuery] = useState("");
+    const keys = ["company_name", "course_name", "course_type"];
+    const search = (data) => {
+        // currently searches for company name only 
+        return data.filter(
+            (item) =>
+                keys.some(key=>item[key].toLowerCase().includes(query))
+        );
+    };
+
     return (
         <div className='app'>
             <input 
@@ -30,15 +40,7 @@ function App() {
                 className='search' 
                 onChange={e=> setQuery(e.target.value)}>
             </input>
-            <ul className='list'>
-                {Bootcamps.filter(bootcamp=>bootcamp.company_name.toLowerCase().includes(query)).map((bootcamp) => (
-                    <li 
-                        key={bootcamp.company_name}
-                        className='listItem'>{bootcamp.company_name}
-                    </li>
-                ))}
-                
-            </ul>
+            <Table data={search(Bootcamps)}/>
         </div>
     )
 }
