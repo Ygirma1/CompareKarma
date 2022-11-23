@@ -9,9 +9,6 @@ const base_url = "http://localhost:8080"
 
 
 function App() {
-    <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
-</style>
     const [query, setQuery] = useState("");
     const [data, setData] = useState([]);
 
@@ -19,7 +16,7 @@ function App() {
     const search = (data) => {
         return data.filter(
             (item) =>
-              keys.some((key)=>item[key].toLowerCase().includes(query))
+              keys.some((key)=>item[key].toLowerCase().includes(query.toLowerCase()))
         );
     }
 

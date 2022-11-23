@@ -1,5 +1,6 @@
 /* import font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
 .app {
     display: flex;
@@ -30,12 +31,14 @@
   
   .search-input {
     padding: 1em;
-    width: 85%;
+    padding-left: 1.75em;
+    width: 90%;
     font-family: 'Poppins', sans-serif;
+    font-weight: 500;
   }
   
   .search-button {
-    width: 15%;
+    width: 10%;
     color: #ed6e2e;
     display: grid;
     place-content: center;
@@ -45,8 +48,7 @@
 body {
     background-color: #fdf8f4;
     font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 500;
+    font-weight: 300;
 }
 
 /* styling for result */
@@ -61,4 +63,5 @@ article {
 
 .company-name {
     text-align: center;
+    font-weight: 500;
 }
