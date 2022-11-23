@@ -31,7 +31,7 @@
   
   .search-input {
     padding: 1em;
-    padding-left: 1.75em;
+    padding-left: 2em;
     width: 90%;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
@@ -65,3 +65,29 @@ article {
     text-align: center;
     font-weight: 500;
 }
+
+.underline {
+    text-decoration: underline;
+}
+
+.course-name {
+    display: block;
+    text-decoration: underline;
+    padding-top: 2em;
+}
+
+.description {
+    padding-bottom: 1em;
+}
+
+p {
+    margin: 0px;
+    padding: 0px;
+    display: inline;
+ }
+
+ .container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+ }

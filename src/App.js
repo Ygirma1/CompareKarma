@@ -12,6 +12,7 @@ function App() {
     const [query, setQuery] = useState("");
     const [data, setData] = useState([]);
 
+    // search by company name, course name, and course type
     const keys = ["company_name", "course_name", "course_type"];
     const search = (data) => {
         return data.filter(
@@ -20,6 +21,7 @@ function App() {
         );
     }
 
+    // getting data from backend
     useEffect(() => {
         const fetchBootCamps = async() => {
             const res = await axios.get(`${base_url}/query`);
@@ -27,6 +29,7 @@ function App() {
         };
         fetchBootCamps()
     }, []); //no dependencies
+
 
     return (
         <div className='app'>
