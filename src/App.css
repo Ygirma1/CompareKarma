@@ -4,6 +4,27 @@
     align-items: center;
 }
 
+/* styling for search bar */
 .search {
     width: 100%;
+}
+
+/* styling for global font and bg color */
+body {
+    background-color: #fdf8f4;
+    font-family: 'Nunito', sans-serif;
+}
+
+/* styling for result */
+article {
+    margin: 1em;
+    padding: 1em;
+    background-color: #f9ebdf;
+    color: #2e3f55;
+    border-radius: 15px;
+    border: solid #fdf8f4;
+}
+
+.company-name {
+    text-align: center;
 }
