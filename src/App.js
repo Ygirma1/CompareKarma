@@ -1,8 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import {Bootcamps} from "./bootcamps";
-import Table from './Table';
+import Table from './components/Table';
 
 const base_url = "http://localhost:8080"
 
