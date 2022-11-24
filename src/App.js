@@ -4,9 +4,7 @@ import axios from 'axios';
 import Table from './components/Table';
 import SearchIcon from '@material-ui/icons/Search';
 
-
 const base_url = "http://localhost:8080"
-
 
 function App() {
     const [query, setQuery] = useState("");

@@ -73,7 +73,6 @@ article {
 .course-name {
     display: block;
     text-decoration: underline;
-    padding-top: 2em;
 }
 
 .description {
@@ -91,6 +90,18 @@ p {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-evenly;
+    border: 2px solid #f4d8c0;
+    background-color: #f4d8c0;
+    border-radius: 10px;
+    padding: 0.5em;
+}
+
+.container2 {
+    border: 2px solid #f4d8c0;
+    background-color: #f4d8c0;
+    border-radius: 10px;
+    margin-top: 1em;
+    padding: 0.5em;
 }
 
 .custom-select {

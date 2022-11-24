@@ -26,8 +26,10 @@ const Post = ({ post }) => {
                     <text> {post.cost}</text>
                 </p>
             </p>
-            <p className="course-name">{post.course_name}</p>
-            <p className="description">{post.description_of_bootcamp}</p>
+            <div className="container2">
+                <p className="course-name">{post.course_name}</p>
+                <p className="description">{post.description_of_bootcamp}</p>
+            </div>
         </article>
     )
 }
