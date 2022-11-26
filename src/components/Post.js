@@ -3,7 +3,16 @@
 import StarRatings from 'react-star-ratings';
 
 const Post = ({ post }) => {
+
+    // converting cost (double) to price format
+    var newCost = post.cost;
+    newCost = newCost.toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD',
+      });
+
     return (
+        
         <article>
             <img className="images" src={post.img_url} alt="new"></img>
             <div className="test1">
@@ -28,7 +37,7 @@ const Post = ({ post }) => {
                     </p>
                     <p className="margin4">
                         <text className="underline">Cost of Attendance:</text>
-                        <text> {post.cost}</text>
+                        <text> {newCost}</text>
                     </p>
                 </p>
                 <div className="container2">
