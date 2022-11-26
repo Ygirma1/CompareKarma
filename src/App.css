@@ -161,7 +161,15 @@ p {
     margin: 0em;
 }
 
-.test {
+.test1 {
     margin: 15px;
 }
 
+.test2 {
+    display: flex;
+}
+
+.stars {
+    margin: 2.5em;
+    margin-bottom: 0em;
+}

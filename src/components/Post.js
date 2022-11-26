@@ -1,12 +1,18 @@
 // post is each search result
 
+import StarRatings from 'react-star-ratings';
+
 const Post = ({ post }) => {
     return (
         <article>
-            {/* <div>{post.img_url}</div> */}
             <img className="images" src={post.img_url} alt="new"></img>
-            <div className="test">
-                <h2 className="company-name">{post.company_name}</h2>
+            <div className="test1">
+                <div className='test2'>
+                    <h2 className="company-name">{post.company_name}</h2>
+                    <div className='stars'>
+                        <StarRatings rating={post.review_score} starRatedColor="#ed6e2e" starDimension='25px' starSpacing='5px'/>
+                    </div>
+                </div>
                 <p className="container">
                     <p className="margin1">
                         <text className="underline">Course Type:</text>
