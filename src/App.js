@@ -10,6 +10,7 @@ function App() {
     const [query, setQuery] = useState("");
     const [data, setData] = useState([]);
     const [filterParam, setFilterParam] = useState(["All"]);
+    const [sortParam, setSortParam] = useState(["All"])
 
     // search by company name, course name, and course type
     const keys = ["company_name", "course_name", "course_type"];
@@ -31,6 +32,16 @@ function App() {
                 })
             }
         })
+    }
+
+    const sort = (data) => {
+        if (sortParam == "Ascending") {
+            return data.sort((a,b) => a.cost - b.cost)
+        } else if (sortParam == "Descending") {
+            return data.sort((a,b) => b.cost - a.cost)
+        } else {
+            return data
+        }
     }
 
     // getting data from backend
@@ -64,7 +75,16 @@ function App() {
                     <option value="UI/UX">UI/UX</option>
                     <option value="SWE">SWE</option>
             </select>
-            {<Table data={search(data)}/>}
+            <select
+                onChange={(e) => {
+                    setSortParam(e.target.value)
+                }}
+                className="custom-select">
+                    <option value="Unsorted">Price</option>
+                    <option value="Ascending">Ascending</option>
+                    <option value="Descending">Descending</option>
+            </select>
+            {<Table data={search(sort(data))}/>}
         </div>
     );
 };

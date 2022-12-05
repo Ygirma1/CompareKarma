@@ -5,7 +5,7 @@ const app = express();
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "" //put local password to mysql here if you want to test
+    password: "Targis729!" //put local password to mysql here if you want to test
   });
 
 
