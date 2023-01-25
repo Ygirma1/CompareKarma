@@ -1,20 +1,19 @@
-# Sample Project name
-Information about what your project is about
+# CompareKarma
+CompareKarma is a web-based search index that allows you to compare between prices, ratings, and offerings of existing online bootcamps on the market, allowing you to choose what is best for your budget.
 
 [Licences under GNUv3 ](LICENSE.md)
 
 ## Release Notes
-### Version 0.2.0
+### Version 0.1.0
 
 #### New Features
-* Feature 1 for this release
-* feature 2 for this release
+* Database Set-up
+* Sample bootcamp data for UI
 
 #### Bug Fixes
-* bug fixed 1
-* bug fixed 2
+* N/A
 ---
-
+<!-- 
 ### Version 0.1.0:
 #### New Features
 * Feature 1
@@ -23,4 +22,4 @@ Information about what your project is about
 #### Bug Fixes
 N/A
 
----
+--- -->
