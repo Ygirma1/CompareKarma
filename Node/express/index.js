@@ -5,7 +5,7 @@ const app = express();
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Targis729!" //put local password to mysql here if you want to test
+    password: "" //put local password to mysql here if you want to test
   });
 
 
@@ -34,7 +34,7 @@ res.send("hello there!!!");
 
 app.get("/query", function(req,res) {
     // const { q } = req.query; 
-    con.query("select * from comparekarma.courses;", function (err, result) {
+    con.query("select * from comparekarma.bootcamps;", function (err, result) {
         if (err) throw err;
         res.send(JSON.stringify(result));
       });
@@ -45,7 +45,7 @@ app.get("/search", function(req,res) {
     var company_name = req.query.company_name;
     console.log(company_name)
    company_name= company_name.replace("_", " ");
-    con.query("select * from comparekarma.courses where company_name like '" +company_name.toString()+ "';", function (err, result) {
+    con.query("select * from comparekarma.bootcamps where company_name like '" +company_name.toString()+ "';", function (err, result) {
         if (err) throw err;
         res.send(JSON.stringify(result));
       });
@@ -61,6 +61,7 @@ app.get("/search", function(req,res) {
     //   company_name= company_name.replace("_", " ");
         con.query(filterReader(req), function (err, result) {
             if (err) throw err;
+            console.log(JSON.stringify(result));
             res.send(JSON.stringify(result));
           });
         
@@ -106,7 +107,7 @@ app.get("/search", function(req,res) {
 
                     
 
-     var   query = "select * from comparekarma.courses where course_format like '" + course_format.toString()+
+     var   query = "select * from comparekarma.bootcamps where course_format like '" + course_format.toString()+
                         "' AND length_of_course like '" + length_of_course.toString()+
                         "' AND  course_type like '"+ course_type.toString()+"'  ";
 
@@ -127,7 +128,7 @@ app.get("/search", function(req,res) {
                               
                             query += ";";
                         }
-
+                console.log(query);
             return query;
         }
 
