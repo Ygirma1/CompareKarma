@@ -1,5 +1,6 @@
 // post is each search result
 
+import React, { Component }  from 'react';
 import StarRatings from 'react-star-ratings';
 
 const Post = ({ post }) => {
