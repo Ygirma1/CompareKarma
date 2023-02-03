@@ -76,6 +76,21 @@ app.get("/search", function(req,res) {
     
         });
 
+    app.put("/newUser", function(req,res) {
+    
+            db.acceptNewBusiness(req).then(()=> {
+          
+
+                res.status(200).json({ "status": true, "result": 'User Added!' })
+        
+        }).catch(err=> 
+        
+            res.status(500).json({ "status": false, "result": 'User Not Added.' })
+        
+        );
+            
+            
+                });
      
 
 app.listen(8080);
