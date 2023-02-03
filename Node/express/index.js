@@ -1,12 +1,7 @@
 //const { query } = require("express");
 const express = require("express");
-var mysql = require('mysql');
 const app = express();
-var con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "Targis729!" //put local password to mysql here if you want to test
-  });
+var db = require("./dbService/db");
 
 
 // for bypassing cors policy
@@ -20,10 +15,7 @@ app.use(cors(corsOptions));
 
 
 
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-});
+
   
 app.get("/hello", function(req,res) {
 
@@ -34,101 +26,71 @@ res.send("hello there!!!");
 
 app.get("/query", function(req,res) {
     // const { q } = req.query; 
-    con.query("select * from comparekarma.courses;", function (err, result) {
-        if (err) throw err;
-        res.send(JSON.stringify(result));
-      });
+
+    console.log("we got here");
+    
+    db.queryAll(req).then(courses=> {
+
+            res.send(JSON.stringify(courses));
+
+    }).catch(err=> 
+    
+        res.status(500).json({ error: err })
+        
+    );
+
+
+
+   
     });
 
 
 app.get("/search", function(req,res) {
-    var company_name = req.query.company_name;
-    console.log(company_name)
-   company_name= company_name.replace("_", " ");
-    con.query("select * from comparekarma.courses where company_name like '" +company_name.toString()+ "';", function (err, result) {
-        if (err) throw err;
-        res.send(JSON.stringify(result));
-      });
+   
     
+    db.search(req).then(courses=> {
 
+            res.send(JSON.stringify(courses));
 
+    }).catch(err=> 
+    
+        res.status(500).json({ error: err })
+    
+    );
+
+           
     });
 
     app.get("/filter", function(req,res) {
-      //  var filter = req.query.course_format;
-      //  console.log(company_name)
-        
-    //   company_name= company_name.replace("_", " ");
-        con.query(filterReader(req), function (err, result) {
-            if (err) throw err;
-            res.send(JSON.stringify(result));
-          });
-        
+    
+    db.filter(req).then(courses=> {
+
+        res.send(JSON.stringify(courses));
+
+}).catch(err=> 
+
+    res.status(500).json({ error: err })
+
+);
     
     
         });
 
-        function filterReader (req) {
-            var course_format;
-            var length_of_course;
-            var course_type;
-            var cost;
-                if (req.query.course_format !=null ) {
-                    course_format = req.query.course_format;
+    app.put("/newUser", function(req,res) {
+    
+            db.acceptNewBusiness(req).then(()=> {
+          
 
-                }else {
-                      
-                    course_format = "%";
-                }
-                if (req.query.length_of_course !=null ) {
-                    length_of_course = req.query.length_of_course;
-
-                }else {
-                      
-                    length_of_course = "%";
-                }
-                if (req.query.course_type !=null ) {
-                    course_type = req.query.course_type;
-
-                }else {
-                      
-                   course_type = "%";
-                }
-                if (req.query.cost !=null ) {
-                    cost = req.query.cost;
-
-                }else {
-                      
-                   cost= "%";
-                }
-
-
-
-                    
-
-     var   query = "select * from comparekarma.courses where course_format like '" + course_format.toString()+
-                        "' AND length_of_course like '" + length_of_course.toString()+
-                        "' AND  course_type like '"+ course_type.toString()+"'  ";
-
-                        if (req.query.cost !=null ) {
-                            cost = req.query.cost;
-
-                                if (cost=="asc") {
-
-                                        query += "order by cost ASC;";
-
-                                      }
-                                     if(cost=="desc") {
-
-                                        query += "order by cost DESC;";     
-
-                                      }
-                        } else {
-                              
-                            query += ";";
-                        }
-
-            return query;
-        }
+                res.status(200).json({ "status": true, "result": 'User Added!' })
+        
+        }).catch(err=> 
+        
+            res.status(500).json({ "status": false, "result": 'User Not Added.' })
+        
+        );
+            
+            
+                });
+     
 
 app.listen(8080);
