@@ -2,7 +2,7 @@ var mysql = require('mysql');
 const con = mysql.createPool({
     host: "localhost",
     user: "root",
-    password: "Microcenter1234" //put local password to mysql here if you want to test
+    password: "" //put local password to mysql here if you want to test
   });
   con.getConnection(function(err) {
     if (err) throw err;
