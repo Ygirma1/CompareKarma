@@ -1,9 +1,10 @@
 //const { query } = require("express");
+var nodemailer = require('nodemailer');
 const express = require("express");
 const app = express();
 var db = require("./dbService/db");
 
-
+var nodemailer = require('nodemailer');
 // for bypassing cors policy
 const cors = require('cors');
 const corsOptions ={
@@ -75,10 +76,12 @@ app.get("/search", function(req,res) {
     
     
         });
-
+       
         app.put("/newUser", function(req, res) {
             db.acceptNewBusiness(req)
               .then(user => {
+
+
                 console.log(JSON.stringify(user));
                 res.status(200).json({ status: true, result: "User Added Succesfully!" });
               })
@@ -88,6 +91,10 @@ app.get("/search", function(req,res) {
                 
                 res.status(500).json({ status: false, result: "User Not Added." });
               });
+
+
+   
+
           });
      
 
