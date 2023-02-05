@@ -140,11 +140,13 @@ bcrypt.genSalt(saltRounds, function(err, salt) {
     }
 
 
+    
       con.query("insert  into   comparekarma.business_user (business_name, phone_number, business_desc, verified, profit_status,email,business_password,course_type,salt) "+
       " values (?, ?, ? , ? , ?, ?, ?, ?, ?);",
       [business_name,phone_number,business_desc,verified,profit_status,email,hash,course_type,salt],  (err, result) => {
         if (err) {
           console.error(err.message);
+
 
           console.log("failed to insert business user");
         } else {
