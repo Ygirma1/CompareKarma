@@ -113,6 +113,7 @@ const con = mysql.createPool({
 
 
    
+
     var verified = false;
     var profit_status= req.query.profit_status;
     var email=req.query.email;
@@ -123,7 +124,6 @@ const con = mysql.createPool({
     var phone_number = req.query.phone_number;
     var business_desc=req.query.business_desc;
 
-
 return new Promise((resolve, reject) => {
 bcrypt.genSalt(saltRounds, function(err, salt) {
   if (err) {
@@ -132,9 +132,10 @@ bcrypt.genSalt(saltRounds, function(err, salt) {
     return;
   }
   bcrypt.hash(business_password, salt, function(err, hash) {
+  
     if (err) {
       console.error("Error hashing password: ", err);
-      
+
       return;
     }
 
