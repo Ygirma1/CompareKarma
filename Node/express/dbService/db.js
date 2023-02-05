@@ -2,7 +2,7 @@ var mysql = require('mysql');
 const con = mysql.createPool({
     host: "localhost",
     user: "root",
-    password: "" //put local password to mysql here if you want to test
+    password: "microcenter1234" //put local password to mysql here if you want to test
   });
   con.getConnection(function(err) {
     if (err) throw err;
@@ -123,25 +123,35 @@ const con = mysql.createPool({
     var salt;
     console.log(business_password);
 
- var bhash =   bcrypt
-  .genSalt(saltRounds)
-  .then(salts => {
-    salt = salts;
-    console.log('Salt: ', salts)
-    return bcrypt.hash(business_password, salts)
-  })
-  .then(hash => {
-    console.log('Hash: ', hash)
-  })
-  .catch(err => console.error(err.message)
-)
-
-console.log(bhash.toString()+ "this is bhash");
-/// make sure to hash the pasword
-    return new Promise((resolve, reject) => {
+//  var bhash =   bcrypt
+//   .genSalt(saltRounds)
+//   .then(salts => {
+//     salt = salts;
+//     console.log('Salt: ', salts)
+//     return bcrypt.hash(business_password, salts)
+//   })
+//   .then(hash => {
+//     console.log('Hash: ', hash)
+//   })
+//   .catch(err => console.error(err.message)
+// )
+return new Promise((resolve, reject) => {
+bcrypt.genSalt(saltRounds, function(err, salt) {
+  if (err) {
+    console.error("Error generating salt: ", err);
+    return;
+  }
+  bcrypt.hash(business_password, salt, function(err, hash) {
+    if (err) {
+      console.error("Error hashing password: ", err);
+      return;
+    }
+  console.log(hash+"This is a hash");
+  console.log(salt+"This is a salt");
+   
       con.query("insert  into   comparekarma.business_user (business_name, phone_number, business_desc, verified, profit_status,email,business_password,course_type,salt) "+
-      " values (?, ?, ? , ? ,?,?,?,?,?);",
-      [business_name,phone_number,business_desc,verified,profit_status,email,"pass",course_type,salt],  (err, result) => {
+      " values (?, ?, ? , ? , ?, ?, ?, ?, ?);",
+      [business_name,phone_number,business_desc,verified,profit_status,email,hash,course_type,salt],  (err, result) => {
         if (err) {
           console.error(err.message);
           console.log("failed to insert business user");
@@ -150,7 +160,34 @@ console.log(bhash.toString()+ "this is bhash");
           resolve(result);
         }
       })
-    });
+});
+
+  });
+
+
+
+  });
+    
+
+
+
+
+
+
+// /// make sure to hash the pasword
+//     return new Promise((resolve, reject) => {
+//       con.query("insert  into   comparekarma.business_user (business_name, phone_number, business_desc, verified, profit_status,email,business_password,course_type,salt) "+
+//       " values (?, ?, ? , ? ,?,?,?,?,?);",
+//       [business_name,phone_number,business_desc,verified,profit_status,email,"pass",course_type,salt],  (err, result) => {
+//         if (err) {
+//           console.error(err.message);
+//           console.log("failed to insert business user");
+//         } else {
+//           console.log(result);
+//           resolve(result);
+//         }
+//       })
+//     });
 
  }
 
