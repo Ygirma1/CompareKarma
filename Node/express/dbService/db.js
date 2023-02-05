@@ -110,6 +110,9 @@ const con = mysql.createPool({
    },
    acceptNewBusiness : (req)=> {
 
+
+
+   
     var verified = false;
     var profit_status= req.query.profit_status;
     var email=req.query.email;
@@ -121,18 +124,17 @@ const con = mysql.createPool({
     var business_desc=req.query.business_desc;
 
 
-   
-
-
 return new Promise((resolve, reject) => {
 bcrypt.genSalt(saltRounds, function(err, salt) {
   if (err) {
     console.error("Error generating salt: ", err);
+
     return;
   }
   bcrypt.hash(business_password, salt, function(err, hash) {
     if (err) {
       console.error("Error hashing password: ", err);
+      
       return;
     }
 
@@ -142,9 +144,12 @@ bcrypt.genSalt(saltRounds, function(err, salt) {
       [business_name,phone_number,business_desc,verified,profit_status,email,hash,course_type,salt],  (err, result) => {
         if (err) {
           console.error(err.message);
+
           console.log("failed to insert business user");
         } else {
+
           console.log(result);
+
           resolve(result);
         }
       })
