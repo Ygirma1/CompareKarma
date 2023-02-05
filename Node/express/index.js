@@ -83,6 +83,7 @@ app.get("/search", function(req,res) {
                 res.status(200).json({ status: true, result: "User Added!" });
               })
               .catch(err => {
+                
                 console.error(err);
                 res.status(500).json({ status: false, result: "User Not Added." });
               });
