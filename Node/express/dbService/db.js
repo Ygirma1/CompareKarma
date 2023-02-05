@@ -2,7 +2,7 @@ var mysql = require('mysql');
 const con = mysql.createPool({
     host: "localhost",
     user: "root",
-    password: "microcenter1234" //put local password to mysql here if you want to test
+    password: "" //put local password to mysql here if you want to test
   });
   con.getConnection(function(err) {
     if (err) throw err;
@@ -92,7 +92,7 @@ const con = mysql.createPool({
      });
    },
    queryAll: (req) => {
-    // console.log(req);
+ 
   
  
      return new Promise((resolve, reject) => {
@@ -110,31 +110,20 @@ const con = mysql.createPool({
    },
    acceptNewBusiness : (req)=> {
 
-
-    var business_name= req.query.business_name;
-    var phone_number = req.query.phone_number;
-    var business_desc=req.query.business_desc;
-
     var verified = false;
     var profit_status= req.query.profit_status;
     var email=req.query.email;
     var business_password = req.query.business_password;
     var course_type= req.query.course_type;
     var salt;
-    console.log(business_password);
+    var business_name= req.query.business_name;
+    var phone_number = req.query.phone_number;
+    var business_desc=req.query.business_desc;
 
-//  var bhash =   bcrypt
-//   .genSalt(saltRounds)
-//   .then(salts => {
-//     salt = salts;
-//     console.log('Salt: ', salts)
-//     return bcrypt.hash(business_password, salts)
-//   })
-//   .then(hash => {
-//     console.log('Hash: ', hash)
-//   })
-//   .catch(err => console.error(err.message)
-// )
+
+   
+
+
 return new Promise((resolve, reject) => {
 bcrypt.genSalt(saltRounds, function(err, salt) {
   if (err) {
@@ -146,9 +135,8 @@ bcrypt.genSalt(saltRounds, function(err, salt) {
       console.error("Error hashing password: ", err);
       return;
     }
-  console.log(hash+"This is a hash");
-  console.log(salt+"This is a salt");
-   
+
+
       con.query("insert  into   comparekarma.business_user (business_name, phone_number, business_desc, verified, profit_status,email,business_password,course_type,salt) "+
       " values (?, ?, ? , ? , ?, ?, ?, ?, ?);",
       [business_name,phone_number,business_desc,verified,profit_status,email,hash,course_type,salt],  (err, result) => {
@@ -174,20 +162,6 @@ bcrypt.genSalt(saltRounds, function(err, salt) {
 
 
 
-// /// make sure to hash the pasword
-//     return new Promise((resolve, reject) => {
-//       con.query("insert  into   comparekarma.business_user (business_name, phone_number, business_desc, verified, profit_status,email,business_password,course_type,salt) "+
-//       " values (?, ?, ? , ? ,?,?,?,?,?);",
-//       [business_name,phone_number,business_desc,verified,profit_status,email,"pass",course_type,salt],  (err, result) => {
-//         if (err) {
-//           console.error(err.message);
-//           console.log("failed to insert business user");
-//         } else {
-//           console.log(result);
-//           resolve(result);
-//         }
-//       })
-//     });
 
  }
 
