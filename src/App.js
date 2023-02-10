@@ -5,9 +5,15 @@ import axios from 'axios';
 import Table from './components/Table';
 import SearchIcon from '@material-ui/icons/Search';
 
+import Navbar from './components/Navbar';
+import { BrowserRouter as Router } from 'react-router-dom';
+
+
+
 const base_url = "http://localhost:8080"
 
 function App() {
+
     const [query, setQuery] = useState("");
     const [data, setData] = useState([]);
     const [filterParam, setFilterParam] = useState(["All"]);
@@ -35,6 +41,7 @@ function App() {
         })
     }
 
+    // sort by cost
     const sort = (data) => {
         if (sortParam == "Ascending") {
             return data.sort((a,b) => a.cost - b.cost)
@@ -54,8 +61,16 @@ function App() {
         fetchBootCamps()
     }, []); //no dependencies
 
+    console.log("TEST")
+
 
     return (
+        <> 
+        <Router>
+            <Navbar/>
+        </Router>
+        
+
         <div className='app'>
             <form className='search'>
                 <input 
@@ -87,6 +102,8 @@ function App() {
             </select>
             {<Table data={search(sort(data))}/>}
         </div>
+
+        </>
     );
 };
 
