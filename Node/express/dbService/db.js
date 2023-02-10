@@ -77,8 +77,10 @@ const con = mysql.createPool({
       }
       console.log("here");
      return new Promise((resolve, reject) => {
+
        con.query("select * from comparekarma.bootcamps where course_format like ?"+
        " AND length_of_course like ?"+
+
        " AND  course_type like ? "+
        " order by ? ",
        [course_format,length_of_course,course_type,orderBy],  (err, result) => {
@@ -109,11 +111,6 @@ const con = mysql.createPool({
      });
    },
    acceptNewBusiness : (req)=> {
-
-
-
-   
-
     var verified = false;
     var profit_status= req.query.profit_status;
     var email=req.query.email;
@@ -124,29 +121,27 @@ const con = mysql.createPool({
     var phone_number = req.query.phone_number;
     var business_desc=req.query.business_desc;
 
+
+   
+
+ 
+
 return new Promise((resolve, reject) => {
 bcrypt.genSalt(saltRounds, function(err, salt) {
   if (err) {
     console.error("Error generating salt: ", err);
-
     return;
   }
   bcrypt.hash(business_password, salt, function(err, hash) {
-  
     if (err) {
       console.error("Error hashing password: ", err);
-
       return;
     }
-
-
-    
       con.query("insert  into   comparekarma.business_user (business_name, phone_number, business_desc, verified, profit_status,email,business_password,course_type,salt) "+
       " values (?, ?, ? , ? , ?, ?, ?, ?, ?);",
       [business_name,phone_number,business_desc,verified,profit_status,email,hash,course_type,salt],  (err, result) => {
         if (err) {
           console.error(err.message);
-
 
           console.log("failed to insert business user");
         } else {

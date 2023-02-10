@@ -78,12 +78,9 @@ app.get("/search", function(req,res) {
 
         app.put("/newUser", function(req, res) {
             db.acceptNewBusiness(req)
-
               .then(user => {
                 console.log(JSON.stringify(user));
-
-
-                res.status(200).json({ status: true, result: "User Added!" });
+                res.status(200).json({ status: true, result: "User Added Succesfully!" });
               })
               .catch(err => {
 
