@@ -21,10 +21,8 @@ const Navbar = () => {
                 <NavLink to='/about' activeStyle>
                     About
                 </NavLink>
-            </NavMenu>
-            <NavBtn>
                 <NavBtnLink to='/signin'>Sign In</NavBtnLink>
-            </NavBtn>
+            </NavMenu>
         </Nav>
     </>
   )
