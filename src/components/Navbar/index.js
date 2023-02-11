@@ -21,7 +21,12 @@ const Navbar = () => {
                 <NavLink to='/about' activeStyle>
                     About
                 </NavLink>
-                <NavBtnLink to='/signin'>Sign In</NavBtnLink>
+                <NavLink to='/search' activeStyle>
+                    Search
+                </NavLink>
+                <NavBtnLink to='/login'>
+                    Login
+                </NavBtnLink>
             </NavMenu>
         </Nav>
     </>
