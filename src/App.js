@@ -6,7 +6,8 @@ import Table from './components/Table';
 import SearchIcon from '@material-ui/icons/Search';
 
 import Navbar from './components/Navbar';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages';
 
 
 
@@ -68,6 +69,9 @@ function App() {
         <> 
         <Router>
             <Navbar/>
+            <Routes>
+                <Route path='/' element={<Home/>} />
+            </Routes>
         </Router>
         
 
