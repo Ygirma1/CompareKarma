@@ -24,15 +24,8 @@ function App() {
                 <Route path='/about' element={<About/>} />
                 <Route path='/search' element={<Search/>} />
                 <Route path='/login' element={currentForm === "login" ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm}/>} /> 
-                {/* <Route path='/register' element={<Register/>} />  */}
             </Routes>
         </Router>
-
-        {/* <div className="App">
-            {
-                currentForm === "login" ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm}/>
-            }
-        </div>  */}
         </>
     );
 };
