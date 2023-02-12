@@ -207,8 +207,64 @@ bcrypt.genSalt(saltRounds, function(err, salt) {
 
 
 
- }
+ },
+ verify: (req)=> {
+  return new Promise((resolve, reject) => {
+    var email = req.query.email;
+    var password = req.query.password;
+    con.query("select business_password from comparekarma.business_user where email = ? ;",[email], 
+    (err, result) => {
+     if (err) {
+      console.log("business pass error");
+       console.log(err);
+     } else {
+      
+       console.log(result[0].business_password);
+    
+       bcrypt.compare(password.toString(), result[0].business_password)
+       .then(result => {
+         console.log(result);
+     if (result){
+       resolve(true);
+     }
+     else resolve(false);
+         
+       
+       })
+
+  
+     }
+   });
+    
+
+  });
+
+
+ },
+
+
+
 
 
 
  }
+ function comparePassword(plaintextPassword, hash) {
+console.log(plaintextPassword);
+console.log(hash);
+
+bcrypt.compare(plaintextPassword, hash)
+  .then(result => {
+    console.log(result);
+if (result){
+  return Boolean([true]);
+}
+else return Boolean([false]);
+    
+  
+  })
+  .catch(err => {
+  console.log(err)
+  })
+
+
+  }

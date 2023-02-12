@@ -96,6 +96,32 @@ app.get("/search", function(req,res) {
    
 
           });
-     
+        
+          app.get("/verifyUser", function(req, res) {
+            db.verify(req)
+              .then(user => {
+                  console.log(user);
+                    if(user){
+               // console.log(JSON.stringify(user));
+                res.status(200).json({ status: true, result: "Valid Credentials" });
+
+              } else {
+
+                res.status(200).json({ status: false, result: "Invalid Credentials" });
+
+              }
+
+              })
+              .catch(err => {
+
+                console.error(err);
+                
+                res.status(500).json({ status: false, result: "Invalid Credentials" });
+              });
+
+
+   
+
+          });
 
 app.listen(8080);
