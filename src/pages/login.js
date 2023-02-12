@@ -10,7 +10,7 @@ const Login = (props) => {
     }
 
   return (
-    <>
+    <div className='auth-form-container'>
         <form onSubmit={handleSubmit}>
             <label htmlFor="email">email</label>
             <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder='youremail@gmail.com' id='email' name='email'></input>
@@ -19,7 +19,7 @@ const Login = (props) => {
             <button type='submit'>Log In</button>
         </form>
         <button onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>
-    </>
+    </div>
   );
 };
 

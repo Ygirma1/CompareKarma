@@ -9,6 +9,13 @@
     align-items: center;
 }
 
+/* styling for login and registration page */
+.auth-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 /* styling for search bar */
 .search {
     width: 95%;
