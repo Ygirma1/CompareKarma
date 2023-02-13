@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Checkbox, FormControlLabel } from '@mui/material';
 
 const base_url = "http://localhost:8080"
 
@@ -9,20 +10,25 @@ const Register = (props) => {
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [desc, setDesc] = useState('');
+    const [profit, setProfit] = useState(false);
 
     // handles submission of form
     const handleSubmit = (e) => {
         e.preventDefault();
-        const rest = axios.put(`${base_url}/newUser?`+
+        const res = axios.put(`${base_url}/newUser?`+
             'business_name=' + name + 
             '&phone_number=' + phone +
             '&business_desc=' + desc + 
-            '&verified=0' + 
-            '&profit_status=1' + 
+            '&verified=0' +  
+            '&profit_status=' + Number(profit) + 
             '&email=' + email +
             '&course_type=Online' +
             '&business_password=' + pass)
     };
+
+    const handleChange = () => {
+        setProfit(!profit)
+      };
 
   return (
     <div className='auth-form-container'>
@@ -63,6 +69,11 @@ const Register = (props) => {
                 type="password"
                 placeholder='********'>
             </input>
+
+            <FormControlLabel
+                control={<Checkbox value={profit} onChange={handleChange} />}
+                label="Profit Status"
+            />
             
             <button onClick={event => window.location.href='/'} type='submit'>Sign Up</button>
         </form>
