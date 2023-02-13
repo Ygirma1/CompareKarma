@@ -64,7 +64,7 @@ const Register = (props) => {
                 placeholder='********'>
             </input>
             
-            <button type='submit'>Sign Up</button>
+            <button onClick={event => window.location.href='/'} type='submit'>Sign Up</button>
         </form>
         <button onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
     </div>
