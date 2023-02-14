@@ -217,21 +217,22 @@ bcrypt.genSalt(saltRounds, function(err, salt) {
      if (err) {
       console.log("business pass error");
        console.log(err);
+       resolve(false);
      } else {
-      
-       console.log(result[0].business_password);
+       if (result.length>0) {
+       //console.log(result[0].business_password);
     
        bcrypt.compare(password.toString(), result[0].business_password)
        .then(result => {
          console.log(result);
-     if (result){
-       resolve(true);
-     }
-     else resolve(false);
+            if (result){
+                 resolve(true);
+             }
+           else resolve(false);
          
        
        })
-
+      } else resolve(false);
   
      }
    });
