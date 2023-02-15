@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Checkbox, FormControlLabel } from '@mui/material';
+import Multiselect from 'multiselect-react-dropdown';
 
 const base_url = "http://localhost:8080"
 
@@ -73,6 +74,39 @@ const Register = (props) => {
             <FormControlLabel
                 control={<Checkbox value={profit} onChange={handleChange} />}
                 label="Profit Status"
+            />
+
+            Course Type
+            <Multiselect
+                displayValue="key"
+                onKeyPressFn={function noRefCheck(){}}
+                onRemove={function noRefCheck(){}}
+                onSearch={function noRefCheck(){}}
+                onSelect={function noRefCheck(){}}
+                options={[
+                    {
+                    key: 'UX/UI'
+                    },
+                    {
+                    key: 'Project Management'
+                    },
+                    {
+                    key: 'Product Management'
+                    },
+                    {
+                    key: 'Data Analytics'
+                    },
+                    {
+                    key: 'Technology Sales'
+                    },
+                    {
+                    key: 'Software Engineering'
+                    },
+                    {
+                    key: 'Digital Marketing'
+                    }
+                ]}
+                showCheckbox
             />
             
             <button onClick={event => window.location.href='/'} type='submit'>Sign Up</button>
