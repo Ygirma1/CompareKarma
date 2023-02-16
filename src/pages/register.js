@@ -17,20 +17,20 @@ const Register = (props) => {
     // handles submission of form
     const handleSubmit = (e) => {
         e.preventDefault();
-        const res = axios.put(`${base_url}/newUser?`+
-            'business_name=' + name + 
-            '&phone_number=' + phone +
-            '&business_desc=' + desc + 
-            '&verified=0' +  
-            '&profit_status=' + Number(profit) + 
-            '&email=' + email +
-            '&course_type=' + courseTypes + 
-            '&business_password=' + pass)
 
-            // get just keys from course type array
-            const keys = courseTypes.map((item) => item.key);
-            console.log(JSON.stringify(keys))
-            setCourseTypes(keys);
+        // get just keys from course type array
+        let newCourseTypes = [];
+        courseTypes.forEach((e) => newCourseTypes.push(e.key));
+
+        const res = axios.put(`${base_url}/newUser?`+
+        'business_name=' + name + 
+        '&phone_number=' + phone +
+        '&business_desc=' + desc + 
+        '&verified=0' +  
+        '&profit_status=' + Number(profit) + 
+        '&email=' + email +
+        '&course_type=' + newCourseTypes + 
+        '&business_password=' + pass)
     };
 
     const handleChange = () => {
@@ -123,7 +123,6 @@ const Register = (props) => {
                 ]}
                 showCheckbox
             />
-            
             
             <button onClick={event => window.location.href='/'} type='submit'>Sign Up</button>
         </form>
