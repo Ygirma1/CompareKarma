@@ -30,7 +30,6 @@ const Register = (props) => {
             // get just keys from course type array
             const keys = courseTypes.map((item) => item.key);
             console.log(JSON.stringify(keys))
-            // console.log(Object.values(courseTypes));
             setCourseTypes(keys);
     };
 
@@ -125,8 +124,8 @@ const Register = (props) => {
                 showCheckbox
             />
             
-            {/* onClick={event => window.location.href='/'} */}
-            <button  type='submit'>Sign Up</button>
+            
+            <button onClick={event => window.location.href='/'} type='submit'>Sign Up</button>
         </form>
         <button onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
     </div>
