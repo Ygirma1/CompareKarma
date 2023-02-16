@@ -12,6 +12,7 @@ const Register = (props) => {
     const [phone, setPhone] = useState('');
     const [desc, setDesc] = useState('');
     const [profit, setProfit] = useState(false);
+    const [courseTypes, setCourseTypes] = useState([]);
 
     // handles submission of form
     const handleSubmit = (e) => {
@@ -23,13 +24,27 @@ const Register = (props) => {
             '&verified=0' +  
             '&profit_status=' + Number(profit) + 
             '&email=' + email +
-            '&course_type=Online' +
+            '&course_type=' + courseTypes + 
             '&business_password=' + pass)
+
+            // get just keys from course type array
+            const keys = courseTypes.map((item) => item.key);
+            console.log(JSON.stringify(keys))
+            // console.log(Object.values(courseTypes));
+            setCourseTypes(keys);
     };
 
     const handleChange = () => {
         setProfit(!profit)
-      };
+    };
+
+    const handleSelect = (selectedList) => {
+        setCourseTypes(selectedList);
+    }
+
+    const handleRemove = (selectedList) => {
+        setCourseTypes(selectedList);
+      }
 
   return (
     <div className='auth-form-container'>
@@ -80,9 +95,10 @@ const Register = (props) => {
             <Multiselect
                 displayValue="key"
                 onKeyPressFn={function noRefCheck(){}}
-                onRemove={function noRefCheck(){}}
+                onRemove={handleRemove}
                 onSearch={function noRefCheck(){}}
-                onSelect={function noRefCheck(){}}
+                onSelect={handleSelect}
+                selectedValues={courseTypes}
                 options={[
                     {
                     key: 'UX/UI'
@@ -109,7 +125,8 @@ const Register = (props) => {
                 showCheckbox
             />
             
-            <button onClick={event => window.location.href='/'} type='submit'>Sign Up</button>
+            {/* onClick={event => window.location.href='/'} */}
+            <button  type='submit'>Sign Up</button>
         </form>
         <button onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
     </div>
