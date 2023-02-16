@@ -55,8 +55,6 @@ const Search = () => {
         fetchBootCamps()
     }, []); //no dependencies
 
-    console.log("TEST")
-
 
   return (
     <div className='app'>
