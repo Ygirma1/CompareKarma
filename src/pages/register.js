@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Checkbox, FormControlLabel } from '@mui/material';
 import Multiselect from 'multiselect-react-dropdown';
+import './register.css';
 
 const base_url = "http://localhost:8080"
 
@@ -126,7 +127,7 @@ const Register = (props) => {
             
             <button onClick={event => window.location.href='/'} type='submit'>Sign Up</button>
         </form>
-        <button onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
+        <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
     </div>
   );
 };

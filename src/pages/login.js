@@ -1,5 +1,6 @@
-import React, { useState }from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import './register.css';
 
 const base_url = "http://localhost:8080"
 
@@ -52,7 +53,7 @@ const Login = (props) => {
           )}
 
         </form>
-        <button onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>
+        <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>
     </div>
   );
 };
