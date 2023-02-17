@@ -1,4 +1,5 @@
 import React from 'react';
+import './index.css';
 
 const Home = () => {
   return (
@@ -14,13 +15,13 @@ const Home = () => {
     <div className="card">
       <h2 >Bootcamp 1</h2>
       <h5 >Post date: February 12, 2023</h5>
-      <p>*****(###)</p>
+      <p>*****(###)<br></br><br></br></p>
       <p >Ipsum morbi nascetur a placerat pretium adipiscing Auctor per cum. Sem, nam aliquet metus dapibus. Cum semper suspendisse diam natoque ipsum at mauris, magnis platea bibendum venenatis massa. Aliquet convallis laoreet imperdiet vitae dui ultricies vehicula, porttitor ac pede consequat.</p>
     </div>
     <div className="card">
       <h2 >Bootcamp 2</h2>
       <h5 >Post date: February 14, 2023</h5>
-      <p>*****(###)</p>
+      <p>*****(###)<br></br><br></br></p>
       <p >Ipsum morbi nascetur a placerat pretium adipiscing Auctor per cum. Sem, nam aliquet metus dapibus. Cum semper suspendisse diam natoque ipsum at mauris, magnis platea bibendum venenatis massa. Aliquet convallis laoreet imperdiet vitae dui ultricies vehicula, porttitor ac pede consequat.</p>
     </div>
   </div>
