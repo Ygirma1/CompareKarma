@@ -14,11 +14,14 @@
     margin-right: auto;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
+}
+
+.register-form {
     padding-top: 1.5em;
 }
 
 .login-form {
-    padding: 10rem;
+    padding-top: 10rem;
 }
 
 .link-btn {
@@ -35,6 +38,7 @@
   label {
     text-align: left;
     padding: 0.25rem 0;
+    font-family: 'Poppins', sans-serif;
   }
   
   input {
@@ -51,8 +55,9 @@
     padding: 20px;
     border-radius: 10px;
     cursor: pointer;
-    color: #7439db;
+    color: #ed6e2e;
     width: 380px;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
   }
+

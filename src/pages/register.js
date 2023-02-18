@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Checkbox, FormControlLabel } from '@mui/material';
+import { Checkbox, FormControlLabel, Typography } from '@mui/material';
 import Multiselect from 'multiselect-react-dropdown';
 import './register.css';
+import { display } from '@mui/system';
 
 const base_url = "http://localhost:8080"
 
@@ -88,11 +89,13 @@ const Register = (props) => {
 
             <FormControlLabel
                 control={<Checkbox value={profit} onChange={handleChange} />}
-                label="Profit Status"
+                label={<label>Profit Status</label>}
+                className='profit-label'
             />
 
             Course Type
             <Multiselect
+                className='course-type'
                 displayValue="key"
                 onKeyPressFn={function noRefCheck(){}}
                 onRemove={handleRemove}
