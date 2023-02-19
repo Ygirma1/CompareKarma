@@ -7,17 +7,15 @@
 .auth-form-container, .login-form, .register-form {
     display: flex;
     flex-direction: column;
-    text-align: left;
-    justify-content: center;
     border-radius: 10px;
-    margin-left: auto;
-    margin-right: auto;
+    align-items: center;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
 }
 
 .register-form {
     padding-top: 1.5em;
+
 }
 
 .login-form {
@@ -46,6 +44,9 @@
     padding: 1rem;
     border: none;
     border-radius: 10px;
+  }
+
+  .input2 {
     width: 350px;
   }
   
@@ -56,8 +57,25 @@
     border-radius: 10px;
     cursor: pointer;
     color: #ed6e2e;
-    width: 380px;
+    width: 350px;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
   }
+
+  .error {
+    margin-top: 1.5rem;
+    color: red;
+    text-align: center;
+  }
+
+  .course-type {
+    padding: 1rem;
+  }
+
+  .multiselect-container {
+    max-width: 380px;
+    min-width: 380px;
+  }
+
+
 

@@ -50,37 +50,42 @@ const Register = (props) => {
   return (
     <div className='auth-form-container'>
         <form className='register-form' onSubmit={handleSubmit}>
-            <label htmlFor="name">Business Name</label>
+            <label className='label2' htmlFor="name">Business Name</label>
             <input
+                className='input2'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Business Name">
             </input>
             
-            <label htmlFor="email">Email</label>
+            <label className='label2' htmlFor="email">Email</label>
             <input
+                className='input2'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 placeholder='youremail@gmail.com'>
             </input>
             
-            <label htmlFor="name">Phone Number</label>
+            <label className='label2' htmlFor="number">Phone Number</label>
             <input
+                className='input2'
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="xxx-xxx-xxxx">
             </input>
             
-            <label htmlFor="name">Description</label>
+            <label className='label2' htmlFor="description">Description</label>
             <input
+                className='input2'
                 value={desc}
                 onChange={(e) => setDesc(e.target.value)}
                 placeholder="Description">
             </input>
 
-            <label htmlFor="password">Password</label>
+            <label className='label2' htmlFor="password">Password</label>
             <input
+                className='input2'
                 value={pass}
                 onChange={(e) => setPass(e.target.value)}
                 type="password"
