@@ -10,7 +10,7 @@ CompareKarma is a web-based search index that allows you to compare between pric
 
 #### Bug Fixes
 * N/A
-* 
+---
 ### Version 0.1.0
 
 #### New Features
