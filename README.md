@@ -5,15 +5,15 @@ CompareKarma is a web-based search index that allows you to compare between pric
 ### Version 0.2.0
 
 #### New Features
-* Business account register and login pages and functionality created
-* Business account register sends email confirmation
-* Business account dashboard created and linked to login page
+* Business users can login and register for an account
+* Business users recieve email confirmation upon account registration
+* Business users can access a dashboard upon account login
 
 #### Bug Fixes
 * N/A
 
 #### Known Issues
-* First option of multiselect of course type in register page is permanently highlighted
+* First option of multiselect of course type in register page is permanently highlighted even when hovering over another option
 ---
 ### Version 0.1.0
 
