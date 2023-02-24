@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Checkbox, FormControlLabel } from '@mui/material';
+import { Checkbox, FormControlLabel, Typography } from '@mui/material';
 import Multiselect from 'multiselect-react-dropdown';
+import './register.css';
+import { display } from '@mui/system';
 
 const base_url = "http://localhost:8080"
 
@@ -48,37 +50,42 @@ const Register = (props) => {
   return (
     <div className='auth-form-container'>
         <form className='register-form' onSubmit={handleSubmit}>
-            <label htmlFor="name">Business Name</label>
+            <label className='label2' htmlFor="name">Business Name</label>
             <input
+                className='input2'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Business Name">
             </input>
             
-            <label htmlFor="email">Email</label>
+            <label className='label2' htmlFor="email">Email</label>
             <input
+                className='input2'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 placeholder='youremail@gmail.com'>
             </input>
             
-            <label htmlFor="name">Phone Number</label>
+            <label className='label2' htmlFor="number">Phone Number</label>
             <input
+                className='input2'
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="xxx-xxx-xxxx">
             </input>
             
-            <label htmlFor="name">Description</label>
+            <label className='label2' htmlFor="description">Description</label>
             <input
+                className='input2'
                 value={desc}
                 onChange={(e) => setDesc(e.target.value)}
                 placeholder="Description">
             </input>
 
-            <label htmlFor="password">Password</label>
+            <label className='label2' htmlFor="password">Password</label>
             <input
+                className='input2'
                 value={pass}
                 onChange={(e) => setPass(e.target.value)}
                 type="password"
@@ -87,11 +94,13 @@ const Register = (props) => {
 
             <FormControlLabel
                 control={<Checkbox value={profit} onChange={handleChange} />}
-                label="Profit Status"
+                label={<label>Profit Status</label>}
+                className='profit-label'
             />
 
             Course Type
             <Multiselect
+                className='course-type'
                 displayValue="key"
                 onKeyPressFn={function noRefCheck(){}}
                 onRemove={handleRemove}
@@ -126,7 +135,7 @@ const Register = (props) => {
             
             <button onClick={event => window.location.href='/'} type='submit'>Sign Up</button>
         </form>
-        <button onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
+        <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
     </div>
   );
 };

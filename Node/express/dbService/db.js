@@ -3,7 +3,7 @@ const hbs = require('nodemailer-express-handlebars')
 const con = mysql.createPool({
     host: "localhost",
     user: "root",
-    password: "" //put local password to mysql here if you want to test
+    password: "1234" //put local password to mysql here if you want to test
   });
   const path = require('path')
   var nodemailer = require('nodemailer');

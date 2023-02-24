@@ -1,0 +1,81 @@
+/* import font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+/* styling for login and registration page */
+.auth-form-container, .login-form, .register-form {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+.register-form {
+    padding-top: 1.5em;
+
+}
+
+.login-form {
+    padding-top: 10rem;
+}
+
+.link-btn {
+    background: none;
+    color: black;
+    text-decoration: underline;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+  }
+
+  label {
+    text-align: left;
+    padding: 0.25rem 0;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  input {
+    margin: 0.5rem 0;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+  }
+
+  .input2 {
+    width: 350px;
+  }
+  
+  button {
+    border: none;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #ed6e2e;
+    width: 350px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+  }
+
+  .error {
+    margin-top: 1.5rem;
+    color: red;
+    text-align: center;
+  }
+
+  .course-type {
+    padding: 1rem;
+  }
+
+  .multiselect-container {
+    max-width: 380px;
+    min-width: 380px;
+  }
+
+
+
