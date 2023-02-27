@@ -3,7 +3,7 @@ const hbs = require('nodemailer-express-handlebars')
 const con = mysql.createPool({
     host: "localhost",
     user: "root",
-    password: "1234" //put local password to mysql here if you want to test
+    password: "Microcenter1234" //put local password to mysql here if you want to test
   });
   const path = require('path')
   var nodemailer = require('nodemailer');
@@ -241,7 +241,43 @@ bcrypt.genSalt(saltRounds, function(err, salt) {
   });
 
 
- },
+ }
+ 
+ 
+ 
+ ,
+ getBusinessCourses: (req)=> {
+
+// provide me the user ID
+//I pull all from the backend
+console.log("here");
+return new Promise((resolve, reject) => {
+
+var business_id = req.query.business_id;
+console.log(business_id);
+con.query("select * from comparekarma.bootcamps where business_id = ? ;",[business_id],
+(err, result) => {
+  if (err) {
+    console.log("Could not retrieve bootcamps");
+     console.log(err);
+     reject(false);
+   }
+  if (result.length<1) {
+console.log("result length: " + result.length);
+    reject(false); // resolve maybe an empty array?
+  }
+  console.log(result);
+resolve(result);
+
+}
+)});
+
+
+ }
+
+
+
+
 
 
 
