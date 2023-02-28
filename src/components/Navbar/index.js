@@ -24,6 +24,9 @@ const Navbar = () => {
                 <NavLink to='/search' >
                     Search
                 </NavLink>
+                <NavLink to='/post'>
+                    Post
+                </NavLink>
                 <NavBtnLink to='/login'>
                     Login
                 </NavBtnLink>
