@@ -124,4 +124,24 @@ app.get("/search", function(req,res) {
 
           });
 
+          app.get("/getBusinessCourses", function(req, res) {
+            db.getBusinessCourses(req)
+              .then(courses => {
+
+
+                console.log(JSON.stringify(courses));
+                res.send(JSON.stringify(courses));
+              })
+              .catch(err => {
+
+                console.error(err);
+                
+                res.status(500).json({ status: false, result: "Bootcamps not retrieved" });
+              });
+
+
+   
+
+          });
+
 app.listen(8080);
