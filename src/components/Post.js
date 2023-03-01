@@ -22,6 +22,7 @@ const Post = ({ post }) => {
                     <div className='stars'>
                         <StarRatings rating={post.review_score} starRatedColor="#ed6e2e" starDimension='25px' starSpacing='5px'/>
                     </div>
+                    <div className="sponsored-box">Sponsored</div>
                 </div>
                 <p className="container">
                     <p className="margin1">
