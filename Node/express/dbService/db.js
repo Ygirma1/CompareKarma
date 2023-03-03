@@ -17,8 +17,8 @@ const con = mysql.createPool({
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: '',
-      pass: ''
+      user: 'annettepan01@gmail.com',
+      pass: 'mcieugtbosofludq'
     }
   });
 
@@ -172,7 +172,7 @@ bcrypt.genSalt(saltRounds, function(err, salt) {
    
 
           var mailOptions = {
-            from: '',
+            from: 'annettepan01@gmail.com',
             to: email.toString(),
             subject: 'Confirmation Email For CompareKarma',
             template: "email",

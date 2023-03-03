@@ -7,6 +7,7 @@ import About from './pages/about';
 import Login from './pages/login';
 import Search from './pages/search';
 import Register from './pages/register';
+import BusinessPost from './pages/businessPost';
 
 function App() {
     const [currentForm, setCurrentForm] = useState('login');
@@ -23,6 +24,7 @@ function App() {
                 <Route path='/' element={<Home/>} />
                 <Route path='/about' element={<About/>} />
                 <Route path='/search' element={<Search/>} />
+                <Route path='/post' element={<BusinessPost/>} />
                 <Route path='/login' element={currentForm === "login" ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm}/>} /> 
             </Routes>
         </Router>
