@@ -22,9 +22,7 @@ const Login = (props) => {
         } else {
           console.log("ERROR MESSAGE")
           setErrorMessage('Incorrect Login!');
-         
         }
-
     }
 
   return (

@@ -14,7 +14,7 @@ const Navbar = () => {
     <>
         <Nav>
             <NavLink to="/">
-                <h1>Logo</h1>
+                <h1>CompareKarma</h1>
             </NavLink>
             <Bars />
             <NavMenu>
@@ -23,6 +23,9 @@ const Navbar = () => {
                 </NavLink>
                 <NavLink to='/search' >
                     Search
+                </NavLink>
+                <NavLink to='/post'>
+                    Post
                 </NavLink>
                 <NavBtnLink to='/login'>
                     Login
