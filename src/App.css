@@ -124,6 +124,11 @@ p {
     border: 2px solid lightgray;
     margin-top: 0.5em;
     font-size: 100%;
+    margin: 1rem;
+}
+
+.custom-select-container {
+    display: inline;
 }
 
 .margin1 {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './register.css';
+import './register/register.css';
 
 const base_url = "http://localhost:8080"
 
