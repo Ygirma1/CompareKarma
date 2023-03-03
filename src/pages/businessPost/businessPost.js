@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import './businessPost.css';
 import Multiselect from 'multiselect-react-dropdown';
+import { InputLabel, Select, FormControl, MenuItem, Box } from '@material-ui/core';
 
 const BusinessPost = (props) => {
   const [price, setPrice] = useState('');
   const [desc, setDesc] = useState('');
   const [name, setName] = useState('');
   const [link, setLink] = useState('');
+  const [format, setFormat] = useState('');
   const [courseTypes, setCourseTypes] = useState([]);
 
   const handleSubmit = async(e) => {
     e.preventDefault();
   };
-
 
   const handleSelect = (selectedList) => {
     setCourseTypes(selectedList);
@@ -21,6 +22,11 @@ const BusinessPost = (props) => {
   const handleRemove = (selectedList) => {
     setCourseTypes(selectedList);
   };
+
+  const handleChange = (event) => {
+    setFormat(event.target.value);
+  };
+
 
   return (
     <div className='post-form-container'>
@@ -40,6 +46,21 @@ const BusinessPost = (props) => {
             onChange={(e) => setDesc(e.target.value)}
             placeholder="Description">
         </input>
+
+        <FormControl fullWidth variant='filled'>
+          <InputLabel id="demo-simple-select-label">Course Format</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={format}
+            label="Course Format"
+            onChange={handleChange}
+          >
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
+          </Select>
+        </FormControl>
 
         <label className='label2' htmlFor="price">Price</label>
         <input

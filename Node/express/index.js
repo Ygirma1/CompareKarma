@@ -83,7 +83,7 @@ app.get("/search", function(req,res) {
 
 
                 console.log(JSON.stringify(user));
-                res.status(200).json({ status: true, result: "User Added Succesfully!" });
+                res.status(200).json({ status: true, result: "User Added Succesfully!", business_id:user.insertId });
               })
               .catch(err => {
 
@@ -103,7 +103,7 @@ app.get("/search", function(req,res) {
                   console.log(user);
                     if(user){
                // console.log(JSON.stringify(user));
-                res.status(200).json({ status: true, result: "Valid Credentials" });
+                res.status(200).json({ status: true, result: "Valid Credentials", business_id: user[0].business_id});
 
               } else {
 
