@@ -3,7 +3,7 @@ const hbs = require('nodemailer-express-handlebars')
 const con = mysql.createPool({
     host: "localhost",
     user: "root",
-    password: "" //put local password to mysql here if you want to test
+    password: "TxPl7U3!1Y3E" //put local password to mysql here if you want to test
   });
   const path = require('path')
   var nodemailer = require('nodemailer');
@@ -136,78 +136,84 @@ transporter.use('compile', hbs(handlebarOptions));
 
    acceptNewBusiness : (req)=> {
     var verified = false;
-    var profit_status= req.query.profit_status;
-    var email=req.query.email;
+    var profit_status = req.query.profit_status;
+    var email = req.query.email;
     var business_password = req.query.business_password;
-    var course_type= req.query.course_type;
+    var course_type = req.query.course_type;
     
-    var business_name= req.query.business_name;
+    var business_name = req.query.business_name;
     var phone_number = req.query.phone_number;
-    var business_desc=req.query.business_desc;
+    var business_desc = req.query.business_desc;
 
-
-
-
-return new Promise((resolve, reject) => {
-bcrypt.genSalt(saltRounds, function(err, salt) {
-  if (err) {
-    console.error("Error generating salt: ", err);
-    return;
-  }
-  bcrypt.hash(business_password, salt, function(err, hash) {
-    if (err) {
-      console.error("Error hashing password: ", err);
-      return;
-    }
-      con.query("insert  into   comparekarma.business_user (business_name, phone_number, business_desc, verified, profit_status,email,business_password,course_type,salt) "+
-      " values (?, ?, ? , ? , ?, ?, ?, ?, ?);",
-      [business_name,phone_number,business_desc,verified,profit_status,email,hash,course_type,salt],  (err, result) => {
+      return new Promise((resolve, reject) => {
+      const query = "select email from comparekarma.business_user where email=\"" + email + "\";"; 
+      console.log("query: ", query)
+      con.query(query, (err, result) => {
+        console.log("duplicate email check result: ", result);
         if (err) {
           console.error(err.message);
-
+          
           console.log("failed to insert business user");
-        } else {
-
-          console.log(result);
-   
-
-          var mailOptions = {
-            from: '',
-            to: email.toString(),
-            subject: 'Confirmation Email For CompareKarma',
-            template: "email",
-            context:{
-              business_user:  business_name
-
-            }
-          };
-          transporter.sendMail(mailOptions, function(error, info){
-            if (error) {
-              console.log(error);
-            } else {
-              console.log('Email sent: ' + info.response);
-            }
-          });
-
-          resolve(result);
+        } else if (result.length > 0) {
+          console.error("Error adding user: email already exists");
+          reject(false);
+          return; // check out how to use reject
         }
       })
-});
 
-  });
+      bcrypt.genSalt(saltRounds, function(err, salt) {
+        if (err) {
+          console.error("Error generating salt: ", err);
+          return;
+        }
 
+        // check if duplicate email
 
+        bcrypt.hash(business_password, salt, function(err, hash) {
+          if (err) {
+            console.error("Error hashing password: ", err);
+            return;
+          }
 
-  });
+            con.query("insert  into   comparekarma.business_user (business_name, phone_number, business_desc, verified, profit_status,email,business_password,course_type,salt) "+
+            " values (?, ?, ? , ? , ?, ?, ?, ?, ?);",
+            [business_name,phone_number,business_desc,verified,profit_status,email,hash,course_type,salt],  (err, result) => {
+              if (err) {
+                console.error(err.message);
+
+                console.log("failed to insert business user");
+              } else {
+
+                // console.log(result);
+        
+
+                var mailOptions = {
+                  from: '',
+                  to: email.toString(),
+                  subject: 'Confirmation Email For CompareKarma',
+                  template: "email",
+                  context:{
+                    business_user:  business_name
+
+                  }
+                };
+                transporter.sendMail(mailOptions, function(error, info){
+                  if (error) {
+                    console.log(error);
+                  } else {
+                    console.log('Email sent: ' + info.response);
+                  }
+                });
+
+                resolve(result);
+              }
+            })
+      });
+        });
+        });
     
+    },
 
-
-
-
-
-
-
- },
  verify: (req)=> {
   return new Promise((resolve, reject) => {
     var email = req.query.email;
