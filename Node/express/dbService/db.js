@@ -217,21 +217,22 @@ bcrypt.genSalt(saltRounds, function(err, salt) {
      if (err) {
       console.log("business pass error");
        console.log(err);
+       resolve(false);
      } else {
-      
-       console.log(result[0].business_password);
+       if (result.length>0) {
+       //console.log(result[0].business_password);
     
        bcrypt.compare(password.toString(), result[0].business_password)
        .then(result => {
          console.log(result);
-     if (result){
-       resolve(true);
-     }
-     else resolve(false);
+            if (result){
+                 resolve(true);
+             }
+           else resolve(false);
          
        
        })
-
+      } else resolve(false);
   
      }
    });
@@ -240,7 +241,43 @@ bcrypt.genSalt(saltRounds, function(err, salt) {
   });
 
 
- },
+ }
+ 
+ 
+ 
+ ,
+ getBusinessCourses: (req)=> {
+
+// provide me the user ID
+//I pull all from the backend
+console.log("here");
+return new Promise((resolve, reject) => {
+
+var business_id = req.query.business_id;
+console.log(business_id);
+con.query("select * from comparekarma.bootcamps where business_id = ? ;",[business_id],
+(err, result) => {
+  if (err) {
+    console.log("Could not retrieve bootcamps");
+     console.log(err);
+     reject(false);
+   }
+  if (result.length<1) {
+console.log("result length: " + result.length);
+    reject(false); // resolve maybe an empty array?
+  }
+  console.log(result);
+resolve(result);
+
+}
+)});
+
+
+ }
+
+
+
+
 
 
 
