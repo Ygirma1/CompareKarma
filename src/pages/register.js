@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Checkbox, FormControlLabel, Typography } from '@mui/material';
 import Multiselect from 'multiselect-react-dropdown';
 import './register.css';
-import { display } from '@mui/system';
 
 const base_url = "http://localhost:8080"
 
@@ -41,11 +40,11 @@ const Register = (props) => {
 
     const handleSelect = (selectedList) => {
         setCourseTypes(selectedList);
-    }
+    };
 
     const handleRemove = (selectedList) => {
         setCourseTypes(selectedList);
-      }
+    };
 
   return (
     <div className='auth-form-container'>

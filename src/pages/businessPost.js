@@ -1,15 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import './businessPost.css';
+import Multiselect from 'multiselect-react-dropdown';
 
 const BusinessPost = (props) => {
   const [price, setPrice] = useState('');
   const [desc, setDesc] = useState('');
   const [name, setName] = useState('');
   const [link, setLink] = useState('');
+  const [courseTypes, setCourseTypes] = useState([]);
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    window.location.href='/';
+  };
+
+
+  const handleSelect = (selectedList) => {
+    setCourseTypes(selectedList);
+  };
+
+  const handleRemove = (selectedList) => {
+    setCourseTypes(selectedList);
   };
 
   return (
@@ -47,7 +57,40 @@ const BusinessPost = (props) => {
           placeholder="Link">
         </input>
 
-        <button type='submit'>Post Bootcamp</button>
+        Course Type
+        <Multiselect
+            className='course-type'
+            displayValue="key"
+            onRemove={handleRemove}
+            onSelect={handleSelect}
+            selectedValues={courseTypes}
+            options={[
+                {
+                key: 'UX/UI'
+                },
+                {
+                key: 'Project Management'
+                },
+                {
+                key: 'Product Management'
+                },
+                {
+                key: 'Data Analytics'
+                },
+                {
+                key: 'Technology Sales'
+                },
+                {
+                key: 'Software Engineering'
+                },
+                {
+                key: 'Digital Marketing'
+                }
+            ]}
+            showCheckbox
+        />
+
+          <button onClick={event => window.location.href='/'} type='submit'>Post Bootcamp</button>
 
     </form>
 </div>
