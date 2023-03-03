@@ -124,6 +124,23 @@ app.get("/search", function(req,res) {
 
           });
 
+          app.put("/newBusinessCourse", function(req, res) {
+            db.acceptNewBusinessCourse(req)
+              .then(course => {
+
+                console.log(JSON.stringify(course));
+                res.status(200).json({ status: true, result: "Course Added Succesfully!" });
+              })
+              .catch(err => {
+
+                console.error(err);
+                
+                res.status(500).json({ status: false, result: "Course Not Added." });
+              });
+
+
+          });
+
           app.get("/getBusinessCourses", function(req, res) {
             db.getBusinessCourses(req)
               .then(courses => {
