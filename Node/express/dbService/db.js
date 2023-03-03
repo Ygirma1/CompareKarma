@@ -3,7 +3,7 @@ const hbs = require('nodemailer-express-handlebars')
 const con = mysql.createPool({
     host: "localhost",
     user: "root",
-    password: "" //put local password to mysql here if you want to test
+    password: "roger820820" //put local password to mysql here if you want to test
   });
   const path = require('path')
   var nodemailer = require('nodemailer');
@@ -273,7 +273,39 @@ resolve(result);
 )});
 
 
- }
+ },
+
+ acceptNewBusinessCourse : (req)=> {
+  var company_name= req.query.company_name;
+  var course_format=req.query.course_format;
+  var course_name = req.query.course_name;
+  var length_of_course= req.query.length_of_course;
+  var cost= req.query.cost;
+  var description_of_bootcamp = req.query.description_of_bootcamp;
+  var review_score=req.query.review_score;
+  var course_type = req.query.course_type;
+  var business_id=req.query.business_id;
+  var link=req.query.link;
+  var sponsored=false;
+
+return new Promise((resolve, reject) => {
+
+  con.query("insert into comparekarma.bootcamps (company_name, course_format,course_name, length_of_course, cost, description_of_bootcamp,review_score,course_type,business_id,link,sponsored) "+
+  " values (?, ?, ? , ? , ?, ?, ?, ?, ?, ?, ?);",
+  [company_name, course_format,course_name, length_of_course, cost, description_of_bootcamp,review_score,course_type,business_id,link,sponsored],  (err, result) => {
+    if (err) {
+      console.error(err.message);
+
+      console.log("failed to insert business courses");
+    } else {
+      console.log(result);
+      resolve(result);
+    }
+  })
+
+});
+
+}
 
 
 
@@ -305,3 +337,4 @@ else return Boolean([false]);
 
 
   }
+  
