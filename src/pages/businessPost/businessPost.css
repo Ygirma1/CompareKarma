@@ -24,7 +24,7 @@
     vertical-align: top;
 }
 
-.link, .courseName, .price, .description {
+.link, .courseName, .price, .description, .length {
     max-width: 320px;
     min-width: 320px;
 }
