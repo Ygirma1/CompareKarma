@@ -13,6 +13,7 @@ const BusinessPost = (props) => {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
+    console.log(price, desc, name, link, courseTypes, format);
   };
 
   const handleSelect = (selectedList) => {
@@ -47,8 +48,8 @@ const BusinessPost = (props) => {
             placeholder="Description">
         </input>
 
+        Course Format
         <FormControl fullWidth variant='filled'>
-          <InputLabel id="demo-simple-select-label">Course Format</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
@@ -56,9 +57,9 @@ const BusinessPost = (props) => {
             label="Course Format"
             onChange={handleChange}
           >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            <MenuItem value={'Online'}>Online</MenuItem>
+            <MenuItem value={'Hybrid'}>Hybrid</MenuItem>
+            <MenuItem value={'In-Person'}>In-Person</MenuItem>
           </Select>
         </FormControl>
 
@@ -111,7 +112,7 @@ const BusinessPost = (props) => {
             showCheckbox
         />
 
-          <button onClick={event => window.location.href='/'} type='submit'>Post Bootcamp</button>
+          <button /*onClick={event => window.location.href='/'}*/ type='submit'>Post Bootcamp</button>
 
     </form>
 </div>
