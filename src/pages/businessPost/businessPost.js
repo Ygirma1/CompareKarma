@@ -55,7 +55,7 @@ const BusinessPost = (props) => {
           placeholder="Course Name">
         </input>
 
-        <label className='label2' htmlFor="description">Description</label>
+        <label className='label2' htmlFor="description">Course Description</label>
         <input
             className='description'
             value={desc}
@@ -63,13 +63,12 @@ const BusinessPost = (props) => {
             placeholder="Description">
         </input>
 
-        Course Format
+        Location
         <FormControl fullWidth variant='filled'>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={format}
-            label="Course Format"
             onChange={handleChange}
           >
             <MenuItem value={'Online'}>Online</MenuItem>
@@ -78,7 +77,7 @@ const BusinessPost = (props) => {
           </Select>
         </FormControl>
 
-        <label className='label2' htmlFor="price">Price</label>
+        <label className='label2' htmlFor="price">Estimated Cost</label>
         <input
             className='price'
             value={price}
@@ -86,7 +85,7 @@ const BusinessPost = (props) => {
             placeholder='Price'>
         </input>
 
-        <label className='label2' htmlFor="length">Price</label>
+        <label className='label2' htmlFor="length">Length of Course</label>
         <input
             className='length'
             value={length}
