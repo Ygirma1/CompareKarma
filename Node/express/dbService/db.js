@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 const hbs = require('nodemailer-express-handlebars')
-require('dotenv').config({path:'../../.env'})
+// require('dotenv').config({path:'../../.env'})
 
 const con = mysql.createPool({
     host: "localhost",
@@ -135,7 +135,6 @@ module.exports = {
 
     return new Promise((resolve, reject) => {
       const query = "select email from comparekarma.business_user where email=\"" + email + "\";"; 
-      console.log("query: ", query)
       con.query(query, (err, result) => {
         console.log("duplicate email check result: ", result);
         if (err) {
@@ -315,6 +314,10 @@ module.exports = {
         });
       });
     });
+  },
+
+  deleteBusinessCourse : (req)=> {
+    req.query.
   }
 }
 
