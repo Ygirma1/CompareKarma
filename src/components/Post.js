@@ -19,14 +19,14 @@ const Post = ({ post }) => {
             <div className="test1">
                 <div className='test2'>
                     <h2 className="company-name">{post.company_name}</h2>
+                    { post.sponsored == 1 && 
+                        <div className="sponsored-box">
+                            <span>Sponsored</span>
+                        </div>
+                    }
                     <div className='stars'>
                         <StarRatings rating={post.review_score} starRatedColor="#ed6e2e" starDimension='25px' starSpacing='5px'/>
                     </div>
-                    { post.sponsored == 1 && 
-                        <div className="sponsored-box">
-                            <div>Sponsored</div>
-                        </div>
-                    }
                 </div>
                 <p className="container">
                     <p className="margin1">

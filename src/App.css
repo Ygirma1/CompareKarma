@@ -169,20 +169,19 @@ p {
 
 .test2 {
     display: flex;
-    align-items: baseline;
+    align-items: center;
 }
 
-.sponsored-box {
-    border: 2px solid #f99731;
-    background-color: #f99731    ;
+.sponsored-box span {
+    display: inline-block;
+    background-color: #f99731;
+    align-items: center;
     border-radius: 10px;
-    margin-top: 1em;
-    padding: 1em;
-    text-align: center;
     font-weight: bold;
+    padding: 3.5px 6px;
+    margin-left: 2em;
 }
 
 .stars {
-    margin: 2.5em;
-    margin-bottom: 0em;
+    margin: 2em;
 }
