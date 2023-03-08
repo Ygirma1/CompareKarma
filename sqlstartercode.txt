@@ -1,7 +1,4 @@
-
-
-
-
+DROP TABLE IF EXISTS bootcamps;
 DROP TABLE IF EXISTS business_user;
 create table business_user (
 business_name varchar(100) not null,
@@ -18,8 +15,6 @@ primary key (business_id)
 );
 
 
-
-DROP TABLE IF EXISTS bootcamps;
 create table bootcamps (
 company_name varchar(100) not null,
 course_format varchar(100) not null,
@@ -32,7 +27,8 @@ review_score double null,
 course_type  varchar(100) null,
 business_id int not null ,
 link varchar(200),
-sponsored boolean ,
+sponsored boolean,
+img_url varchar(200),
 primary key (course_id),
 foreign key (business_id) references business_user(business_id)
 )
@@ -97,13 +93,13 @@ insert into business_user (business_name, phone_number, business_desc, verified,
 "SWE"
  );
 
-insert into bootcamps (company_name, course_format,course_name, length_of_course, cost, description_of_bootcamp,review_score,course_type,business_id) values
-('Codesmith', 'Online', "Software Engineering Immersive Program", '12 weeks', 19950, "The Codesmith program teaches computer science, full-stack JavaScript (notably React and Node), software architecture, Dev Ops, and machine learning, preparing graduates for mid to senior engineering positions. ",4,"SWE", 1),
-('Coding Dojo', "Online", "Software Development Online Full-Time", "12 weeks",13495, "Full-time immersive experience in which you will master the fundamentals of web and software development, and 3 full stacks - Python, MERN, and Java or C#.", 4.2,"SWE",2),
-("Devmountain", "Online", "Java Software Engineering", "16 weeks", 7900, "The 16-week Java Software Engineering course is designed to teach you how to use the programming language Java as well as other languages to become a software engineer." ,4.4,"SWE",3),
-("Avocademy", "Online", "UX Immersive Program","8 Weeks", 1997, "Avocademy’s core program is an 8-week UX/UI Foundations course. Each expert-curated lesson in the curriculum builds on the previous content, helping students gain the knowledge and skill required to land a Junior UX/UI Designer job in a relatively short time frame. The UX/UI Foundations lessons consist of video and reading material.",5,"UI/UX",4),
-("Careerfoundry", "Online","UX Design Program", "10 months", 7900, "CareerFoundry is an online bootcamp that offers flexibly paced programs for career changers in web development, UX design, UI design, and data analytics. Headquartered in Berlin but with a global student base, CareerFoundry has provided tech education since 2013.",4.7,"UI/UX",5),
-("Designlab","Online", "UX & UI Design", "4 weeks",399, "In this 4-week online course built for design beginners, you'll learn about the fundamentals of color theory, typography, and layout in web design. You'll have 4 weekly sessions with your mentor and receive additional written feedback from them on all your project pieces and assignments.",3.5,"UI/UX",6 )
+insert into bootcamps (company_name, course_format,course_name, length_of_course, cost, description_of_bootcamp,review_score,course_type,business_id, link, sponsored, img_url) values
+('Codesmith', 'Online', "Software Engineering Immersive Program", '12 weeks', 19950, "The Codesmith program teaches computer science, full-stack JavaScript (notably React and Node), software architecture, Dev Ops, and machine learning, preparing graduates for mid to senior engineering positions. ",4,"SWE", 1, "https://www.codesmith.io/", 1, "/CodeSmith_Logo.png"),
+('Coding Dojo', "Online", "Software Development Online Full-Time", "12 weeks",13495, "Full-time immersive experience in which you will master the fundamentals of web and software development, and 3 full stacks - Python, MERN, and Java or C#.", 4.2,"SWE",2, "https://www.codingdojo.com/", 0, "https://coursereport-s3-production.global.ssl.fastly.net/uploads/school/logo/5/original/cd-logo-blue-600x600.png"),
+("Devmountain", "Online", "Java Software Engineering", "16 weeks", 7900, "The 16-week Java Software Engineering course is designed to teach you how to use the programming language Java as well as other languages to become a software engineer." ,4.4,"SWE",3, "https://devmountain.com/", 0, "https://pathrise-website-guide-wp.s3.us-west-1.amazonaws.com/guides/wp-content/uploads/2022/01/09053137/devmountain-logo-lockup-blue.png"),
+("Avocademy", "Online", "UX Immersive Program","8 Weeks", 1997, "Avocademy’s core program is an 8-week UX/UI Foundations course. Each expert-curated lesson in the curriculum builds on the previous content, helping students gain the knowledge and skill required to land a Junior UX/UI Designer job in a relatively short time frame. The UX/UI Foundations lessons consist of video and reading material.",5,"UI/UX",4, "https://www.avocademy.com/", 0, "https://coursereport-s3-production.global.ssl.fastly.net/uploads/school/logo/1047/original/AVOCADEMY.png"),
+("Careerfoundry", "Online","UX Design Program", "10 months", 7900, "CareerFoundry is an online bootcamp that offers flexibly paced programs for career changers in web development, UX design, UI design, and data analytics. Headquartered in Berlin but with a global student base, CareerFoundry has provided tech education since 2013.",4.7,"UI/UX",5, "https://careerfoundry.com/", 0, "https://coursereport-s3-production.global.ssl.fastly.net/uploads/school/logo/102/original/cf-600x600.png"),
+("Designlab","Online", "UX & UI Design", "4 weeks",399, "In this 4-week online course built for design beginners, you'll learn about the fundamentals of color theory, typography, and layout in web design. You'll have 4 weekly sessions with your mentor and receive additional written feedback from them on all your project pieces and assignments.",3.5,"UI/UX",6, "https://designlab.com/", 0, "https://d92mrp7hetgfk.cloudfront.net/images/sites/misc/designlab/original.png?1560210010")
 ;
 
 -- insert into bootcamps (company_name, course_format,course_name, length_of_course, cost, description_of_bootcamp,review_score,course_type,business_id) values
