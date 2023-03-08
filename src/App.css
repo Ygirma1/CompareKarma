@@ -185,3 +185,13 @@ p {
 .stars {
     margin: 2em;
 }
+
+.linkToBootcamp {
+    color:black;
+    align-self:center;
+    font-size: larger;
+}
+
+.linkToBootcamp:hover {
+    color:#f99731;
+}
