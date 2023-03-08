@@ -1,9 +1,11 @@
 var mysql = require('mysql');
 const hbs = require('nodemailer-express-handlebars')
+require('dotenv').config({path:'../../../.env'})
+
 const con = mysql.createPool({
     host: "localhost",
     user: "root",
-    password: "" //put local password to mysql here if you want to test
+    password: process.env.DBPASS //put local password to mysql here if you want to test
   });
   const path = require('path')
   var nodemailer = require('nodemailer');
@@ -17,8 +19,8 @@ const con = mysql.createPool({
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'annettepan01@gmail.com',
-      pass: 'mcieugtbosofludq'
+      user: process.env.EMAIL,
+      pass: process.env.EMAILPASS
     }
   });
 
