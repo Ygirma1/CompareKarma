@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 const hbs = require('nodemailer-express-handlebars')
-require('dotenv').config({path:'../../../.env'})
+require('dotenv').config({path:'../../.env'})
 
 const con = mysql.createPool({
     host: "localhost",
