@@ -46,99 +46,97 @@ const BusinessPost = (props) => {
 
   return (
     <div className='post-form-container'>
-    <form className='post-form' onSubmit={handleSubmit}>
-        <label className='label2' htmlFor="name">Course Name</label>
-        <input
-          className='courseName'
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Course Name">
-        </input>
+        <form className='post-form' onClick={handleSubmit}>
+            <div>
+                <div className="coursename-div">
+                    <label className='label2' htmlFor="name">Course Name</label>
+                    <input
+                        className='courseName'
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Course Name"
+                    />
+                </div>
+                <div className='description-div'>
+                    <label className='label2' htmlFor="description">Description</label>
+                    <textarea
+                        className='description'
+                        value={desc}
+                        onChange={(e) => setDesc(e.target.value)}
+                        placeholder="Description"
+                    />
+                </div>
+                <div>
+                    Location
+                    <FormControl fullWidth variant='filled'>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={format}
+                            onChange={handleChange}
+                        >
+                            <MenuItem value={'Online'}>Online</MenuItem>
+                            <MenuItem value={'Hybrid'}>Hybrid</MenuItem>
+                            <MenuItem value={'In-Person'}>In-Person</MenuItem>
+                        </Select>
+                    </FormControl>
+                </div>
+                <div className='price-div'>
+                    <label className='label2' htmlFor="price">Estimated Cost</label>
+                    <input
+                        className='price'
+                        value={price}
+                        onChange={(e) => setPrice(e.target.value)}
+                        placeholder='Price'
+                    />
+                </div>
+                <div className='length-div'>
+                    <label className='label2' htmlFor="length">Length of Course</label>
+                    <input
+                        className='length'
+                        value={length}
+                        onChange={(e) => setLength(e.target.value)}
+                        placeholder='Length of Course'
+                    />
+                </div>
+                <div className='link-div'>
+                    <label className='label2'>Website Link</label>
+                    <input
+                        className='link'
+                        value={link}
+                        onChange={(e) => setLink(e.target.value)}
+                        placeholder="Link"
+                    />
+                </div>
+                <div className='coursetype-div'>
+                    <label className='label2'>Course Type</label>
+                    <Multiselect
+                        className='course-type'
+                        displayValue="key"
+                        onRemove={handleRemove}
+                        onSelect={handleSelect}
+                        selectedValues={courseTypes}
+                        options={[
+                            { key: 'UX/UI' },
+                            { key: 'Project Management' },
+                            { key: 'Product Management' },
+                            { key: 'Data Analytics' },
+                            { key: 'Technology Sales' },
+                            { key: 'Software Engineering' },
+                            { key: 'Digital Marketing' },
+                        ]}
+                        showCheckbox
+                    />
+                    <div className='post-bootcamp-button-div'>
+                        <button className='post-bootcamp-button' onClick={(event) => window.location.href='/'}
+                                type='submit'>Post Bootcamp</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+);
 
-        <label className='label2' htmlFor="description">Course Description</label>
-        <input
-            className='description'
-            value={desc}
-            onChange={(e) => setDesc(e.target.value)}
-            placeholder="Description">
-        </input>
-
-        Location
-        <FormControl fullWidth variant='filled'>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={format}
-            onChange={handleChange}
-          >
-            <MenuItem value={'Online'}>Online</MenuItem>
-            <MenuItem value={'Hybrid'}>Hybrid</MenuItem>
-            <MenuItem value={'In-Person'}>In-Person</MenuItem>
-          </Select>
-        </FormControl>
-
-        <label className='label2' htmlFor="price">Estimated Cost</label>
-        <input
-            className='price'
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            placeholder='Price'>
-        </input>
-
-        <label className='label2' htmlFor="length">Length of Course</label>
-        <input
-            className='length'
-            value={length}
-            onChange={(e) => setLength(e.target.value)}
-            placeholder='Length of Course'>
-        </input>
-
-        <label>Website Link</label>
-        <input
-          className='link'
-          value={link}
-          onChange={(e) => setLink(e.target.value)}
-          placeholder="Link">
-        </input>
-
-        Course Type
-        <Multiselect
-            className='course-type'
-            displayValue="key"
-            onRemove={handleRemove}
-            onSelect={handleSelect}
-            selectedValues={courseTypes}
-            options={[
-                {
-                key: 'UX/UI'
-                },
-                {
-                key: 'Project Management'
-                },
-                {
-                key: 'Product Management'
-                },
-                {
-                key: 'Data Analytics'
-                },
-                {
-                key: 'Technology Sales'
-                },
-                {
-                key: 'Software Engineering'
-                },
-                {
-                key: 'Digital Marketing'
-                }
-            ]}
-            showCheckbox
-        />
-
-          <button onClick={event => window.location.href='/'} type='submit'>Post Bootcamp</button>
-
-    </form>
-</div>
-  );
 };
 
 export default BusinessPost;
