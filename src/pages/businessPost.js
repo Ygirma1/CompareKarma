@@ -25,6 +25,7 @@ const BusinessPost = (props) => {
   return (
     <div className='post-form-container'>
     <form className='post-form' onClick={handleSubmit}>
+        <div className="coursename-div">
         <label className='label2' htmlFor="name">Course Name</label>
         <input
           className='courseName'
@@ -32,15 +33,19 @@ const BusinessPost = (props) => {
           onChange={(e) => setName(e.target.value)}
           placeholder="Course Name">
         </input>
+        </div>
 
+        <div className='description-div'>
         <label className='label2' htmlFor="description">Description</label>
-        <input
+        <textarea
             className='description'
             value={desc}
             onChange={(e) => setDesc(e.target.value)}
             placeholder="Description">
-        </input>
+        </textarea>
+        </div>
 
+        <div className='price-div'>
         <label className='label2' htmlFor="price">Price</label>
         <input
             className='price'
@@ -48,17 +53,21 @@ const BusinessPost = (props) => {
             onChange={(e) => setPrice(e.target.value)}
             placeholder='Price'>
         </input>
+        </div>
 
-        <label>Website Link</label>
+        <div className='link-div'>
+        <label className='label2'>Website Link</label>
         <input
           className='link'
           value={link}
           onChange={(e) => setLink(e.target.value)}
           placeholder="Link">
         </input>
+        </div>
 
-        Course Type
-        <Multiselect
+        <div className='coursetype-div'>
+          <label className='label2'>Course Type</label>
+          <Multiselect
             className='course-type'
             displayValue="key"
             onRemove={handleRemove}
@@ -89,12 +98,15 @@ const BusinessPost = (props) => {
             ]}
             showCheckbox
         />
-
-          <button onClick={event => window.location.href='/'} type='submit'>Post Bootcamp</button>
-
+          <div className='post-bootcamp-button-div'>    
+            <button 
+              className='post-bootcamp-button' onClick={event => window.location.href='/'} type='submit'>Post Bootcamp
+            </button>
+          </div>
+        </div>
     </form>
-</div>
-  );
+  </div>
+);
 };
 
 export default BusinessPost;
