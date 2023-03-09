@@ -60,9 +60,10 @@ input, #multiselectContainerReact {
 }
 
 .post-bootcamp-button {
-    margin-top: 27.5px;
-    max-width: 125px;
+    margin-top: 24.75px;
+    max-width: 150px;
     min-width: 150px;
+    padding: 10px;
     background-color:#121e35;
     color: white;
     font-size: smaller;
