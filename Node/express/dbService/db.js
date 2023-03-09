@@ -269,6 +269,7 @@ module.exports = {
           console.error(err.message);
 
           console.log("failed to insert business courses");
+          reject (new Error("Course not added"));
         } else {
           console.log(result);
           resolve(result);
