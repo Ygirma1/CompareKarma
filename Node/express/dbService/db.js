@@ -200,20 +200,21 @@ module.exports = {
     return new Promise((resolve, reject) => {
       var email = req.query.email;
       var password = req.query.password;
-      con.query("select business_password from comparekarma.business_user where email = ? ;", [email], 
-        (err, result) => {
+      con.query("select business_password,business_id from comparekarma.business_user where email = ? ;", [email], 
+        (err, results) => {
         if (err) {
           console.log("business pass error");
           console.log(err);
           resolve(false);
         } else {
-          if (result.length>0) {
+          if (results.length>0) {
           //console.log(result[0].business_password);
-            bcrypt.compare(password.toString(), result[0].business_password)
+            bcrypt.compare(password.toString(), results[0].business_password)
               .then(result => {
-              console.log(result);
+             
                 if (result){
-                  resolve(true);
+               //   console.log(results);
+                  resolve(results);
                 }
                 else resolve(false);
             })

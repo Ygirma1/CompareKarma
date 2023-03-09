@@ -83,7 +83,7 @@ app.get("/search", function(req,res) {
 
 
                 console.log(JSON.stringify(user));
-                res.status(200).json({ status: true, result: "User Added Succesfully!", business_id:user.insertId });
+                res.status(200).json({ status: true, result: "User Added Succesfully!" , business_id:user.insertId });
               })
               .catch(err => {
 
@@ -100,10 +100,11 @@ app.get("/search", function(req,res) {
           app.get("/verifyUser", function(req, res) {
             db.verify(req)
               .then(user => {
-                  console.log(user);
-                    if(user){
+          //        console.log(user);
+          console.log(user);
+                    if(user.length>0){
                // console.log(JSON.stringify(user));
-                res.status(200).json({ status: true, result: "Valid Credentials", business_id: user[0].business_id});
+                res.status(200).json({ status: true, result: "Valid Credentials", business_id: user[0].business_id  });
 
               } else {
 

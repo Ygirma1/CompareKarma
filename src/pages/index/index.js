@@ -19,7 +19,7 @@ const Home = () => {
     fetchBootCamps()
   }, []); //no dependencies
 
-  console.log(data[0].company_name);
+  // console.log(data[0].company_name);
 
   return (
   <body>

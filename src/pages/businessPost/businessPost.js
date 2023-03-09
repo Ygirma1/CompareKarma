@@ -18,15 +18,15 @@ const BusinessPost = (props) => {
     e.preventDefault();
     console.log(price, desc, name, link, courseTypes, format);
 
-    const res = axios.put(`${base_url}/newBusinessCourse?` + 
-    'company_name=' + 'TEST' +
-    '&course_format=' + format + 
-    '&course_name=' + name + 
-    '&length_of_course=' + length + 
-    '&cost=' + price + 
-    '&description_of_bootcamp=' + desc + 
-    '&course_type=' + courseTypes + 
-    '&business_id=' + 1)
+    // const res = axios.put(`${base_url}/newBusinessCourse?` + 
+    // 'company_name=' + 'TEST' +
+    // '&course_format=' + format + 
+    // '&course_name=' + name + 
+    // '&length_of_course=' + length + 
+    // '&cost=' + price + 
+    // '&description_of_bootcamp=' + desc + 
+    // '&course_type=' + courseTypes + 
+    // '&business_id=' + 1)
 
   };
 
@@ -65,7 +65,7 @@ const BusinessPost = (props) => {
                 <div className='description-div'>
                     <label className='label2' htmlFor="description">Description</label>
                     <textarea
-                        className='description'
+                        className='postbootcamp-description'
                         value={desc}
                         onChange={(e) => setDesc(e.target.value)}
                         placeholder="Description"
