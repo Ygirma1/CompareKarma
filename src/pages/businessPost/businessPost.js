@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import './businessPost.css';
 import axios from 'axios';
 import Multiselect from 'multiselect-react-dropdown';
-import { InputLabel, Select, FormControl, MenuItem, Box } from '@material-ui/core';
 
 const base_url = "http://localhost:8080"
 
@@ -31,11 +30,17 @@ const BusinessPost = (props) => {
 
   };
 
-  const handleSelect = (selectedList) => {
+  const handleSelectCourseTypes = (selectedList) => {
     setCourseTypes(selectedList);
   };
+  const handleSelectFormat = (selectedList) => {
+    setFormat(selectedList);
+  };
 
-  const handleRemove = (selectedList) => {
+  const handleRemoveCourseTypes = (selectedList) => {
+    setCourseTypes(selectedList);
+  };
+  const handleRemoveFormat = (selectedList) => {
     setCourseTypes(selectedList);
   };
 
@@ -66,21 +71,22 @@ const BusinessPost = (props) => {
                         placeholder="Description"
                     />
                 </div>
-                <div>
-                    Location
-                    <FormControl fullWidth variant='filled'>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={format}
-                            onChange={handleChange}
-                        >
-                            <MenuItem value={'Online'}>Online</MenuItem>
-                            <MenuItem value={'Hybrid'}>Hybrid</MenuItem>
-                            <MenuItem value={'In-Person'}>In-Person</MenuItem>
-                        </Select>
-                    </FormControl>
-                </div>
+                  <label className='label2'>Location</label>
+                    <Multiselect
+                        className='location'
+                        displayValue="key"
+                        onRemove={handleRemoveFormat}
+                        onSelect={handleSelectFormat}
+                        selectedValues={format}
+                        singleSelect={true}
+                        options={[
+                            { key: 'In-Person' },
+                            { key: 'Online' },
+                            { key: 'In-Person & Online' },
+                        ]}
+                        showCheckbox
+                    />
+
                 <div className='price-div'>
                     <label className='label2' htmlFor="price">Estimated Cost</label>
                     <input
@@ -113,9 +119,10 @@ const BusinessPost = (props) => {
                     <Multiselect
                         className='course-type'
                         displayValue="key"
-                        onRemove={handleRemove}
-                        onSelect={handleSelect}
+                        onRemove={handleRemoveCourseTypes}
+                        onSelect={handleSelectCourseTypes}
                         selectedValues={courseTypes}
+                        singleSelect={true}
                         options={[
                             { key: 'UX/UI' },
                             { key: 'Project Management' },
