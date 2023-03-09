@@ -2,6 +2,8 @@ import React from 'react';
 import './index.css';
 
 const Home = () => {
+  console.log(localStorage.getItem('business_id'));
+
   return (
   <body>
 
