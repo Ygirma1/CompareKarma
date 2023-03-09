@@ -2,31 +2,39 @@ import React, { useEffect, useState } from 'react';
 import './businessPost.css';
 import axios from 'axios';
 import Multiselect from 'multiselect-react-dropdown';
+import { useNavigate } from 'react-router-dom';
 
 const base_url = "http://localhost:8080"
 
 const BusinessPost = (props) => {
+  const navigate = useNavigate();
+
   const [price, setPrice] = useState('');
   const [desc, setDesc] = useState('');
   const [name, setName] = useState('');
   const [link, setLink] = useState('');
   const [format, setFormat] = useState('');
-  const [courseTypes, setCourseTypes] = useState([]);
+  const [courseTypes, setCourseTypes] = useState('');
   const [length, setLength] = useState('');
 
   const handleSubmit = async(e) => {
     e.preventDefault();
     console.log(price, desc, name, link, courseTypes, format);
 
-    // const res = axios.put(`${base_url}/newBusinessCourse?` + 
-    // 'company_name=' + 'TEST' +
-    // '&course_format=' + format + 
-    // '&course_name=' + name + 
-    // '&length_of_course=' + length + 
-    // '&cost=' + price + 
-    // '&description_of_bootcamp=' + desc + 
-    // '&course_type=' + courseTypes + 
-    // '&business_id=' + 1)
+    const id = localStorage.getItem('business_id');
+    console.log(id)
+
+    const res = axios.put(`${base_url}/newBusinessCourse?` + 
+    'company_name=' + 'COMPANY NAME HERE' +
+    '&course_format=' + format + 
+    '&course_name=' + name + 
+    '&length_of_course=' + length + 
+    '&cost=' + price + 
+    '&description_of_bootcamp=' + desc + 
+    '&course_type=' + courseTypes + 
+    '&business_id=' + id)
+
+    navigate("/");
 
   };
 
@@ -51,7 +59,7 @@ const BusinessPost = (props) => {
 
   return (
     <div className='post-form-container'>
-        <form className='post-form' onClick={handleSubmit}>
+        <form className='post-form'>
             <div>
                 <div className="coursename-div">
                     <label className='label2' htmlFor="name">Course Name</label>
@@ -135,7 +143,7 @@ const BusinessPost = (props) => {
                         showCheckbox
                     />
                     <div className='post-bootcamp-button-div'>
-                        <button className='post-bootcamp-button' onClick={(event) => window.location.href='/'}
+                        <button className='post-bootcamp-button' /*onClick={(event) => window.location.href='/'}*/ onClick={handleSubmit}
                                 type='submit'>Post Bootcamp</button>
                     </div>
                 </div>
