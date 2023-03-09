@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './register/register.css';
+import { useNavigate } from 'react-router-dom';
 
 const base_url = "http://localhost:8080"
 
 const Login = (props) => {
+    const navigate = useNavigate();
+
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -18,7 +21,7 @@ const Login = (props) => {
         console.log(res.data.status);
         if (res.data.status) {
           console.log("TAKE TO HOME PAGE")
-          window.location.href='/';
+          // window.location.href='/';
         } else {
           console.log("ERROR MESSAGE")
           setErrorMessage('Incorrect Login!');
