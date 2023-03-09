@@ -38,7 +38,7 @@ const BusinessPost = (props) => {
         <div className='description-div'>
         <label className='label2' htmlFor="description">Description</label>
         <textarea
-            className='description'
+            className='postbootcamp-description'
             value={desc}
             onChange={(e) => setDesc(e.target.value)}
             placeholder="Description">
