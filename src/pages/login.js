@@ -21,7 +21,9 @@ const Login = (props) => {
         console.log(res.data.status);
         if (res.data.status) {
           console.log("TAKE TO HOME PAGE")
-          // window.location.href='/';
+          const id = res.data.business_id;
+          localStorage.setItem('business_id', id)
+          window.location.href='/';
         } else {
           console.log("ERROR MESSAGE")
           setErrorMessage('Incorrect Login!');

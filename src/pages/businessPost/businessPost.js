@@ -101,7 +101,7 @@ const BusinessPost = (props) => {
                         className='price'
                         value={price}
                         onChange={(e) => setPrice(e.target.value)}
-                        placeholder='Price'
+                        placeholder='Enter Amount Here'
                     />
                 </div>
                 <div className='length-div'>
