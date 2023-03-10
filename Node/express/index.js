@@ -125,6 +125,18 @@ app.get("/search", function(req,res) {
 
           });
 
+          app.get("/getBusinessInformation", function(req, res) {
+            db.getBusinessInformation(req)
+              .then(user => {
+                console.log(JSON.stringify(user));
+                res.send(JSON.stringify(user));
+              })
+              .catch(err => {
+                console.error(err);
+                res.status(500).json({ status: false, result: "Business information not retrieved" });
+              });
+          });
+
           app.put("/newBusinessCourse", function(req, res) {
             db.acceptNewBusinessCourse(req)
               .then(course => {
