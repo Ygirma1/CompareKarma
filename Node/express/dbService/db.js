@@ -223,7 +223,26 @@ module.exports = {
     });
     });
   },
-
+  getBusinessInformation: (req)=> {
+    return new Promise((resolve, reject) => {
+      var business_id = req.query.business_id;
+      console.log(business_id);
+      con.query("select * from comparekarma.business_user where business_id = ? ;",[business_id],
+        (err, result) => {
+        if (err) {
+          console.log("Could not retrieve business user");
+          console.log(err);
+          reject(false);
+        }
+        if (result.length<1) {
+          console.log("result length: " + result.length);
+          reject(false); // resolve maybe an empty array?
+        }
+        console.log(result);
+        resolve(result);
+      })
+    });
+  },
   getBusinessCourses: (req)=> {
     // provide me the user ID
     //I pull all from the backend
