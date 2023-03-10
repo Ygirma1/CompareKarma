@@ -68,24 +68,26 @@ const Search = () => {
             <SearchIcon/>
         </button>
     </form>
-    <select
-        onChange={(e) => {
-            setFilterParam(e.target.value);
-        }}
-        className="custom-select">
-            <option value="All">Course Type</option>
-            <option value="UI/UX">UI/UX</option>
-            <option value="SWE">SWE</option>
-    </select>
-    <select
-        onChange={(e) => {
-            setSortParam(e.target.value)
-        }}
-        className="custom-select">
-            <option value="Unsorted">Price</option>
-            <option value="Ascending">Ascending</option>
-            <option value="Descending">Descending</option>
-    </select>
+    <div className='custom-select-container'>
+        <select
+            onChange={(e) => {
+                setFilterParam(e.target.value);
+            }}
+            className="custom-select">
+                <option value="All">Course Type</option>
+                <option value="UI/UX">UI/UX</option>
+                <option value="SWE">SWE</option>
+        </select>
+        <select
+            onChange={(e) => {
+                setSortParam(e.target.value)
+            }}
+            className="custom-select">
+                <option value="Unsorted">Price</option>
+                <option value="Ascending">Ascending</option>
+                <option value="Descending">Descending</option>
+        </select>
+    </div>
     {<Table data={search(sort(data))}/>}
     </div>
   );

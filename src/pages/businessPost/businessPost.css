@@ -15,7 +15,7 @@
     row-gap: 15px;
 }
 
-.coursename-div, .description-div, .link-div, .price-div, .coursetype-div {
+.coursename-div, .description-div, .link-div, .price-div, .coursetype-div, .length-div {
     display: flex;
     flex-direction: column;
     align-items: left;
@@ -39,7 +39,7 @@
 }
 
 /*.search-wrapper is the select box for the multiselect drop-down element*/
-.link, .courseName, .price, .postbootcamp-description, .search-wrapper {
+.link, .courseName, .price, .postbootcamp-description, .length, .search-wrapper {
     max-width: 320px;
     min-width: 320px;
     border-radius: 10px;
