@@ -20,12 +20,12 @@ const BusinessPost = (props) => {
   const [companyName, setCompanyName] = useState('')
 
   useEffect(() => {
-    const retrieveBusinessInfo = async() => {
-        const res = await axios.get(`${base_url}/getBusinessInformation?` + 'business_id=' + id);
-        setCompanyName(res.data[0].business_name);
-    };
-    retrieveBusinessInfo()
-}, []); //no dependencies
+        const retrieveBusinessInfo = async() => {
+            const res = await axios.get(`${base_url}/getBusinessInformation?` + 'business_id=' + id);
+            setCompanyName(res.data[0].business_name);
+        };
+        retrieveBusinessInfo()
+    }, []); //no dependencies
 
   const handleSubmit = async(e) => {
     e.preventDefault();

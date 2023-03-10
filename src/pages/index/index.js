@@ -5,10 +5,19 @@ import './index.css';
 const base_url = "http://localhost:8080"
 
 const Home = () => {
-  // console.log(localStorage.getItem('business_id'));
   const id = localStorage.getItem('business_id');
 
   const [data, setData] = useState([]);
+  const [companyName, setCompanyName] = useState('')
+
+  useEffect(() => {
+      const retrieveBusinessInfo = async() => {
+          const res = await axios.get(`${base_url}/getBusinessInformation?` + 'business_id=' + id);
+          setCompanyName(res.data[0].business_name);
+      };
+      retrieveBusinessInfo()
+  }, []); //no dependencies 
+  console.log(companyName);
 
   // getting data from backend
   useEffect(() => {
@@ -33,7 +42,7 @@ const Home = () => {
   <body>
 
 <div className="header">
-  <h1>CompareKarma</h1>
+  <h1>{companyName}</h1>
 </div>
 
 
