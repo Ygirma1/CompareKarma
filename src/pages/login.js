@@ -22,6 +22,9 @@ const Login = (props) => {
         } else {
           console.log("ERROR MESSAGE")
           setErrorMessage('Incorrect Login!');
+          // var popup = document.getElementById("myPopup");
+          // popup.classList.toggle("show");
+          alert("Incorrect Login!");
         }
     }
 
