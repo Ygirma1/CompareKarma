@@ -5,7 +5,7 @@ import './index.css';
 const base_url = "http://localhost:8080"
 
 const Home = () => {
-  console.log(localStorage.getItem('business_id'));
+  // console.log(localStorage.getItem('business_id'));
   const id = localStorage.getItem('business_id');
 
   const [data, setData] = useState([]);
@@ -13,13 +13,15 @@ const Home = () => {
   // getting data from backend
   useEffect(() => {
     const fetchBootCamps = async() => {
-        const res = await axios.get(`${base_url}/getBusinessCourses?` + 'business_id=' + '2');
-        setData(res.data);
+        console.log(id)
+        const res = await axios.get(`${base_url}/getBusinessCourses?` + 'business_id=' + id);
+        console.log(res.data);
+        // setData(res.data);
     };
     fetchBootCamps()
   }, []); //no dependencies
 
-  // console.log(data[0].company_name);
+  // console.log(data);
 
   return (
   <body>
