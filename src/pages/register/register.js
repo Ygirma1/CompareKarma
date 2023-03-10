@@ -3,10 +3,13 @@ import axios from 'axios';
 import { Checkbox, FormControlLabel, Typography } from '@mui/material';
 import Multiselect from 'multiselect-react-dropdown';
 import './register.css';
+import { useNavigate } from 'react-router-dom';
 
 const base_url = "http://localhost:8080"
 
 const Register = (props) => {
+    const navigate = useNavigate();
+
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [name, setName] = useState('');
@@ -32,6 +35,10 @@ const Register = (props) => {
         '&email=' + email +
         '&course_type=' + newCourseTypes + 
         '&business_password=' + pass)
+        .then(response => {
+            localStorage.setItem('business_id', JSON.stringify(response.data.business_id));
+            navigate("/");
+        })
     };
 
     const handleChange = () => {
@@ -132,7 +139,7 @@ const Register = (props) => {
                 showCheckbox
             />
             
-            <button onClick={event => window.location.href='/'} type='submit'>Sign Up</button>
+            <button /*onClick={event => window.location.href='/'}*/ type='submit'>Sign Up</button>
         </form>
         <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
     </div>

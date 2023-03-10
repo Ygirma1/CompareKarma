@@ -2,12 +2,12 @@ import React, { useState }  from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages';
+import Home from './pages/index';
 import About from './pages/about';
 import Login from './pages/login';
 import Search from './pages/search';
-import Register from './pages/register';
-import BusinessPost from './pages/businessPost';
+import Register from './pages/register/register';
+import BusinessPost from './pages/businessPost/businessPost';
 
 function App() {
     const [currentForm, setCurrentForm] = useState('login');
