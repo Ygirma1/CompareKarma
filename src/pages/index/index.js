@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './index.css';
+import Post from '../../components/Post';
+import Table from '../../components/Table';
 
 const base_url = "http://localhost:8080"
 
@@ -10,14 +12,14 @@ const Home = () => {
   const [data, setData] = useState([]);
   const [companyName, setCompanyName] = useState('')
 
+  // getting business name
   useEffect(() => {
       const retrieveBusinessInfo = async() => {
           const res = await axios.get(`${base_url}/getBusinessInformation?` + 'business_id=' + id);
           setCompanyName(res.data[0].business_name);
       };
       retrieveBusinessInfo()
-  }, []); //no dependencies 
-  console.log(companyName);
+  }, []); 
 
   // getting data from backend
   useEffect(() => {
@@ -25,10 +27,8 @@ const Home = () => {
       try {
         console.log(id)
         const res = await axios.get(`${base_url}/getBusinessCourses?` + 'business_id=' + id);
-        // console.log(res.data)
         setData(res.data);
       } catch (error) {
-        // console.log("ERROR DATA: " + error.response.data)
         setData([])
       }
 
@@ -45,7 +45,7 @@ const Home = () => {
   <h1>{companyName}</h1>
 </div>
 
-
+{<Table data={data}/>}
 <div className="row">
   <div className="leftcolumn">
     <div className="card">

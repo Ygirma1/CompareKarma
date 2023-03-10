@@ -101,7 +101,7 @@ const BusinessPost = (props) => {
                         options={[
                             { key: 'In-Person' },
                             { key: 'Online' },
-                            { key: 'In-Person & Online' },
+                            { key: 'Hybrid' },
                         ]}
                         showCheckbox
                     />
