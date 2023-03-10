@@ -13,15 +13,21 @@ const Home = () => {
   // getting data from backend
   useEffect(() => {
     const fetchBootCamps = async() => {
+      try {
         console.log(id)
         const res = await axios.get(`${base_url}/getBusinessCourses?` + 'business_id=' + id);
-        console.log(res.data);
-        // setData(res.data);
+        // console.log(res.data)
+        setData(res.data);
+      } catch (error) {
+        // console.log("ERROR DATA: " + error.response.data)
+        setData([])
+      }
+
     };
     fetchBootCamps()
   }, []); //no dependencies
 
-  // console.log(data);
+  console.log(data);
 
   return (
   <body>

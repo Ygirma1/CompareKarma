@@ -8,6 +8,7 @@ const base_url = "http://localhost:8080"
 
 const BusinessPost = (props) => {
   const navigate = useNavigate();
+  const id = localStorage.getItem('business_id');
 
   const [price, setPrice] = useState('');
   const [desc, setDesc] = useState('');
@@ -16,16 +17,21 @@ const BusinessPost = (props) => {
   const [format, setFormat] = useState('');
   const [courseTypes, setCourseTypes] = useState('');
   const [length, setLength] = useState('');
+  const [companyName, setCompanyName] = useState('')
+
+  useEffect(() => {
+    const retrieveBusinessInfo = async() => {
+        const res = await axios.get(`${base_url}/getBusinessInformation?` + 'business_id=' + id);
+        setCompanyName(res.data[0].business_name);
+    };
+    retrieveBusinessInfo()
+}, []); //no dependencies
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log(price, desc, name, link, courseTypes, format);
-
-    const id = localStorage.getItem('business_id');
-    console.log(id)
 
     const res = axios.put(`${base_url}/newBusinessCourse?` + 
-    'company_name=' + 'COMPANY NAME HERE' +
+    'company_name=' + companyName +
     '&course_format=' + format + 
     '&course_name=' + name + 
     '&length_of_course=' + length + 
@@ -35,7 +41,6 @@ const BusinessPost = (props) => {
     '&business_id=' + id)
 
     navigate("/");
-
   };
 
   const handleSelectCourseTypes = (selectedList) => {
