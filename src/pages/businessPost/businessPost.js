@@ -30,14 +30,20 @@ const BusinessPost = (props) => {
   const handleSubmit = async(e) => {
     e.preventDefault();
 
+    let newFormat = [];
+    format.forEach((e) => newFormat.push(e.key));
+
+    let newCourseTypes = [];
+    courseTypes.forEach((e) => newCourseTypes.push(e.key));
+
     const res = axios.put(`${base_url}/newBusinessCourse?` + 
     'company_name=' + companyName +
-    '&course_format=' + format + 
+    '&course_format=' + newFormat + 
     '&course_name=' + name + 
     '&length_of_course=' + length + 
     '&cost=' + price + 
     '&description_of_bootcamp=' + desc + 
-    '&course_type=' + courseTypes + 
+    '&course_type=' + newCourseTypes + 
     '&business_id=' + id)
 
     navigate("/");
