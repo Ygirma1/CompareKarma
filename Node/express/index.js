@@ -77,11 +77,9 @@ app.get("/search", function(req,res) {
     
         });
        
-        app.put("/newUser", function(req, res) {
+          app.put("/newUser", function(req, res) {
             db.acceptNewBusiness(req)
               .then(user => {
-
-
                 console.log(JSON.stringify(user));
                 res.status(200).json({ status: true, result: "User Added Succesfully!" });
               })
@@ -91,10 +89,6 @@ app.get("/search", function(req,res) {
                 
                 res.status(500).json({ status: false, result: "User Not Added." });
               });
-
-
-   
-
           });
         
           app.get("/verifyUser", function(req, res) {
@@ -118,10 +112,6 @@ app.get("/search", function(req,res) {
                 
                 res.status(500).json({ status: false, result: "Invalid Credentials" });
               });
-
-
-   
-
           });
 
           app.put("/newBusinessCourse", function(req, res) {
@@ -137,15 +127,11 @@ app.get("/search", function(req,res) {
                 
                 res.status(500).json({ status: false, result: "Course Not Added." });
               });
-
-
           });
 
           app.get("/getBusinessCourses", function(req, res) {
             db.getBusinessCourses(req)
               .then(courses => {
-
-
                 console.log(JSON.stringify(courses));
                 res.send(JSON.stringify(courses));
               })
@@ -155,10 +141,12 @@ app.get("/search", function(req,res) {
                 
                 res.status(500).json({ status: false, result: "Bootcamps not retrieved" });
               });
-
-
-   
-
           });
+
+          app.delete("/deleteBusinessCourse", function(req, res) {
+            db.deleteBusinessCourse(req)
+              .then()
+              .catch();
+          })
 
 app.listen(8080);
