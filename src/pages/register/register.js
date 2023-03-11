@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Checkbox, FormControlLabel, Typography } from '@mui/material';
+import { Checkbox, FormControlLabel, Typography, Radio, RadioGroup } from '@mui/material';
 import Multiselect from 'multiselect-react-dropdown';
 import './register.css';
 import { useNavigate } from 'react-router-dom';
