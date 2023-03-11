@@ -135,7 +135,6 @@ module.exports = {
 
     return new Promise((resolve, reject) => {
       const query = "select email from comparekarma.business_user where email=\"" + email + "\";"; 
-      console.log("query: ", query)
       con.query(query, (err, result) => {
         console.log("duplicate email check result: ", result);
         if (err) {
@@ -145,54 +144,55 @@ module.exports = {
           console.error("Error adding user: email already exists");
           reject(false);
           return;
+        } else {
+          bcrypt.genSalt(saltRounds, function(err, salt) {
+            if (err) {
+              console.error("Error generating salt: ", err);
+              return;
+            }
+            bcrypt.hash(business_password, salt, function(err, hash) {
+              if (err) {
+                console.error("Error hashing password: ", err);
+                return;
+              }
+              con.query("insert  into   comparekarma.business_user (business_name, phone_number, business_desc, verified, profit_status,email,business_password,course_type,salt) "+
+                " values (?, ?, ? , ? , ?, ?, ?, ?, ?);",
+                [business_name,phone_number,business_desc,verified,profit_status,email,hash,course_type,salt],  (err, result) => {
+                if (err) {
+                  console.error(err.message);
+        
+                  console.log("failed to insert business user");
+                } else {
+                  console.log(result);
+        
+                  var mailOptions = {
+                    from: 'annettepan01@gmail.com',
+                    to: email.toString(),
+                    subject: 'Confirmation Email For CompareKarma',
+                    template: "email",
+                    context:{
+                      business_user:  business_name
+        
+                    }
+                  };
+    
+                  transporter.sendMail(mailOptions, function(error, info){
+                    if (error) {
+                      console.log(error);
+                    } else {
+                      console.log('Email sent: ' + info.response);
+                    }
+                  });
+                  
+                  resolve(result);
+                }
+              })
+            });
+          
+          });
         }
       })
 
-      bcrypt.genSalt(saltRounds, function(err, salt) {
-        if (err) {
-          console.error("Error generating salt: ", err);
-          return;
-        }
-        bcrypt.hash(business_password, salt, function(err, hash) {
-          if (err) {
-            console.error("Error hashing password: ", err);
-            return;
-          }
-          con.query("insert  into   comparekarma.business_user (business_name, phone_number, business_desc, verified, profit_status,email,business_password,course_type,salt) "+
-            " values (?, ?, ? , ? , ?, ?, ?, ?, ?);",
-            [business_name,phone_number,business_desc,verified,profit_status,email,hash,course_type,salt],  (err, result) => {
-            if (err) {
-              console.error(err.message);
-    
-              console.log("failed to insert business user");
-            } else {
-              console.log(result);
-    
-              var mailOptions = {
-                from: 'annettepan01@gmail.com',
-                to: email.toString(),
-                subject: 'Confirmation Email For CompareKarma',
-                template: "email",
-                context:{
-                  business_user:  business_name
-    
-                }
-              };
-
-              transporter.sendMail(mailOptions, function(error, info){
-                if (error) {
-                  console.log(error);
-                } else {
-                  console.log('Email sent: ' + info.response);
-                }
-              });
-              
-              resolve(result);
-            }
-          })
-        });
-      
-      });
     });
   },
 
@@ -200,20 +200,21 @@ module.exports = {
     return new Promise((resolve, reject) => {
       var email = req.query.email;
       var password = req.query.password;
-      con.query("select business_password from comparekarma.business_user where email = ? ;", [email], 
-        (err, result) => {
+      con.query("select business_password,business_id from comparekarma.business_user where email = ? ;", [email], 
+        (err, results) => {
         if (err) {
           console.log("business pass error");
           console.log(err);
           resolve(false);
         } else {
-          if (result.length>0) {
+          if (results.length>0) {
           //console.log(result[0].business_password);
-            bcrypt.compare(password.toString(), result[0].business_password)
+            bcrypt.compare(password.toString(), results[0].business_password)
               .then(result => {
-              console.log(result);
+             
                 if (result){
-                  resolve(true);
+               //   console.log(results);
+                  resolve(results);
                 }
                 else resolve(false);
             })
@@ -222,7 +223,26 @@ module.exports = {
     });
     });
   },
-
+  getBusinessInformation: (req)=> {
+    return new Promise((resolve, reject) => {
+      var business_id = req.query.business_id;
+      console.log(business_id);
+      con.query("select * from comparekarma.business_user where business_id = ? ;",[business_id],
+        (err, result) => {
+        if (err) {
+          console.log("Could not retrieve business user");
+          console.log(err);
+          reject(false);
+        }
+        if (result.length<1) {
+          console.log("result length: " + result.length);
+          reject(false); // resolve maybe an empty array?
+        }
+        console.log(result);
+        resolve(result);
+      })
+    });
+  },
   getBusinessCourses: (req)=> {
     // provide me the user ID
     //I pull all from the backend
@@ -268,54 +288,17 @@ module.exports = {
           console.error(err.message);
 
           console.log("failed to insert business courses");
+          reject (new Error("Course not added"));
         } else {
           console.log(result);
           resolve(result);
         }
       })
 
-      bcrypt.genSalt(saltRounds, function(err, salt) {
-        if (err) {
-          console.error("Error generating salt: ", err);
-          return;
-        }
-        bcrypt.hash(business_password, salt, function(err, hash) {
-          if (err) {
-            console.error("Error hashing password: ", err);
-            return;
-          }
-          con.query("insert  into   comparekarma.business_user (business_name, phone_number, business_desc, verified, profit_status,email,business_password,course_type,salt) "
-          + " values (?, ?, ? , ? , ?, ?, ?, ?, ?);",
-          [business_name,phone_number,business_desc,verified,profit_status,email,hash,course_type,salt],  (err, result) => {
-            if (err) {
-              console.error(err.message);
-    
-              console.log("failed to insert business user");
-            } else {
-              console.log(result);
-              var mailOptions = {
-                from: 'annettepan01@gmail.com',
-                to: email.toString(),
-                subject: 'Confirmation Email For CompareKarma',
-                template: "email",
-                context:{
-                  business_user:  business_name
-                }
-              };
-              transporter.sendMail(mailOptions, function(error, info) {
-                if (error) {
-                  console.log(error);
-                } else {
-                  console.log('Email sent: ' + info.response);
-                }
-              });
-              resolve(result);
-            }
+ 
           })
-        });
-      });
-    });
-  }
+ 
+}
 }
 
 function comparePassword(plaintextPassword, hash) {
