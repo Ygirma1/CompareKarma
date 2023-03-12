@@ -97,6 +97,23 @@
     background: #ddd;
     margin-top: 20px;
   }
+
+  .button {
+    background-color: #f99731;
+    border: none;
+    color: #2e3f55;
+    padding: 14px 16px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background-color: #2e3f55;
+    color: white;
+  }
   
   /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
   @media screen and (max-width: 800px) {
