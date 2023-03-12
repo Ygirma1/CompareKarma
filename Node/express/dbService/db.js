@@ -298,6 +298,10 @@ module.exports = {
  
           })
  
+  },
+
+  deleteBusinessCourse : (req)=> {
+    console.log("not fully functional yet");
   }
 }
 

@@ -10,7 +10,7 @@ CompareKarma is a web-based search index that allows you to compare between pric
 * Bootcamp listings can now include a link to their website
 
 #### Bug Fixes
-*  Fixed a bug where user could register with an email that was already being used.
+*  Fixed a bug where business users could register with an email that was already being used
 
 #### Known Issues
 * First option of multiselect of course type in register page is permanently highlighted even when hovering over another option

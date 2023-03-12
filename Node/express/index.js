@@ -13,60 +13,53 @@ const corsOptions ={
     optionSuccessStatus:200
 }
 app.use(cors(corsOptions));
-
-
-
-
   
 app.get("/hello", function(req,res) {
 
-res.send("hello there!!!");
+  res.send("hello there!!!");
 
 });
 
-
 app.get("/query", function(req,res) {
-    // const { q } = req.query; 
+  // const { q } = req.query; 
 
-    console.log("we got here");
-    
-    db.queryAll(req).then(courses=> {
+  console.log("we got here");
+  
+  db.queryAll(req).then(courses=> {
 
-            res.send(JSON.stringify(courses));
+    res.send(JSON.stringify(courses));
 
-    }).catch(err=> 
-    
-        res.status(500).json({ error: err })
-        
-    );
+  }).catch(err=> 
+  
+    res.status(500).json({ error: err })
+      
+  );
 });
 
 
 app.get("/search", function(req,res) {
-    db.search(req).then(courses=> {
+  db.search(req).then(courses=> {
 
-            res.send(JSON.stringify(courses));
+    res.send(JSON.stringify(courses));
 
-    }).catch(err=> 
-    
-        res.status(500).json({ error: err })
-    
-    );
+  }).catch(err=> 
+  
+    res.status(500).json({ error: err })
+  
+  );      
 });
 
 app.get("/filter", function(req,res) {
-    
-    db.filter(req).then(courses=> {
+  
+  db.filter(req).then(courses=> {
 
-        res.send(JSON.stringify(courses));
+    res.send(JSON.stringify(courses));
 
-}).catch(err=> 
+  }).catch(err=> 
 
     res.status(500).json({ error: err })
 
-);
-    
-    
+  );
 });
        
 app.put("/newUser", function(req, res) {

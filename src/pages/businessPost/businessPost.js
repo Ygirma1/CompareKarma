@@ -21,20 +21,25 @@ const BusinessPost = (props) => {
     e.preventDefault();
     console.log(price, desc, name, link, courseTypes, format);
 
-    const id = localStorage.getItem('business_id');
-    console.log(id)
+    if (price.isFinite()) {
+        const id = localStorage.getItem('business_id');
+        console.log(id)
 
-    const res = axios.put(`${base_url}/newBusinessCourse?` + 
-    'company_name=' + 'COMPANY NAME HERE' +
-    '&course_format=' + format + 
-    '&course_name=' + name + 
-    '&length_of_course=' + length + 
-    '&cost=' + price + 
-    '&description_of_bootcamp=' + desc + 
-    '&course_type=' + courseTypes + 
-    '&business_id=' + id)
-
-    navigate("/");
+        const res = axios.put(`${base_url}/newBusinessCourse?` + 
+        'company_name=' + 'COMPANY NAME HERE' +
+        '&course_format=' + format + 
+        '&course_name=' + name + 
+        '&length_of_course=' + length + 
+        '&cost=' + price + 
+        '&description_of_bootcamp=' + desc + 
+        '&course_type=' + courseTypes + 
+        '&business_id=' + id)
+        navigate("/");
+    } else {
+        console.log("ERROR MESSAGE")
+        setErrorMessage('Price must be a numerical value!');
+    }
+    
 
   };
 
