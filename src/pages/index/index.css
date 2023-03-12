@@ -18,8 +18,9 @@
   .header {
     padding: 30px;
     text-align: center;
-    background: white;
-    color: #000542;
+    background: #f9ebdf;
+    color: #2e3f55;
+    border-radius: 15px;
   }
   
   .header h1 {
@@ -72,7 +73,12 @@
   
   /* Add a card effect for articles */
   .card {
-    background-color: white;
+    background-color: #f9ebdf;
+    color: #2e3f55;
+    border-radius: 15px;
+    border: solid #fdf8f4;
+    /* display: flex; */
+    /* justify-content: center; */
     padding: 20px;
     margin-top: 20px;
   }
@@ -90,6 +96,23 @@
     text-align: center;
     background: #ddd;
     margin-top: 20px;
+  }
+
+  .button {
+    background-color: #f99731;
+    border: none;
+    color: #2e3f55;
+    padding: 14px 16px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background-color: #2e3f55;
+    color: white;
   }
   
   /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
