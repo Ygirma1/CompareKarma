@@ -1,19 +1,21 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './index.css';
-import Post from '../../components/Post';
-import Table from '../../components/Table';
 import Columns from './Columns';
-import { useSlotProps } from '@mui/base';
 import { useNavigate } from 'react-router-dom';
 
 const base_url = "http://localhost:8080"
 
 const Home = () => {
   const id = localStorage.getItem('business_id');
+  const navigate = useNavigate();
 
   const [data, setData] = useState([]);
   const [companyName, setCompanyName] = useState('')
+
+  const handleButtonClick = () => {
+    navigate('/post');
+  };
 
   // getting business name
   useEffect(() => {
@@ -42,17 +44,31 @@ const Home = () => {
   console.log(data);
 
   return (
-  <body>
+    <body>
 
-<div className="header">
-  <h1>{companyName}</h1>
-</div>
+    <div className="header">
+      <h1>{companyName}</h1>
+    </div>
 
-<div>
-  <button className='button'>Post Bootcamp</button>
-</div>
 
-{<Columns data={data}/>}
+
+    <div className='wrapper'> 
+
+      {<Columns data={data}/>}
+
+      <div className="rightcolumn">
+      <div>
+        <button className='button' onClick={handleButtonClick}>Post Bootcamp</button>
+      </div>
+      <div className="card">
+        <h2 >Total Review</h2>
+        <p >Average stars out of five for the entire account.</p>
+        <p> Some text about total reviews of all the account's bootcamps</p>
+      </div>
+    </div>
+  </div>
+
+    
 {/* <div className="row">
   <div className="leftcolumn">
     <div className="card">

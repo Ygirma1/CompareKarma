@@ -44,6 +44,7 @@ const BusinessPost = (props) => {
     '&cost=' + price + 
     '&description_of_bootcamp=' + desc + 
     '&course_type=' + newCourseTypes + 
+    '&link=' + link +
     '&business_id=' + id)
 
     navigate("/");
