@@ -56,14 +56,6 @@
     width: 75%;
   }
   
-  /* Right column */
-  .rightcolumn {
-    float: left;
-    width: 25%;
-    /* background-color: #f1f1f1; */
-    padding-left: 20px;
-  }
-  
   /* Fake image */
   .fakeimg {
     background-color: #aaa;
@@ -108,6 +100,8 @@
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    margin-top: 20px;
+    max-width: 295px;
   }
 
   .button:hover {
