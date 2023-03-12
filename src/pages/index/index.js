@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './index.css';
+import { useSlotProps } from '@mui/base';
+import { useNavigate } from 'react-router-dom';
 
 const base_url = "http://localhost:8080"
 
@@ -26,6 +28,10 @@ const Home = () => {
 
 <div className="header">
   <h1>CompareKarma</h1>
+</div>
+
+<div>
+  <button className='button'>Post Bootcamp</button>
 </div>
 
 

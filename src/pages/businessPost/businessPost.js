@@ -37,7 +37,7 @@ const BusinessPost = (props) => {
         navigate("/");
     } else {
         console.log("ERROR MESSAGE")
-        setErrorMessage('Price must be a numerical value!');
+        // setErrorMessage('Price must be a numerical value!');
     }
     
 
