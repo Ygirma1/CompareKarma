@@ -143,8 +143,15 @@ app.get("/getBusinessCourses", function(req, res) {
 
 app.delete("/deleteBusinessCourse", function(req, res) {
   db.deleteBusinessCourse(req)
-    .then()
-    .catch();
+    .then(result => {
+      console.log(JSON.stringify(result));
+      res.send(JSON.stringify(result));
+    })
+    .catch(err => {
+      console.error(err);
+
+      res.status(500).json({ status: false, result: "Bootcamp not deleted" });
+    });
 })
 
 app.listen(8080);

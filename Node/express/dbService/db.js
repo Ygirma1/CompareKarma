@@ -296,12 +296,27 @@ module.exports = {
       })
 
  
-          })
+    })
  
   },
 
   deleteBusinessCourse : (req)=> {
-    console.log("not fully functional yet");
+    var business_id = req.query.business_id;
+    var course_id = req.query.course_id;
+
+    return new Promise((resolve, reject) => {
+      con.query("delete from comparekarma.bootcamps where course_id = ?;", [course_id],
+      (err, result) => {
+        if (err) {
+          console.log("could not delete bootcamp");
+          console.log(err);
+          reject(false);
+        } else {
+          console.log(result);
+          resolve(result);
+        }
+      })
+    })
   }
 }
 
