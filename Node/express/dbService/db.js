@@ -298,7 +298,11 @@ module.exports = {
  
           })
  
-}
+  },
+
+  deleteBusinessCourse : (req)=> {
+    console.log("not fully functional yet");
+  }
 }
 
 function comparePassword(plaintextPassword, hash) {
