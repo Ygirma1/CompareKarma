@@ -3,6 +3,7 @@ import axios from 'axios';
 import './index.css';
 import Post from '../../components/Post';
 import Table from '../../components/Table';
+import Columns from './Columns';
 
 const base_url = "http://localhost:8080"
 
@@ -45,8 +46,8 @@ const Home = () => {
   <h1>{companyName}</h1>
 </div>
 
-{<Table data={data}/>}
-<div className="row">
+{<Columns data={data}/>}
+{/* <div className="row">
   <div className="leftcolumn">
     <div className="card">
       <h2 >Bootcamp 1</h2>
@@ -68,7 +69,7 @@ const Home = () => {
       <p >Some text about total reviews of all the account's bootcamps</p>
     </div>
   </div>
-</div>
+</div> */}
 
 
 </body>

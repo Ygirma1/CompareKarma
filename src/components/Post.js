@@ -15,7 +15,8 @@ const Post = ({ post }) => {
     return (
         
         <article>
-            <img className="images" src={post.img_url} alt="new"></img>
+            {/* <img className="images" src={post.img_url} alt="new"></img> */}
+            {post.img_url ? <img className="images" src={post.img_url}/> : null}
             <div className="test1">
                 <div className='test2'>
                     <h2 className="company-name">{post.company_name}</h2>
