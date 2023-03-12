@@ -97,12 +97,22 @@ const Register = (props) => {
                 type="password"
                 placeholder='********'>
             </input>
+        
+            <RadioGroup
+                row
+                aria-labelledby="demo-controlled-radio-buttons-group"
+                name="controlled-radio-buttons-group"
+                onChange={handleChange}
+            >
+                <FormControlLabel value="For-profit" control={<Radio />} label="For-profit" />
+                <FormControlLabel value="Non-profit" control={<Radio />} label="Non-profit" />
+            </RadioGroup>
 
-            <FormControlLabel
-                control={<Checkbox value={profit} onChange={handleChange} />}
-                label={<label>Profit Status</label>}
-                className='profit-label'
-            />
+            {/* <FormControlLabel */}
+                {/* control={<Checkbox value={profit} onChange={handleChange} />} */}
+                {/* label={<label>Profit Status</label>} */}
+                {/* className='profit-label' */}
+            {/* /> */}
 
             Course Type
             <Multiselect
