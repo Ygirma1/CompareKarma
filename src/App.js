@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React, { useState,useEffect }  from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -11,21 +11,38 @@ import BusinessPost from './pages/businessPost/businessPost';
 
 function App() {
     const [currentForm, setCurrentForm] = useState('login');
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+    
+    const handleLogin = () => {
+        //setIsLoggedIn(true);
+        sessionStorage.setItem('isLoggedIn', true);
+        console.log('App isLoggedIn:', isLoggedIn);
+      };
+
+
+    
     const toggleForm = (formName) => {
         setCurrentForm(formName);
     }
      
+    useEffect(() => {
+        const loggedIn = sessionStorage.getItem('isLoggedIn');
+        setIsLoggedIn(loggedIn === 'true');
+      }, []);
     return (
         <> 
         <Router>
-            <Navbar/>
+            <Navbar isLoggedIn={isLoggedIn}/>
+            
             <Routes>
                 <Route path='/' element={<Home/>} />
                 <Route path='/about' element={<About/>} />
                 <Route path='/search' element={<Search/>} />
-                <Route path='/post' element={<BusinessPost/>} />
-                <Route path='/login' element={currentForm === "login" ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm}/>} /> 
+                {isLoggedIn && (
+            <Route path="/post" element={<BusinessPost />} />
+          )}
+                <Route path='/login' element={currentForm === "login" ? <Login onFormSwitch={toggleForm} onLogin={handleLogin} setIsLoggedIn={setIsLoggedIn}/> : <Register onFormSwitch={toggleForm}/>} /> 
             </Routes>
         </Router>
         </>
