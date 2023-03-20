@@ -72,7 +72,7 @@ const BusinessPost = (props) => {
   return (
     <div className='post-form-container'>
         <form className='post-form'>
-            <div>
+            <div className='post-form-div'>
                 <div className="coursename-div">
                     <label className='label2' htmlFor="name">Course Name</label>
                     <input
