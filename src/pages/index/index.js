@@ -12,6 +12,7 @@ const Home = () => {
 
   const [data, setData] = useState([]);
   const [companyName, setCompanyName] = useState('')
+  const [newItemAdded, setNewItemAdded] = useState(false)
 
   const handleButtonClick = () => {
     navigate('/post');
@@ -34,21 +35,19 @@ const Home = () => {
   useEffect(() => {
     const fetchBootCamps = async() => {
       try {
-        // console.log(id)
         const res = await axios.get(`${base_url}/getBusinessCourses?` + 'business_id=' + id);
         setData(res.data);
+        setNewItemAdded(true);
       } catch (error) {
         setData([])
+        setNewItemAdded(true);
       }
-
     };
     fetchBootCamps()
-  }, []); //no dependencies
+  }, [newItemAdded]); 
 
-  // console.log(data);
 
   return (
-
 <div> 
     <div className="header">
       <h1>{companyName}</h1>
