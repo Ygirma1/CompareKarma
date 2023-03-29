@@ -2,6 +2,9 @@
 
 import React, { Component }  from 'react';
 import StarRatings from 'react-star-ratings';
+import axios from 'axios';
+
+const base_url = "http://localhost:8080"
 
 const Post = ({ post }) => {
 
@@ -12,7 +15,17 @@ const Post = ({ post }) => {
         currency: 'USD',
       });
 
+
+    const handleClick = (e) => {
+        // e.preventDefault();
+        console.log("DELETE: " + post.course_id)
+        const res = axios.delete(`${base_url}/deleteBusinessCourse?` + 'course_id=' + post.course_id);
+        window.location.reload();
+    }  
+   
+
     return (
+        
         
         <article>
             {/* <img className="images" src={post.img_url} alt="new"></img> */}
@@ -52,6 +65,8 @@ const Post = ({ post }) => {
                     <div className="course-name">{post.course_name}</div>
                     <div className="description">{post.description_of_bootcamp}</div>
                 </div>
+                <button onClick={handleClick}>Delete Post</button>
+                <div>{post.course_id}</div>
             </div>
         </article>
     )
