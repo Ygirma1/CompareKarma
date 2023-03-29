@@ -1,12 +1,12 @@
-// post is each search result
-
-import React, { Component }  from 'react';
+import React, { useState, useEffect }  from 'react';
 import StarRatings from 'react-star-ratings';
 import axios from 'axios';
 
 const base_url = "http://localhost:8080"
 
 const Post = ({ post }) => {
+    const id = localStorage.getItem('business_id');
+    const [showDeleteButton, setShowDeleteButton] = useState(false);
 
     // converting cost (double) to price format
     var newCost = post.cost;
@@ -15,11 +15,18 @@ const Post = ({ post }) => {
         currency: 'USD',
       });
 
-
     const handleClick = (e) => {
         const res = axios.delete(`${base_url}/deleteBusinessCourse?` + 'course_id=' + post.course_id);
         window.location.reload();
     }  
+    
+    useEffect(() => {
+        if (post.business_id == id) {
+          setShowDeleteButton(true);
+        } else {
+          setShowDeleteButton(false);
+        }
+      }, []);
    
 
     return (
@@ -62,7 +69,9 @@ const Post = ({ post }) => {
                     <div className="course-name">{post.course_name}</div>
                     <div className="description">{post.description_of_bootcamp}</div>
                 </div>
-                <button onClick={handleClick}>Delete Post</button>
+                <div>
+                    {showDeleteButton ?  <button onClick={handleClick}>Delete Post</button> : null}
+                </div>
                 <div>{post.course_id}</div>
             </div>
         </article>
