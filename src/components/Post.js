@@ -30,27 +30,27 @@ const Post = ({ post }) => {
                     </div>
                     <a className="linkToBootcamp" href={post.link}>Link to website</a>
                 </div>
-                <p className="container">
-                    <p className="margin1">
-                        <text className="underline">Course Type:</text>
-                        <text> {post.course_type}</text>
-                    </p>
-                    <p className="margin2">
-                        <text className="underline">Class Format:</text>
-                        <text> {post.course_format}</text>
-                    </p>
-                    <p className="margin3">
-                        <text className="underline">Length:</text>
-                        <text> {post.length_of_course}</text>
-                    </p>
-                    <p className="margin4">
-                        <text className="underline">Cost of Attendance:</text>
-                        <text> {newCost}</text>
-                    </p>
-                </p>
+                <div className="container">
+                    <div className="margin1">
+                        <div className="underline">Course Type:</div>
+                        <div> {post.course_type}</div>
+                    </div>
+                    <div className="margin2">
+                        <div className="underline">Class Format:</div>
+                        <div> {post.course_format}</div>
+                    </div>
+                    <div className="margin3">
+                        <div className="underline">Length:</div>
+                        <div> {post.length_of_course}</div>
+                    </div>
+                    <div className="margin4">
+                        <div className="underline">Cost of Attendance:</div>
+                        <div> {newCost}</div>
+                    </div>
+                </div>
                 <div className="container2">
-                    <p className="course-name">{post.course_name}</p>
-                    <p className="description">{post.description_of_bootcamp}</p>
+                    <div className="course-name">{post.course_name}</div>
+                    <div className="description">{post.description_of_bootcamp}</div>
                 </div>
             </div>
         </article>

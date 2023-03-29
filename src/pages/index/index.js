@@ -34,7 +34,7 @@ const Home = () => {
   useEffect(() => {
     const fetchBootCamps = async() => {
       try {
-        console.log(id)
+        // console.log(id)
         const res = await axios.get(`${base_url}/getBusinessCourses?` + 'business_id=' + id);
         setData(res.data);
       } catch (error) {
@@ -45,7 +45,7 @@ const Home = () => {
     fetchBootCamps()
   }, []); //no dependencies
 
-  console.log(data);
+  // console.log(data);
 
   return (
 
