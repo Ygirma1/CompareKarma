@@ -17,15 +17,12 @@ const Post = ({ post }) => {
 
 
     const handleClick = (e) => {
-        // e.preventDefault();
-        console.log("DELETE: " + post.course_id)
         const res = axios.delete(`${base_url}/deleteBusinessCourse?` + 'course_id=' + post.course_id);
         window.location.reload();
     }  
    
 
     return (
-        
         
         <article>
             {/* <img className="images" src={post.img_url} alt="new"></img> */}
