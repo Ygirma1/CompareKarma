@@ -11,6 +11,7 @@ const Login = (props) => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+ 
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -20,10 +21,16 @@ const Login = (props) => {
           '&password=' + pass);
         console.log(res.data.status);
         if (res.data.status) {
+          console.log("Props Login")
+          props.onLogin();
+          //props.setIsLoggedIn(true)
           console.log("TAKE TO HOME PAGE")
           const id = res.data.business_id;
           localStorage.setItem('business_id', id)
+         
           window.location.href='/';
+    
+          
         } else {
           console.log("ERROR MESSAGE")
           setErrorMessage('Incorrect Login!');

@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { useEffect }  from 'react';
 import {
     Nav,
     NavLink,
@@ -8,8 +9,24 @@ import {
     NavBtnLink
   } from './NavbarElements';
   
+  const handleLogout = () => {
+    
+    // remove isLoggedIn key from sessionStorage
+    sessionStorage.setItem('isLoggedIn', false); 
+    console.log("checking the logout function "+ sessionStorage.getItem("isLoggedIn"));
+   
+    localStorage.setItem('business_id', null)
+    console.log("checking the business ID "+ localStorage.getItem("business_id"));
+   // setIsLoggedIn(false);
+   this.forceUpdate() 
+}
 
-const Navbar = () => {
+
+
+const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
+    console.log("isLoggedIn in Navbar:", isLoggedIn);
+  
+   
   return (
     <>
         <Nav>
@@ -24,12 +41,22 @@ const Navbar = () => {
                 <NavLink to='/search' >
                     Search
                 </NavLink>
-                <NavLink to='/post'>
-                    Post
-                </NavLink>
-                <NavBtnLink to='/login'>
-                    Login
-                </NavBtnLink>
+                {isLoggedIn && (
+            <NavLink to='/post'>
+              Post
+            </NavLink>
+          )}
+                       {!isLoggedIn && (
+            <NavBtnLink to='/login'>
+              Login
+            </NavBtnLink>
+          )}
+                {isLoggedIn && (
+            <NavBtnLink to='/' onClick={handleLogout}>
+              Logout
+            </NavBtnLink>
+          )}
+                
             </NavMenu>
         </Nav>
     </>
