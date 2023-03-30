@@ -70,10 +70,11 @@
     color: #2e3f55;
     border-radius: 15px;
     border: solid #fdf8f4;
-    /* display: flex; */
+    display: inline-block;
     /* justify-content: center; */
     padding: 20px;
     margin-top: 20px;
+    min-width: 280px;
   }
   
   /* Clear floats after the columns */

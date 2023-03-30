@@ -11,7 +11,7 @@ const About = () => {
 
       <div className='row'>
         <div className='leftcolumn'>
-          <div className='card'>
+          <div className='card2'>
             <h2>How we started</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
               magna aliqua. Amet dictum sit amet justo donec enim diam vulputate. Erat nam at lectus urna duis convallis convallis
@@ -25,7 +25,7 @@ const About = () => {
               interdum.
             </p>
           </div>
-          <div className='card'>
+          <div className='card2'>
             <h2>Why choose CompareKarma?</h2>
             <p>Lorem ipsum dolor sit amet. Ut minus delectus sed galisum consequatur qui dolorem voluptatibus qui totam quae.
               Et odio accusantium ab recusandae magnam ut minima alias. Aut dolor molestiae 33 quas consequuntur et alias
@@ -35,7 +35,7 @@ const About = () => {
           </div>
        </div>
        <div className='rightcolumn'>
-        <div className='card'>
+        <div className='card2'>
           <h2>Features</h2>
           <h5>Feature 1</h5>
           <h5>Feature 2</h5>
