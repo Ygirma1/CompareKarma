@@ -31,7 +31,7 @@ const Post = ({ post }) => {
 
     return (
         
-        <article>
+        <article className='delete-container'>
             {/* <img className="images" src={post.img_url} alt="new"></img> */}
             {post.img_url ? <img className="images" src={post.img_url}/> : null}
             <div className="test1">
@@ -70,7 +70,7 @@ const Post = ({ post }) => {
                     <div className="description">{post.description_of_bootcamp}</div>
                 </div>
                 <div>
-                    {showDeleteButton ?  <button className='delete-button' onClick={handleClick}></button> : null}
+                    {showDeleteButton ?  <button className='delete-button' onClick={handleClick}> </button> : null}
                 </div>
             </div>
         </article>
