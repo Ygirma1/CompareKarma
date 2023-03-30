@@ -70,9 +70,8 @@ const Post = ({ post }) => {
                     <div className="description">{post.description_of_bootcamp}</div>
                 </div>
                 <div>
-                    {showDeleteButton ?  <button onClick={handleClick}>Delete Post</button> : null}
+                    {showDeleteButton ?  <button className='delete-button' onClick={handleClick}></button> : null}
                 </div>
-                <div>{post.course_id}</div>
             </div>
         </article>
     )

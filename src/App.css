@@ -203,3 +203,12 @@ p {
 .linkToBootcamp:hover {
     color:#f99731;
 }
+
+.delete-button {
+    background-image: url('./trash-icon.png');
+    background-size:70%;
+    max-width: 60px;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
