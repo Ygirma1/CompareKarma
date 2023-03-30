@@ -11,8 +11,8 @@ const Home = () => {
   const navigate = useNavigate();
 
   const [data, setData] = useState([]);
-  const [companyName, setCompanyName] = useState('')
-  const [newItemAdded, setNewItemAdded] = useState(false)
+  const [companyName, setCompanyName] = useState('');
+  const [newItemAdded, setNewItemAdded] = useState(false);
 
   const handleButtonClick = () => {
     navigate('/post');

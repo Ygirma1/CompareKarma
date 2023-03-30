@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/index';
 import About from './pages/about/about';
 import Login from './pages/login';
-import Search from './pages/search';
+import Search from './pages/search/search';
 import Register from './pages/register/register';
 import BusinessPost from './pages/businessPost/businessPost';
 

@@ -1,12 +1,16 @@
 import React, { useState, useEffect }  from 'react';
 import StarRatings from 'react-star-ratings';
 import axios from 'axios';
+import DeleteConfirmation from '../DeleteConfirmation';
+import './Post.css'
 
 const base_url = "http://localhost:8080"
 
 const Post = ({ post }) => {
     const id = localStorage.getItem('business_id');
     const [showDeleteButton, setShowDeleteButton] = useState(false);
+    const [displayConfirmationModal, setDisplayConfirmationModal] = useState(false);
+    const [deleteMessage, setDeleteMessage] = useState(null);
 
     // converting cost (double) to price format
     var newCost = post.cost;
@@ -15,10 +19,10 @@ const Post = ({ post }) => {
         currency: 'USD',
       });
 
-    const handleClick = (e) => {
-        const res = axios.delete(`${base_url}/deleteBusinessCourse?` + 'course_id=' + post.course_id);
-        window.location.reload();
-    }  
+    // const handleClick = (e) => {
+    //     const res = axios.delete(`${base_url}/deleteBusinessCourse?` + 'course_id=' + post.course_id);
+    //     window.location.reload();
+    // }  
     
     useEffect(() => {
         if (post.business_id == id) {
@@ -27,6 +31,21 @@ const Post = ({ post }) => {
           setShowDeleteButton(false);
         }
       }, []);
+
+    const showDeleteModal = () => {
+        setDeleteMessage("Are you sure you want to delete this bootcamp post?");
+        setDisplayConfirmationModal(true);
+    };
+
+    const hideConfirmationModal = () => {
+        setDisplayConfirmationModal(false);
+    };
+    
+    const submitDelete = () => {
+        const res = axios.delete(`${base_url}/deleteBusinessCourse?` + 'course_id=' + post.course_id);
+        window.location.reload();
+        setDisplayConfirmationModal(false);
+    };
    
 
     return (
@@ -70,10 +89,13 @@ const Post = ({ post }) => {
                     <div className="description">{post.description_of_bootcamp}</div>
                 </div>
                 <div>
-                    {showDeleteButton ?  <button className='delete-button' onClick={handleClick}> </button> : null}
+                    {showDeleteButton ?  <button className='delete-button' /* onClick={handleClick} */ onClick={showDeleteModal}> </button> : null}
                 </div>
             </div>
+            <DeleteConfirmation showModal={displayConfirmationModal} message={deleteMessage} hideModal={hideConfirmationModal} confirmModal={submitDelete}/>
+
         </article>
+        
     )
 }
 
