@@ -3,7 +3,7 @@ var nodemailer = require('nodemailer');
 const express = require("express");
 const app = express();
 var db = require("./dbService/db");
-
+const path = require('path')
 const multer = require('multer')
 
 const storage = multer.diskStorage({
@@ -11,14 +11,18 @@ const storage = multer.diskStorage({
     cb(null, 'imgUploadBusiness/')
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname+"--"+Date.now())
+    cb(null,  Date.now()+ "--"+ file.originalname)
   },
 })
-const upload = multer({ storage: storage })
+const upload = multer({ 
+  storage: storage 
+})
 
 
 var nodemailer = require('nodemailer');
+
 // for bypassing cors policy
+
 const cors = require('cors');
 const corsOptions ={
     origin:'http://localhost:3000', 
@@ -26,6 +30,9 @@ const corsOptions ={
     optionSuccessStatus:200
 }
 app.use(cors(corsOptions));
+
+
+app.use('/getimg/', express.static(path.join(__dirname, 'imgUploadBusiness')));
   
 app.get("/hello", function(req,res) {
 
@@ -34,9 +41,50 @@ app.get("/hello", function(req,res) {
 });
 
 
-app.put('/image', upload.single('file'), function (req, res) {
-  res.status(200).json({ status: true, result: "Image Added" });
+app.post('/image', upload.single('file'), (req, res) => {
+
+
+  if (!req.file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
+    res.send({ msg:'Only image files (jpg, jpeg, png) are allowed!'})}
+    else {
+
+      
+          db.imageUploadSQL(req).then(courses=> {
+
+          res.send(JSON.stringify(courses));
+      
+        }).catch(err => 
+        
+          res.status(500).json({ error: err })
+            
+        );
+    }
+
+
+
 })
+
+app.get("/imagepath", function(req,res) {
+  console.log("imgpath here")
+
+  db.getimgpath(req).then((result)=> {
+    if (result)
+    res.send({
+      image:result[0].imgpath
+    })
+
+  }).catch(err => 
+  
+    res.status(500).json({ error: err })
+      
+  );
+
+
+
+})
+
+
+
 
 
 app.get("/query", function(req,res) {
