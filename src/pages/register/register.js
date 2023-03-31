@@ -13,7 +13,7 @@ const base_url = "http://localhost:8080"
 
 const Register = (props) => {
     const navigate = useNavigate();
-
+    const [image, setImage] = useState({ preview: '', data: '' })
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [name, setName] = useState('');
@@ -24,14 +24,16 @@ const Register = (props) => {
     const [passwordShown, setPasswordShown] = useState(false);
 
     // handles submission of form
-    const handleSubmit = (e) => {
+    const handleSubmit =  (e) => {
         e.preventDefault();
-
+        let formData = new FormData()
+        formData.append('file', image.data)
+        console.log("inhandleSubmit")
         // get just keys from course type array
         let newCourseTypes = [];
         courseTypes.forEach((e) => newCourseTypes.push(e.key));
 
-        const res = axios.put(`${base_url}/newUser?`+
+        const res =  axios.put(`${base_url}/newUser?`+
         'business_name=' + name + 
         '&phone_number=' + phone +
         '&business_desc=' + desc + 
@@ -39,7 +41,7 @@ const Register = (props) => {
         '&profit_status=' + Number(profit) + 
         '&email=' + email +
         '&course_type=' + newCourseTypes + 
-        '&business_password=' + pass)
+        '&business_password=' + pass, formData)
         .then(response => {
             localStorage.setItem('business_id', JSON.stringify(response.data.business_id));
             props.onLogin();
@@ -177,6 +179,7 @@ const Register = (props) => {
             
             <button className='submit-register-button'/*onClick={event => window.location.href='/'}*/ type='submit'>Sign Up</button>
         </form>
+        
         <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
     </div>
   );

@@ -8,6 +8,7 @@ import Login from './pages/login/login';
 import Search from './pages/search/search';
 import Register from './pages/register/register';
 import BusinessPost from './pages/businessPost/businessPost';
+import Profile from './pages/profile';
 
 function App() {
     const [currentForm, setCurrentForm] = useState('login');
