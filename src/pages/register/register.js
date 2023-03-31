@@ -9,7 +9,7 @@ const base_url = "http://localhost:8080"
 
 const Register = (props) => {
     const navigate = useNavigate();
-
+    const [image, setImage] = useState({ preview: '', data: '' })
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [name, setName] = useState('');
@@ -17,16 +17,40 @@ const Register = (props) => {
     const [desc, setDesc] = useState('');
     const [profit, setProfit] = useState(false);
     const [courseTypes, setCourseTypes] = useState([]);
+    const [status, setStatus] = useState('')
+    const handleImg = async (e) => {
+        
+      e.preventDefault()
+      console.log("submit button clicked for ")
+      let formData = new FormData()
+      formData.append('file', image.data)
+      const response = await fetch('http://localhost:8080/image', {
+        method: 'POST',
+        body: formData,
+      })
+      if (response) setStatus(response.statusText)
+      
+    }
+
+    const handleFileChange = (e) => { // just updates the previe
+        const img = {
+          preview: URL.createObjectURL(e.target.files[0]),
+          data: e.target.files[0],
+        }
+        setImage(img)
+      }
 
     // handles submission of form
-    const handleSubmit = (e) => {
+    const handleSubmit =  (e) => {
         e.preventDefault();
-
+        let formData = new FormData()
+        formData.append('file', image.data)
+        console.log("inhandleSubmit")
         // get just keys from course type array
         let newCourseTypes = [];
         courseTypes.forEach((e) => newCourseTypes.push(e.key));
 
-        const res = axios.put(`${base_url}/newUser?`+
+        const res =  axios.put(`${base_url}/newUser?`+
         'business_name=' + name + 
         '&phone_number=' + phone +
         '&business_desc=' + desc + 
@@ -34,7 +58,7 @@ const Register = (props) => {
         '&profit_status=' + Number(profit) + 
         '&email=' + email +
         '&course_type=' + newCourseTypes + 
-        '&business_password=' + pass)
+        '&business_password=' + pass, formData)
         .then(response => {
             localStorage.setItem('business_id', JSON.stringify(response.data.business_id));
             navigate("/");
@@ -150,8 +174,12 @@ const Register = (props) => {
                 showCheckbox
             />
             
+  
+
             <button /*onClick={event => window.location.href='/'}*/ type='submit'>Sign Up</button>
+           
         </form>
+        
         <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
     </div>
   );
