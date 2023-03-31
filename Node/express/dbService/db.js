@@ -358,6 +358,45 @@ module.exports = {
         }
       })
     })
+  },
+
+  imageUploadSQL : (req)=> {
+    var image = req.file.filename
+    var business_id = req.query.business_id;
+
+
+    return new Promise((resolve, reject) => {
+      con.query("update comparekarma.business_user set imgpath = ?  where business_id = ?;", [image,business_id],
+      (err, result) => {
+        if (err) {
+          console.log("could not update path");
+          console.log(err);
+          reject(false);
+        } else {
+          console.log(result);
+          resolve(result);
+        }
+      })
+    })
+  },
+  getimgpath: (req)=> {
+  
+    var business_id = req.query.business_id;
+
+
+    return new Promise((resolve, reject) => {
+      con.query("select imgpath from comparekarma.business_user where  business_id = ?;", [business_id],
+      (err, result) => {
+        if (err) {
+          console.log("could not update path");
+          console.log(err);
+          reject(false);
+        } else {
+          console.log(result);
+          resolve(result);
+        }
+      })
+    })
   }
 }
 
