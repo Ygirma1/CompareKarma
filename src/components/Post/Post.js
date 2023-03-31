@@ -64,7 +64,7 @@ const Post = ({ post }) => {
                     <div className='stars'>
                         {/* <StarRatings rating={post.review_score} starRatedColor="#ed6e2e" starDimension='25px' starSpacing='5px'/> */}
                     </div>
-                    <a className="linkToBootcamp" href={post.link}>Link to website</a>
+                    <a className="linkToBootcamp" href={post.link}>Visit Their Website</a>
                 </div>
                 <div className="container">
                     <div className="margin1">

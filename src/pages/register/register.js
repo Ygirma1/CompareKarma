@@ -150,7 +150,7 @@ const Register = (props) => {
                 showCheckbox
             />
             
-            <button /*onClick={event => window.location.href='/'}*/ type='submit'>Sign Up</button>
+            <button className='submit-register-button'/*onClick={event => window.location.href='/'}*/ type='submit'>Sign Up</button>
         </form>
         <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
     </div>

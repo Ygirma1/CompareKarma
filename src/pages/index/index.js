@@ -3,6 +3,7 @@ import axios from 'axios';
 import './index.css';
 import Columns from './Columns';
 import { useNavigate } from 'react-router-dom';
+import BusinessPost from '../businessPost/businessPost';
 
 const base_url = "http://localhost:8080"
 
@@ -17,6 +18,7 @@ const Home = () => {
   const handleButtonClick = () => {
     navigate('/post');
   };
+  const [openModal, setOpenModal] = useState(false)
 
   // getting business name
   useEffect(() => {
@@ -48,27 +50,31 @@ const Home = () => {
 
 
   return (
-<div> 
+<body className="index-container">
+  {openModal && <div onClick={() => {setOpenModal(false)}} className="businesspost-modal-backdrop"></div>}
+  <div className="test">
     <div className="header">
       <h1>{companyName}</h1>
     </div>
-
     <div className='wrapper'> 
-
       {<Columns data={data}/>}
-
-      <div className="rightcolumn">
+    <div className="dashboard-rightcolumn">
       <div>
-        <button className='button' onClick={handleButtonClick}>Post Bootcamp</button>
+        <button className='dashboard-post-bootcamp-button' onClick={() => {setOpenModal(true)}}>Add New Course</button>
       </div>
-      <div className="card">
+      <div className="dashboard-card">
         <h2 >Total Review</h2>
-        <p >Average stars out of five for the entire account.</p>
-        <p> Some text about total reviews of all the account's bootcamps</p>
+          <p>Average stars out of five for the entire account.</p>
+          <p> Some text about total reviews of all the account's bootcamps</p>
       </div>
     </div>
+    </div>
   </div>
+  {openModal && <div className="businesspost-modal">
+    <BusinessPost closeModal={setOpenModal}/>
   </div>
+  }
+</body>
 
   );
 };
