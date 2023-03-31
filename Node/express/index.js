@@ -4,6 +4,19 @@ const express = require("express");
 const app = express();
 var db = require("./dbService/db");
 
+const multer = require('multer')
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'imgUploadBusiness/')
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname+"--"+Date.now())
+  },
+})
+const upload = multer({ storage: storage })
+
+
 var nodemailer = require('nodemailer');
 // for bypassing cors policy
 const cors = require('cors');
@@ -19,6 +32,12 @@ app.get("/hello", function(req,res) {
   res.send("hello there!!!");
 
 });
+
+
+app.put('/image', upload.single('file'), function (req, res) {
+  res.status(200).json({ status: true, result: "Image Added" });
+})
+
 
 app.get("/query", function(req,res) {
   // const { q } = req.query; 
@@ -62,10 +81,11 @@ app.get("/filter", function(req,res) {
   );
 });
        
-app.put("/newUser", function(req, res) {
+app.put("/newUser",function(req, res) {
   db.acceptNewBusiness(req)
     .then(user => {
       console.log(JSON.stringify(user));
+    
       res.status(200).json({ status: true, result: "User Added Succesfully!" , business_id:user.insertId });
     })
     .catch(err => {
