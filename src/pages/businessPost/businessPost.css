@@ -63,7 +63,7 @@ input, #multiselectContainerReact {
     padding: 0px;
 }
 
-.post-bootcamp-button {
+.submit-post-bootcamp-button {
     margin-top: 24.75px;
     max-width: 150px;
     min-width: 150px;
@@ -71,4 +71,17 @@ input, #multiselectContainerReact {
     background-color:#121e35;
     color: white;
     font-size: smaller;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+.submit-post-bootcamp-button:hover {
+    cursor: pointer;
+}
+
+.post-bootcamp-exit-button {
+    color:#121e35;
+    width: 40px;
+    position: absolute;
 }

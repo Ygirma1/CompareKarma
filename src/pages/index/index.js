@@ -13,11 +13,7 @@ const Home = () => {
 
   const [data, setData] = useState([]);
   const [companyName, setCompanyName] = useState('')
-
-  const handleButtonClick = () => {
-    /*Change to navigate/throw up a modal for the bootcamp post function instead of having a dedicated page*/
-    navigate('/post');
-  };
+  const [openModal, setOpenModal] = useState(false)
 
   // getting business name
   useEffect(() => {
@@ -51,18 +47,18 @@ const Home = () => {
 
   return (
 <body className="index-container">
-  <div className="businesspost-modal-backdrop"></div>
+  {openModal && <div onClick={() => {setOpenModal(false)}} className="businesspost-modal-backdrop"></div>}
   <div className="test">
     <div className="header">
       <h1>{companyName}</h1>
     </div>
     <div className='wrapper'> 
-    {<Columns data={data}/>}
-    <div className="rightcolumn">
+      {<Columns data={data}/>}
+    <div className="dashboard-rightcolumn">
       <div>
-        <button className='button' onClick={handleButtonClick}>Post Bootcamp</button>
+        <button className='dashboard-post-bootcamp-button' onClick={() => {setOpenModal(true)}}>Add New Course</button>
       </div>
-      <div className="card">
+      <div className="dashboard-card">
         <h2 >Total Review</h2>
           <p>Average stars out of five for the entire account.</p>
           <p> Some text about total reviews of all the account's bootcamps</p>
@@ -70,9 +66,10 @@ const Home = () => {
     </div>
     </div>
   </div>
-  <div className="businesspost-modal">
-    <BusinessPost />
+  {openModal && <div className="businesspost-modal">
+    <BusinessPost closeModal={setOpenModal}/>
   </div>
+  }
 </body>
 
   );

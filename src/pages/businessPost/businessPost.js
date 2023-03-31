@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const base_url = "http://localhost:8080"
 
-const BusinessPost = (props) => {
+const BusinessPost = ({ closeModal }) => {
   const navigate = useNavigate();
   const id = localStorage.getItem('business_id');
 
@@ -45,9 +45,10 @@ const BusinessPost = (props) => {
     '&description_of_bootcamp=' + desc + 
     '&course_type=' + newCourseTypes + 
     '&link=' + link +
-    '&business_id=' + id)
+    '&business_id=' + id);
 
-    navigate("/");
+    closeModal(false);
+    navigate('/');
   };
 
   const handleSelectCourseTypes = (selectedList) => {
@@ -71,8 +72,8 @@ const BusinessPost = (props) => {
 
   return (
     <div className='post-form-container'>
-        <form className='post-form'>
-            <div className='post-form-div'>
+        <form onSubmit = {handleSubmit} className='post-form'>
+            <div className='post-form-div'> 
                 <div className="coursename-div">
                     <label className='label2' htmlFor="name">Course Name</label>
                     <input
@@ -155,8 +156,7 @@ const BusinessPost = (props) => {
                         showCheckbox
                     />
                     <div className='post-bootcamp-button-div'>
-                        <button className='post-bootcamp-button' /*onClick={(event) => window.location.href='/'}*/ onClick={handleSubmit}
-                                type='submit'>Post Bootcamp</button>
+                        <button type="submit" className='submit-post-bootcamp-button'>Submit</button>
                     </div>
                 </div>
             </div>

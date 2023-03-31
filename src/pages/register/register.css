@@ -50,7 +50,7 @@
     width: 350px;
   }
   
-  button {
+  .submit-register-button {
     border: none;
     background-color: white;
     padding: 20px;

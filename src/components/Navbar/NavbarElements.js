@@ -5,11 +5,11 @@ import styled from 'styled-components';
 export const Nav = styled.nav`
   background: #fff;
   height: 80px;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   padding: 0.5rem calc((100vw - 1000px) / 2);
-  z-index: 10;
+  z-index: 0;
   box-shadow: 0px 0px 30px -10px grey;
 
   /* Third Nav */
@@ -78,7 +78,7 @@ export const NavBtn = styled.nav`
 `;
 
 export const NavBtnLink = styled(Link)`
-  border-radius: 4px;
+  border-radius: 10px;
   background: #2e3f55;
   padding: 10px 22px;
   color: #fff;
