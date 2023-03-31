@@ -33,7 +33,7 @@ const Post = ({ post }) => {
       }, []);
 
     const showDeleteModal = () => {
-        setDeleteMessage("Are you sure you want to delete this bootcamp post?");
+        setDeleteMessage("Are you sure you want to delete this post?");
         setDisplayConfirmationModal(true);
     };
 
