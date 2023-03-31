@@ -3,6 +3,9 @@ import StarRatings from 'react-star-ratings';
 import axios from 'axios';
 import DeleteConfirmation from '../DeleteConfirmation';
 import './Post.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+
 
 const base_url = "http://localhost:8080"
 
@@ -89,7 +92,9 @@ const Post = ({ post }) => {
                     <div className="description">{post.description_of_bootcamp}</div>
                 </div>
                 <div>
-                    {showDeleteButton ?  <button className='delete-button' /* onClick={handleClick} */ onClick={showDeleteModal}> </button> : null}
+                    {showDeleteButton ?  <button className='delete-button' /* onClick={handleClick} */ onClick={showDeleteModal}>
+                        <FontAwesomeIcon icon={faTrash} size="2x" color="grey" />
+                    </button> : null}
                 </div>
             </div>
             <DeleteConfirmation showModal={displayConfirmationModal} message={deleteMessage} hideModal={hideConfirmationModal} confirmModal={submitDelete}/>

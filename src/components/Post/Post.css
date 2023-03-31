@@ -128,14 +128,10 @@ p {
 }
 
 .delete-button {
-    background-image: url('../../trash-icon.png');
-    background-size: 40%;
-    max-width: 60px;
-    height: 60px;
-    background-repeat: no-repeat;
-    background-position: center;
     position: absolute;
     bottom: 0;
     right: 0;
+    border: none;
     background-color: transparent;
+    margin: 1rem;
 }
