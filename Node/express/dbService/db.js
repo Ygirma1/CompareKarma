@@ -267,6 +267,23 @@ module.exports = {
     });
   },
 
+  getBootcamp: (req)=> {
+    return new Promise((resolve, reject) => {
+      var course_id = req.query.course_id;
+      con.query("select * from comparekarma.bootcamps where course_id = ? ;",[course_id],
+        (err, result) => {
+        if (err) {
+          console.log("Could not retrieve bootcamp");
+          console.log(err);
+          reject(false);
+        } else {
+          console.log(result);
+          resolve(result);
+        }
+      })
+    });
+  },
+
   acceptNewBusinessCourse : (req)=> {
     var company_name= req.query.company_name;
     var course_format=req.query.course_format;
@@ -294,14 +311,10 @@ module.exports = {
           resolve(result);
         }
       })
-
- 
     })
- 
   },
 
   deleteBusinessCourse : (req)=> {
-    var business_id = req.query.business_id;
     var course_id = req.query.course_id;
 
     return new Promise((resolve, reject) => {
@@ -310,6 +323,34 @@ module.exports = {
         if (err) {
           console.log("could not delete bootcamp");
           console.log(err);
+          reject(false);
+        } else {
+          console.log(result);
+          resolve(result);
+        }
+      })
+    })
+  },
+
+  updateBusinessCourse : (req)=> {
+    var course_id = req.query.course_id;
+    var course_format = req.query.course_format;
+    var course_name = req.query.course_name;
+    var length_of_course= req.query.length_of_course;
+    var cost= req.query.cost;
+    var description_of_bootcamp = req.query.description_of_bootcamp;
+    var course_type = req.query.course_type;
+    var link = req.query.link;
+    var sponsored = req.query.sponsored;
+
+    return new Promise((resolve, reject) => {
+      con.query("update comparekarma.bootcamps set " +
+      "course_format = ?, course_name = ?, length_of_course = ?, cost = ?, description_of_bootcamp = ?, course_type = ?, link = ?, sponsored = ? where course_id = ?",
+      [course_format, course_name, length_of_course, cost, description_of_bootcamp, course_type, link, sponsored, course_id],
+      (err, result) => {
+        if (err) {
+          console.log("could not update bootcamp");
+          console.log(err)
           reject(false);
         } else {
           console.log(result);
