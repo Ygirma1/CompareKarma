@@ -19,14 +19,14 @@
   }
   
   .search-input:focus {
-    border-color: #ed6e2e;
+    border-color: #F19E4F;
+    border-width: 3px;
     outline: none;
   }
   
   .search-button,
   .search-input {
     background-color: white;
-    box-shadow: 0px 7px 15px -5px grey;
     border-style: solid;
     border-width: 1px;
   }
