@@ -1,9 +1,10 @@
 import React, { Component }  from 'react';
-import "../App.css"
+// import "../../App.css"
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Table from '../components/Table';
+import Table from '../../components/Table'
 import SearchIcon from '@material-ui/icons/Search';
+import './search.css'
 
 const base_url = "http://localhost:8080"
 

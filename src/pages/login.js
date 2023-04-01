@@ -58,7 +58,7 @@ const Login = (props) => {
               placeholder='********'>
             </input>
 
-            <button type='submit'>Log In</button>
+            <button className='submit-register-button' type='submit'>Log In</button>
 
             {errorMessage && (
             <p className="error"> {errorMessage} </p>

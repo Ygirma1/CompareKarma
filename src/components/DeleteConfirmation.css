@@ -1,0 +1,33 @@
+.modal {
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+
+.title {
+    /* color: red; */
+    /* text-align: center; */
+    font-weight: bold;
+    padding: 0.5rem;
+}
+
+.body {
+    padding: 0.5rem;
+}
+
+.cancel-button {
+    background-color: gray;
+    color: white;
+    max-width: 100px;
+    margin: 10px;
+}
+
+.delete-button2 {
+    background-color: red;
+    color: white;
+    margin: 10px;
+    max-width: 250px;
+}
+
+.footer2 {
+    display: inline-flex;
+}
