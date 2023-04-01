@@ -3,23 +3,21 @@ import './App.css';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/index';
-import About from './pages/about';
+import About from './pages/about/about';
 import Login from './pages/login';
-import Search from './pages/search';
+import Search from './pages/search/search';
 import Register from './pages/register/register';
 import BusinessPost from './pages/businessPost/businessPost';
 
 function App() {
     const [currentForm, setCurrentForm] = useState('login');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-
     
     const handleLogin = () => {
         //setIsLoggedIn(true);
         sessionStorage.setItem('isLoggedIn', true);
         console.log('App isLoggedIn:', isLoggedIn);
       };
-
 
     
     const toggleForm = (formName) => {
@@ -30,6 +28,7 @@ function App() {
         const loggedIn = sessionStorage.getItem('isLoggedIn');
         setIsLoggedIn(loggedIn === 'true');
       }, []);
+      
     return (
         <> 
         <Router>

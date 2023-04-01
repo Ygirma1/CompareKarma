@@ -12,7 +12,12 @@ const Home = () => {
   const navigate = useNavigate();
 
   const [data, setData] = useState([]);
-  const [companyName, setCompanyName] = useState('')
+  const [companyName, setCompanyName] = useState('');
+  const [newItemAdded, setNewItemAdded] = useState(false);
+
+  const handleButtonClick = () => {
+    navigate('/post');
+  };
   const [openModal, setOpenModal] = useState(false)
 
   // getting business name
@@ -32,18 +37,17 @@ const Home = () => {
   useEffect(() => {
     const fetchBootCamps = async() => {
       try {
-        console.log(id)
         const res = await axios.get(`${base_url}/getBusinessCourses?` + 'business_id=' + id);
         setData(res.data);
+        setNewItemAdded(true);
       } catch (error) {
         setData([])
+        setNewItemAdded(true);
       }
-
     };
     fetchBootCamps()
-  }, []); //no dependencies
+  }, [newItemAdded]); 
 
-  console.log(data);
 
   return (
 <body className="index-container">

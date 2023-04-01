@@ -141,6 +141,18 @@ app.get("/getBusinessCourses", function(req, res) {
     });
 });
 
+app.get("/getBootcamp", function(req, res) {
+  db.getBootcamp(req)
+    .then(bootcamp => {
+      console.log(JSON.stringify(bootcamp));
+      res.send(JSON.stringify(bootcamp));
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({ status: false, result: "Bootcamp not retrieved" });
+    })
+})
+
 app.delete("/deleteBusinessCourse", function(req, res) {
   db.deleteBusinessCourse(req)
     .then(result => {
@@ -152,6 +164,19 @@ app.delete("/deleteBusinessCourse", function(req, res) {
 
       res.status(500).json({ status: false, result: "Bootcamp not deleted" });
     });
+})
+
+app.put("/updateBusinessCourse", function(req, res) {
+  db.updateBusinessCourse(req)
+    .then(result => {
+      console.log(JSON.stringify(result));
+      res.status(200).json({ status: true, result: "Bootcamp successfully updated" });
+    })
+    .catch(err => {
+      console.error(err);
+
+      res.status(500).json({ status: false, result: "Bootcamp update unsuccessful" });
+    })
 })
 
 app.listen(8080);
