@@ -77,5 +77,21 @@
     min-width: 380px;
   }
 
+  .password-input {
+    display: flex;
+    align-items: center;
+  }
+
+  .toggle-password-visibility-button {
+    position: absolute;
+    transform: translate(355px);
+    background-color: transparent;
+    border: none;
+  }
+
+  .toggle-password-visibility-button:hover {
+    cursor: pointer;
+  }
+
 
 
