@@ -67,7 +67,8 @@ const Post = ({ post }) => {
             course_format: post.course_format,
             cost: post.cost,
             link: post.link,
-            course_type: post.course_type
+            course_type: post.course_type,
+            sponsored: post.sponsored
 
         };
         navigate('/post', { state: { dataToFill } });

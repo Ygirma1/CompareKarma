@@ -11,16 +11,17 @@ const BusinessPost = ({ closeModal }) => {
   const navigate = useNavigate();
   const id = localStorage.getItem('business_id');
 
-  const [price, setPrice] = useState('');
-  const [desc, setDesc] = useState('');
-  const [name, setName] = useState('');
-  const [link, setLink] = useState('');
-  const [format, setFormat] = useState('');
-  const [courseTypes, setCourseTypes] = useState('');
-  const [length, setLength] = useState('');
   const [companyName, setCompanyName] = useState('')
   const { state } = useLocation();
   const dataToFill = state ? state.dataToFill : null;
+  const [isEditing, setIsEditing] = useState(false);
+  const [desc, setDesc] = useState(dataToFill ? dataToFill.description_of_bootcamp : '');
+  const [price, setPrice] = useState(dataToFill ? dataToFill.cost : '');
+  const [name, setName] = useState(dataToFill ? dataToFill.course_name : '');
+  const [link, setLink] = useState(dataToFill ? dataToFill.link : '');
+  const [format, setFormat] = useState(dataToFill ? dataToFill.course_format : '');
+  const [courseTypes, setCourseTypes] = useState(dataToFill ? dataToFill.course_type : '');
+  const [length, setLength] = useState(dataToFill ? dataToFill.length_of_course : '');
 
   useEffect(() => {
         const retrieveBusinessInfo = async() => {
@@ -31,35 +32,67 @@ const BusinessPost = ({ closeModal }) => {
     }, []); 
 
     useEffect(() => {
-        if (dataToFill.course_format && dataToFill.course_type) {
-          setFormat([dataToFill.course_format]);
-          setCourseTypes([dataToFill.course_type]);
+        if (dataToFill) {
+            setIsEditing(true);
         }
+        try {
+            if (dataToFill.course_format && dataToFill.course_type) {
+                setFormat([dataToFill.course_format]);
+                setCourseTypes([dataToFill.course_type]);
+              } 
+        } catch {
+            console.log("ERROR")
+        }
+        
       }, []);
+
+      console.log("EDITING: " + isEditing)
 
   const handleSubmit = async(e) => {
     e.preventDefault();
 
-    let newFormat = [];
-    format.forEach((e) => newFormat.push(e.key));
+    if (!isEditing) {
+        let newFormat = [];
+        format.forEach((e) => newFormat.push(e.key));
+        let newCourseTypes = [];
+        courseTypes.forEach((e) => newCourseTypes.push(e.key));
 
-    let newCourseTypes = [];
-    courseTypes.forEach((e) => newCourseTypes.push(e.key));
+        const res = axios.put(`${base_url}/newBusinessCourse?` + 
+        'company_name=' + companyName +
+        '&course_format=' + newFormat + 
+        '&course_name=' + name + 
+        '&length_of_course=' + length + 
+        '&cost=' + price + 
+        '&description_of_bootcamp=' + desc + 
+        '&course_type=' + newCourseTypes + 
+        '&link=' + link +
+        '&business_id=' + id);
 
-    const res = axios.put(`${base_url}/newBusinessCourse?` + 
-    'company_name=' + companyName +
-    '&course_format=' + newFormat + 
-    '&course_name=' + name + 
-    '&length_of_course=' + length + 
-    '&cost=' + price + 
-    '&description_of_bootcamp=' + desc + 
-    '&course_type=' + newCourseTypes + 
-    '&link=' + link +
-    '&business_id=' + id);
+        closeModal(false);
 
-    closeModal(false);
+    } else {
+        let newFormat = [];
+        format.forEach((e) => newFormat.push(e.key));
+        let newCourseTypes = [];
+        courseTypes.forEach((e) => newCourseTypes.push(e.key));
+
+        const res = axios.put(`${base_url}/updateBusinessCourse?`+
+        'course_id=' + dataToFill.course_id + 
+        '&course_format=' + newFormat + 
+        '&course_name=' + name + 
+        '&length_of_course=' + length + 
+        '&cost=' + price + 
+        '&description_of_bootcamp=' + desc + 
+        '&course_type=' + newCourseTypes + 
+        '&link=' + link + 
+        '&sponsored=' + dataToFill.sponsored);
+    }
+
+    
     navigate('/');
   };
+
+  console.log("FORMAT: " + format)
 
   const handleSelectCourseTypes = (selectedList) => {
     setCourseTypes(selectedList);
@@ -80,8 +113,6 @@ const BusinessPost = ({ closeModal }) => {
     { key: 'Online' },
     { key: 'Hybrid' },
   ]
-
-  console.log(format, courseTypes)
 
   return (
     <div className='post-form-container'>
@@ -122,36 +153,6 @@ const BusinessPost = ({ closeModal }) => {
                     }
                 </div>
                   <label className='label2'>Location</label>
-                    {/* {!dataToFill?
-                        ( <Multiselect
-                            className='location'
-                            displayValue="key"
-                            onRemove={handleRemoveFormat}
-                            onSelect={handleSelectFormat}
-                            selectedValues={format}
-                            singleSelect={true}
-                            options={[
-                                { key: 'In-Person' },
-                                { key: 'Online' },
-                                { key: 'Hybrid' },
-                            ]}
-                            showCheckbox
-                        />) : 
-                        ( <Multiselect
-                            className='location'
-                            displayValue="key"
-                            onRemove={handleRemoveFormat}
-                            onSelect={handleSelectFormat}
-                            selectedValues={dataToFill.course_format}
-                            singleSelect={true}
-                            options={[
-                                { key: 'In-Person' },
-                                { key: 'Online' },
-                                { key: 'Hybrid' },
-                            ]}
-                            showCheckbox
-                        />)
-                    } */}
                     <Multiselect
                             className='location'
                             displayValue="key"
@@ -162,8 +163,6 @@ const BusinessPost = ({ closeModal }) => {
                             singleSelect={true}
                             showCheckbox
                         />
-                   
-
                 <div className='price-div'>
                     <label className='label2' htmlFor="price">Estimated Cost</label>
                     {!dataToFill?
@@ -197,7 +196,6 @@ const BusinessPost = ({ closeModal }) => {
                             placeholder='Length of Course'
                         />)
                     }
-                   
                 </div>
                 <div className='link-div'>
                     <label className='label2'>Website Link</label>
@@ -215,7 +213,6 @@ const BusinessPost = ({ closeModal }) => {
                             placeholder="Link"
                         />)
                     }
-                    
                 </div>
                 <div className='coursetype-div'>
                     <label className='label2'>Course Type</label>
