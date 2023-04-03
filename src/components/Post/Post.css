@@ -127,19 +127,13 @@ p {
     position: relative;
 }
 
-.delete-button {
-    position: absolute;
-    bottom: 0;
-    right: 0;
+.delete-button, .edit-button {
     border: none;
     background-color: transparent;
-    margin: 1rem;
 }
 
 .edit-delete {
-    /* display: inline-flex; */
-}
-
-.edit-button {
-    float: right;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row-reverse;
 }

@@ -4,7 +4,7 @@ import axios from 'axios';
 import DeleteConfirmation from '../DeleteConfirmation';
 import './Post.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faPencil } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -16,7 +16,6 @@ const Post = ({ post }) => {
     const [showDeleteButton, setShowDeleteButton] = useState(false);
     const [displayConfirmationModal, setDisplayConfirmationModal] = useState(false);
     const [deleteMessage, setDeleteMessage] = useState(null);
-    const [openModal, setOpenModal] = useState(false)
 
     // converting cost (double) to price format
     var newCost = post.cost;
@@ -108,13 +107,13 @@ const Post = ({ post }) => {
                     {showDeleteButton ?  <button className='delete-button' /* onClick={handleClick} */ onClick={showDeleteModal}>
                         <FontAwesomeIcon icon={faTrash} size="2x" color="grey" />
                     </button> : null}
-                    <button className='edit-button' onClick={handleEdit}>Edit</button>
+                    {showDeleteButton ?  <button className='edit-button' onClick={handleEdit}>
+                        <FontAwesomeIcon icon={faPencil} size="2x" color="gray"/>
+                    </button> : null}
+                    
                 </div>
             </div>
             <DeleteConfirmation showModal={displayConfirmationModal} message={deleteMessage} hideModal={hideConfirmationModal} confirmModal={submitDelete}/>
-  {/* {openModal && <div className="businesspost-modal">
-    <BusinessPost closeModal={setOpenModal}/>
-  </div>} */}
         </article>
         
     )
