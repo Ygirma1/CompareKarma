@@ -1,16 +1,17 @@
 import React, { useState, useEffect }  from 'react';
-import StarRatings from 'react-star-ratings';
 import axios from 'axios';
 import DeleteConfirmation from '../DeleteConfirmation';
-import './Post.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import './Post.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faPencil } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 
 const base_url = "http://localhost:8080"
 
 const Post = ({ post }) => {
     const id = localStorage.getItem('business_id');
+    const navigate = useNavigate();
     const [showDeleteButton, setShowDeleteButton] = useState(false);
     const [displayConfirmationModal, setDisplayConfirmationModal] = useState(false);
     const [deleteMessage, setDeleteMessage] = useState(null);
@@ -21,11 +22,6 @@ const Post = ({ post }) => {
         style: 'currency',
         currency: 'USD',
       });
-
-    // const handleClick = (e) => {
-    //     const res = axios.delete(`${base_url}/deleteBusinessCourse?` + 'course_id=' + post.course_id);
-    //     window.location.reload();
-    // }  
     
     useEffect(() => {
         if (post.business_id == id) {
@@ -49,6 +45,34 @@ const Post = ({ post }) => {
         window.location.reload();
         setDisplayConfirmationModal(false);
     };
+
+    const handleEdit = () => {
+        console.log(post.course_id, post.course_format, post.course_name, post.length_of_course, post.cost, post.description_of_bootcamp, post.course_type, post.link, post.sponsored)
+        const res = axios.put(`${base_url}/updateBusinessCourse?`+
+        'course_id=' + '59' + 
+        '&course_format=' + 'Online' + 
+        '&course_name=' + 'UPDATED NAME TEST TEST' + 
+        '&length_of_course=' + '123' + 
+        '&cost=' + '123' + 
+        '&description_of_bootcamp=' + '123' + 
+        '&course_type=' + 'Data Analytics' + 
+        '&link=' + 'saf' + 
+        '&sponsored=' + '1');
+
+        const dataToFill = {
+            course_id: post.course_id,
+            course_name: post.course_name,
+            description_of_bootcamp: post.description_of_bootcamp,
+            length_of_course: post.length_of_course,
+            course_format: post.course_format,
+            cost: post.cost,
+            link: post.link,
+            course_type: post.course_type,
+            sponsored: post.sponsored
+
+        };
+        navigate('/post', { state: { dataToFill } });
+    }
    
 
     return (
@@ -65,7 +89,6 @@ const Post = ({ post }) => {
                         </div>
                     }
                     <div className='stars'>
-                        {/* <StarRatings rating={post.review_score} starRatedColor="#ed6e2e" starDimension='25px' starSpacing='5px'/> */}
                     </div>
                     <a className="linkToBootcamp" href={post.link}>Visit Their Website</a>
                 </div>
@@ -91,14 +114,17 @@ const Post = ({ post }) => {
                     <div className="course-name">{post.course_name}</div>
                     <div className="description">{post.description_of_bootcamp}</div>
                 </div>
-                <div>
-                    {showDeleteButton ?  <button className='delete-button' /* onClick={handleClick} */ onClick={showDeleteModal}>
+                <div className='edit-delete'>
+                    {showDeleteButton ?  <button className='delete-button' onClick={showDeleteModal}>
                         <FontAwesomeIcon icon={faTrash} size="2x" color="grey" />
                     </button> : null}
+                    {showDeleteButton ?  <button className='edit-button' onClick={handleEdit}>
+                        <FontAwesomeIcon icon={faPencil} size="2x" color="gray"/>
+                    </button> : null}
+                    
                 </div>
             </div>
             <DeleteConfirmation showModal={displayConfirmationModal} message={deleteMessage} hideModal={hideConfirmationModal} confirmModal={submitDelete}/>
-
         </article>
         
     )

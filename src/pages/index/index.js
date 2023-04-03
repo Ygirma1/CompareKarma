@@ -14,10 +14,6 @@ const Home = () => {
   const [data, setData] = useState([]);
   const [companyName, setCompanyName] = useState('');
   const [newItemAdded, setNewItemAdded] = useState(false);
-
-  const handleButtonClick = () => {
-    navigate('/post');
-  };
   const [openModal, setOpenModal] = useState(false)
 
   // getting business name

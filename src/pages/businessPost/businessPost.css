@@ -43,14 +43,14 @@
 }
 
 /*.search-wrapper is the select box for the multiselect drop-down element*/
-.link, .courseName, .price, .postbootcamp-description, .length, .search-wrapper {
-    max-width: 320px;
-    min-width: 320px;
-    border-radius: 10px;
-    border-style: solid;
-    border-width: 0.5px;
-    border-color: black;
-    background-color: field;
+.link, .courseName, .price, .postbootcamp-description, .length, .search-wrapper /*,.react-dropdown-select*/ {
+    max-width: 320px !important;
+    min-width: 320px !important;
+    border-radius: 10px !important;
+    border-style: solid !important;
+    border-width: 0.5px !important;
+    border-color: black !important;
+    background-color: field !important;
 }
 
 input, #multiselectContainerReact {
@@ -85,3 +85,8 @@ input, #multiselectContainerReact {
     width: 40px;
     position: absolute;
 }
+
+/* .highlightOption {
+    background: transparent !important;
+    color: black !important;
+} */
