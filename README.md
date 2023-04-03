@@ -1,6 +1,17 @@
 # CompareKarma
 CompareKarma is a web-based search index that allows you to compare between prices, ratings, and offerings of existing online bootcamps on the market, allowing you to choose what is best for your budget.
 ## Release Notes
+### Version 0.4.0
+
+#### New Features
+* Business users can now update their bootcamps information
+* Business users can now delete their bootcamps
+
+#### Bug Fixes
+*  Fixed a bug where upon registering, the post button did not show
+
+#### Known Issues
+* Length of bootcamp card is sized incorrectly depending on text length
 ### Version 0.3.0
 
 #### New Features
