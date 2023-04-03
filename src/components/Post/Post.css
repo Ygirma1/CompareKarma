@@ -135,3 +135,11 @@ p {
     background-color: transparent;
     margin: 1rem;
 }
+
+.edit-delete {
+    /* display: inline-flex; */
+}
+
+.edit-button {
+    float: right;
+}
