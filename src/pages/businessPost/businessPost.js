@@ -50,60 +50,43 @@ const BusinessPost = ({ closeModal }) => {
     e.preventDefault();
 
     if (!isEditing) {
-        let newFormat = [];
-        format.forEach((e) => newFormat.push(e.key));
-        let newCourseTypes = [];
-        courseTypes.forEach((e) => newCourseTypes.push(e.key));
-
         const res = axios.put(`${base_url}/newBusinessCourse?` + 
         'company_name=' + companyName +
-        '&course_format=' + newFormat + 
+        '&course_format=' + format + 
         '&course_name=' + name + 
         '&length_of_course=' + length + 
         '&cost=' + price + 
         '&description_of_bootcamp=' + desc + 
-        '&course_type=' + newCourseTypes + 
+        '&course_type=' + courseTypes + 
         '&link=' + link +
         '&business_id=' + id);
 
     } else {
-        let newFormat = [];
-        try {
-            format.forEach((e) => newFormat.push(e.key));
-        } catch {
-            newFormat = dataToFill.course_format;
-        }
-        
-        let newCourseTypes = [];
-        try {
-            courseTypes.forEach((e) => newCourseTypes.push(e.key));
-        } catch {
-            newCourseTypes = dataToFill.course_type;
-        }
-        
-        console.log(format, newFormat)
-
         const res = axios.put(`${base_url}/updateBusinessCourse?`+
         'course_id=' + dataToFill.course_id + 
-        '&course_format=' + newFormat + 
+        '&course_format=' + format + 
         '&course_name=' + name + 
         '&length_of_course=' + length + 
         '&cost=' + price + 
         '&description_of_bootcamp=' + desc + 
-        '&course_type=' + newCourseTypes + 
+        '&course_type=' + courseTypes + 
         '&link=' + link + 
         '&sponsored=' + dataToFill.sponsored);
     }
 
-    // closeModal(false);
-    navigate('/');
+    try {
+        closeModal(false);
+        navigate('/');
+    } catch {
+        navigate('/');
+    }
   };
 
-  const handleSelectCourseTypes = (selectedList) => {
-    setCourseTypes(selectedList);
+  const handleSelectFormat2 = (selectedItem) => {
+    setFormat(selectedItem);
   };
-  const handleSelectFormat = (selectedList) => {
-    setFormat(selectedList);
+  const handleSelectCourseTypes2 = (selectedItem) => {
+    setCourseTypes(selectedItem);
   };
 
   const handleRemoveCourseTypes = (selectedList) => {
@@ -112,12 +95,6 @@ const BusinessPost = ({ closeModal }) => {
   const handleRemoveFormat = (selectedList) => {
     setCourseTypes(selectedList);
   };
-
-  const formatOptions = [
-    { key: 'In-Person' },
-    { key: 'Online' },
-    { key: 'Hybrid' },
-  ]
 
   return (
     <div className='post-form-container'>
@@ -159,14 +136,14 @@ const BusinessPost = ({ closeModal }) => {
                 </div>
                   <label className='label2'>Location</label>
                     <Multiselect
-                            className='location'
-                            displayValue="key"
-                            onRemove={handleRemoveFormat}
-                            onSelect={handleSelectFormat}
-                            options={formatOptions}
-                            selectedValues={format}
-                            singleSelect={true}
-                        />
+                        isObject={false}
+                        onRemove={handleRemoveFormat}
+                        onSelect={handleSelectFormat2}
+                        options={['In-Person', 'Online', 'Hybrid']}
+                        selectedValues={format}
+                        singleSelect={true}
+                        avoidHighlightFirstOption={true}
+                    />
                 <div className='price-div'>
                     <label className='label2' htmlFor="price">Estimated Cost</label>
                     {!dataToFill?
@@ -221,22 +198,13 @@ const BusinessPost = ({ closeModal }) => {
                 <div className='coursetype-div'>
                     <label className='label2'>Course Type</label>
                     <Multiselect
-                        className='course-type'
-                        displayValue="key"
+                        isObject={false}
                         onRemove={handleRemoveCourseTypes}
-                        onSelect={handleSelectCourseTypes}
+                        onSelect={handleSelectCourseTypes2}
                         selectedValues={courseTypes}
                         singleSelect={true}
-                        options={[
-                            { key: 'UX/UI' },
-                            { key: 'Project Management' },
-                            { key: 'Product Management' },
-                            { key: 'Data Analytics' },
-                            { key: 'Technology Sales' },
-                            { key: 'Software Engineering' },
-                            { key: 'Digital Marketing' },
-                        ]}
-                        // showCheckbox
+                        avoidHighlightFirstOption={true}
+                        options={['UX/UI', 'Project Management', 'Product Management', 'Data Analytics', 'Technology Sales', 'Software Engineering', 'Digital Marketing']}
                     />
                     <div className='post-bootcamp-button-div'>
                         <button type="submit" className='submit-post-bootcamp-button'>Submit</button>

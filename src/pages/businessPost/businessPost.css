@@ -43,7 +43,7 @@
 }
 
 /*.search-wrapper is the select box for the multiselect drop-down element*/
-.link, .courseName, .price, .postbootcamp-description, .length, .search-wrapper {
+.link, .courseName, .price, .postbootcamp-description, .length, .search-wrapper /*,.react-dropdown-select*/ {
     max-width: 320px !important;
     min-width: 320px !important;
     border-radius: 10px !important;
@@ -86,7 +86,7 @@ input, #multiselectContainerReact {
     position: absolute;
 }
 
-.highlightOption {
+/* .highlightOption {
     background: transparent !important;
     color: black !important;
-}
+} */
