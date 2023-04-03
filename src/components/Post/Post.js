@@ -1,5 +1,4 @@
 import React, { useState, useEffect }  from 'react';
-import StarRatings from 'react-star-ratings';
 import axios from 'axios';
 import DeleteConfirmation from '../DeleteConfirmation';
 import './Post.css';
@@ -59,7 +58,18 @@ const Post = ({ post }) => {
         '&course_type=' + 'test' + 
         '&link=' + 'saf' + 
         '&sponsored=' + '1');
-        navigate('/post');
+
+        const dataToFill = {
+            course_id: post.course_id,
+            course_name: post.course_name,
+            description_of_bootcamp: post.description_of_bootcamp,
+            length_of_course: post.length_of_course,
+            course_format: post.course_format,
+            cost: post.cost,
+            link: post.link
+
+        };
+        navigate('/post', { state: { dataToFill } });
     }
    
 
@@ -77,7 +87,6 @@ const Post = ({ post }) => {
                         </div>
                     }
                     <div className='stars'>
-                        {/* <StarRatings rating={post.review_score} starRatedColor="#ed6e2e" starDimension='25px' starSpacing='5px'/> */}
                     </div>
                     <a className="linkToBootcamp" href={post.link}>Visit Their Website</a>
                 </div>
@@ -104,7 +113,7 @@ const Post = ({ post }) => {
                     <div className="description">{post.description_of_bootcamp}</div>
                 </div>
                 <div className='edit-delete'>
-                    {showDeleteButton ?  <button className='delete-button' /* onClick={handleClick} */ onClick={showDeleteModal}>
+                    {showDeleteButton ?  <button className='delete-button' onClick={showDeleteModal}>
                         <FontAwesomeIcon icon={faTrash} size="2x" color="grey" />
                     </button> : null}
                     {showDeleteButton ?  <button className='edit-button' onClick={handleEdit}>
