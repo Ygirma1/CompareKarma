@@ -55,7 +55,7 @@ const Post = ({ post }) => {
         '&length_of_course=' + '123' + 
         '&cost=' + '123' + 
         '&description_of_bootcamp=' + '123' + 
-        '&course_type=' + 'test' + 
+        '&course_type=' + 'Data Analytics' + 
         '&link=' + 'saf' + 
         '&sponsored=' + '1');
 
@@ -66,7 +66,8 @@ const Post = ({ post }) => {
             length_of_course: post.length_of_course,
             course_format: post.course_format,
             cost: post.cost,
-            link: post.link
+            link: post.link,
+            course_type: post.course_type
 
         };
         navigate('/post', { state: { dataToFill } });

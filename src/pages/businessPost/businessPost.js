@@ -31,11 +31,11 @@ const BusinessPost = ({ closeModal }) => {
     }, []); 
 
     useEffect(() => {
-        if (dataToFill.course_format) {
+        if (dataToFill.course_format && dataToFill.course_type) {
           setFormat([dataToFill.course_format]);
+          setCourseTypes([dataToFill.course_type]);
         }
       }, []);
-      console.log("FORMAT: " + format)
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -81,7 +81,7 @@ const BusinessPost = ({ closeModal }) => {
     { key: 'Hybrid' },
   ]
 
-//   console.log(dataToFill.course_format)
+  console.log(format, courseTypes)
 
   return (
     <div className='post-form-container'>
