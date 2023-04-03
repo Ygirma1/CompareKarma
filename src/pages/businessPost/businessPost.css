@@ -85,3 +85,8 @@ input, #multiselectContainerReact {
     width: 40px;
     position: absolute;
 }
+
+.highlightOption {
+    background: transparent !important;
+    color: black !important;
+}

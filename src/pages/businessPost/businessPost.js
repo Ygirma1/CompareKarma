@@ -19,7 +19,6 @@ const BusinessPost = ({ closeModal }) => {
   const [courseTypes, setCourseTypes] = useState('');
   const [length, setLength] = useState('');
   const [companyName, setCompanyName] = useState('')
-
   const { state } = useLocation();
   const dataToFill = state ? state.dataToFill : null;
 
@@ -29,7 +28,14 @@ const BusinessPost = ({ closeModal }) => {
             setCompanyName(res.data[0].business_name);
         };
         retrieveBusinessInfo()
-    }, []); //no dependencies
+    }, []); 
+
+    useEffect(() => {
+        if (dataToFill.course_format) {
+          setFormat([dataToFill.course_format]);
+        }
+      }, []);
+      console.log("FORMAT: " + format)
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -69,9 +75,13 @@ const BusinessPost = ({ closeModal }) => {
     setCourseTypes(selectedList);
   };
 
-  const handleChange = (event) => {
-    setFormat(event.target.value);
-  };
+  const formatOptions = [
+    { key: 'In-Person' },
+    { key: 'Online' },
+    { key: 'Hybrid' },
+  ]
+
+//   console.log(dataToFill.course_format)
 
   return (
     <div className='post-form-container'>
@@ -112,20 +122,47 @@ const BusinessPost = ({ closeModal }) => {
                     }
                 </div>
                   <label className='label2'>Location</label>
+                    {/* {!dataToFill?
+                        ( <Multiselect
+                            className='location'
+                            displayValue="key"
+                            onRemove={handleRemoveFormat}
+                            onSelect={handleSelectFormat}
+                            selectedValues={format}
+                            singleSelect={true}
+                            options={[
+                                { key: 'In-Person' },
+                                { key: 'Online' },
+                                { key: 'Hybrid' },
+                            ]}
+                            showCheckbox
+                        />) : 
+                        ( <Multiselect
+                            className='location'
+                            displayValue="key"
+                            onRemove={handleRemoveFormat}
+                            onSelect={handleSelectFormat}
+                            selectedValues={dataToFill.course_format}
+                            singleSelect={true}
+                            options={[
+                                { key: 'In-Person' },
+                                { key: 'Online' },
+                                { key: 'Hybrid' },
+                            ]}
+                            showCheckbox
+                        />)
+                    } */}
                     <Multiselect
-                        className='location'
-                        displayValue="key"
-                        onRemove={handleRemoveFormat}
-                        onSelect={handleSelectFormat}
-                        selectedValues={format}
-                        singleSelect={true}
-                        options={[
-                            { key: 'In-Person' },
-                            { key: 'Online' },
-                            { key: 'Hybrid' },
-                        ]}
-                        showCheckbox
-                    />
+                            className='location'
+                            displayValue="key"
+                            onRemove={handleRemoveFormat}
+                            onSelect={handleSelectFormat}
+                            options={formatOptions}
+                            selectedValues={format}
+                            singleSelect={true}
+                            showCheckbox
+                        />
+                   
 
                 <div className='price-div'>
                     <label className='label2' htmlFor="price">Estimated Cost</label>
