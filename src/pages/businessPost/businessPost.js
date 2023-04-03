@@ -46,8 +46,6 @@ const BusinessPost = ({ closeModal }) => {
         
       }, []);
 
-      console.log("EDITING: " + isEditing)
-
   const handleSubmit = async(e) => {
     e.preventDefault();
 
@@ -68,13 +66,22 @@ const BusinessPost = ({ closeModal }) => {
         '&link=' + link +
         '&business_id=' + id);
 
-        closeModal(false);
-
     } else {
         let newFormat = [];
-        format.forEach((e) => newFormat.push(e.key));
+        try {
+            format.forEach((e) => newFormat.push(e.key));
+        } catch {
+            newFormat = dataToFill.course_format;
+        }
+        
         let newCourseTypes = [];
-        courseTypes.forEach((e) => newCourseTypes.push(e.key));
+        try {
+            courseTypes.forEach((e) => newCourseTypes.push(e.key));
+        } catch {
+            newCourseTypes = dataToFill.course_type;
+        }
+        
+        console.log(format, newFormat)
 
         const res = axios.put(`${base_url}/updateBusinessCourse?`+
         'course_id=' + dataToFill.course_id + 
@@ -88,11 +95,9 @@ const BusinessPost = ({ closeModal }) => {
         '&sponsored=' + dataToFill.sponsored);
     }
 
-    
+    // closeModal(false);
     navigate('/');
   };
-
-  console.log("FORMAT: " + format)
 
   const handleSelectCourseTypes = (selectedList) => {
     setCourseTypes(selectedList);
@@ -161,7 +166,6 @@ const BusinessPost = ({ closeModal }) => {
                             options={formatOptions}
                             selectedValues={format}
                             singleSelect={true}
-                            showCheckbox
                         />
                 <div className='price-div'>
                     <label className='label2' htmlFor="price">Estimated Cost</label>
@@ -232,7 +236,7 @@ const BusinessPost = ({ closeModal }) => {
                             { key: 'Software Engineering' },
                             { key: 'Digital Marketing' },
                         ]}
-                        showCheckbox
+                        // showCheckbox
                     />
                     <div className='post-bootcamp-button-div'>
                         <button type="submit" className='submit-post-bootcamp-button'>Submit</button>
