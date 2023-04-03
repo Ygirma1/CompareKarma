@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Checkbox, FormControlLabel, Typography, Radio, RadioGroup } from '@mui/material';
+import { Checkbox, FormControl, FormLabel, FormControlLabel, Typography, Radio, RadioGroup } from '@mui/material';
 import Multiselect from 'multiselect-react-dropdown';
 import './register.css';
 import { useNavigate } from 'react-router-dom';
+import { FlashOnTwoTone } from '@material-ui/icons';
 
 const base_url = "http://localhost:8080"
 
@@ -15,7 +16,7 @@ const Register = (props) => {
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [desc, setDesc] = useState('');
-    const [profit, setProfit] = useState(false);
+    const [profit, setProfit] = useState();
     const [courseTypes, setCourseTypes] = useState([]);
 
     // handles submission of form
@@ -41,8 +42,11 @@ const Register = (props) => {
         })
     };
 
-    const handleChange = () => {
-        setProfit(!profit)
+    const handleChange = (event) => {
+        if (event.target.value === "1")
+            setProfit(1);
+        else if (event.target.value === "0")
+            setProfit(0);
     };
 
     const handleSelect = (selectedList) => {
@@ -97,23 +101,26 @@ const Register = (props) => {
                 type="password"
                 placeholder='********'>
             </input>
-        
-            {/* <RadioGroup
-                row
-                aria-labelledby="demo-controlled-radio-buttons-group"
-                name="controlled-radio-buttons-group"
-                // onChange={handleChange}
-                // value={profit}
-            >
-                <FormControlLabel control={<Radio value={profit} onChange={handleChange}/>} label="For-Profit" />
-                <FormControlLabel control={<Radio value={profit} onChange={handleChange}/>} label="Non-Profit" />
-            </RadioGroup> */}
 
-            <FormControlLabel
+            <FormControl>
+                <FormLabel id="demo-controlled-radio-buttons-group"></FormLabel>
+                <RadioGroup
+                    row
+                    aria-labelledby="demo-controlled-radio-buttons-group"
+                    name="controlled-radio-buttons-group"
+                    value={profit}
+                    onChange={handleChange}
+  >
+                    <FormControlLabel value="1" control={<Radio />} label="For-Profit" />
+                    <FormControlLabel value="0" control={<Radio />} label="Non-Profit" />
+                </RadioGroup>
+            </FormControl>
+
+            {/*<FormControlLabel
                 control={<Checkbox value={profit} onChange={handleChange} />}
                 label={<label>Profit Status</label>}
                 className='profit-label'
-            />
+            />*/}
 
             Course Type
             <Multiselect
