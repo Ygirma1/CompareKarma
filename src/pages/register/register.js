@@ -5,6 +5,9 @@ import Multiselect from 'multiselect-react-dropdown';
 import './register.css';
 import { useNavigate } from 'react-router-dom';
 import { FlashOnTwoTone } from '@material-ui/icons';
+import IconButton from "@material-ui/core/IconButton";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 
 const base_url = "http://localhost:8080"
 
@@ -18,6 +21,7 @@ const Register = (props) => {
     const [desc, setDesc] = useState('');
     const [profit, setProfit] = useState();
     const [courseTypes, setCourseTypes] = useState([]);
+    const [passwordShown, setPasswordShown] = useState(false);
 
     // handles submission of form
     const handleSubmit = (e) => {
@@ -57,6 +61,14 @@ const Register = (props) => {
         setCourseTypes(selectedList);
     };
 
+    const togglePassword = () => {
+        if (!passwordShown) {
+            setPasswordShown(true);
+        } else {
+            setPasswordShown(false);
+        }
+    }
+
   return (
     <div className='auth-form-container'>
         <form className='register-form' onSubmit={handleSubmit}>
@@ -94,13 +106,18 @@ const Register = (props) => {
             </input>
 
             <label className='label2' htmlFor="password">Password</label>
-            <input
-                className='input2'
-                value={pass}
-                onChange={(e) => setPass(e.target.value)}
-                type="password"
-                placeholder='********'>
-            </input>
+            <div className="password-input">
+                <input
+                    className = 'input2'
+                    value = {pass}
+                    onChange = {(e) => setPass(e.target.value)}
+                    type = {passwordShown ? "text" : "password"}
+                    placeholder = '********'>
+                </input>
+                <button type="button" className = "toggle-password-visibility-button" onClick={togglePassword}>
+                    { !passwordShown ? <FontAwesomeIcon icon={faEye} size="lg" /> : <FontAwesomeIcon icon={faEyeSlash} size="lg"/> }
+                </button>
+            </div>
 
             <FormControl>
                 <FormLabel id="demo-controlled-radio-buttons-group"></FormLabel>

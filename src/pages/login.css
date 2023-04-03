@@ -1,0 +1,26 @@
+/* import font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+/*Styling for login elements*/
+
+.login-password-input{
+    display: flex;
+    align-items: center;
+}
+
+.login-input2 {
+    width: 350px;
+}
+
+.login-toggle-password-visibility-button {
+    position: absolute;
+    transform: translate(355px);
+    background-color: transparent;
+    border: none;
+}
+
+.login-toggle-password-visibility-button:hover {
+    cursor: pointer;
+}
