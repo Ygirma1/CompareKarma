@@ -4,14 +4,19 @@ CompareKarma is a web-based search index that allows you to compare between pric
 ### Version 0.4.0
 
 #### New Features
-* Business users can now update their bootcamps information
-* Business users can now delete their bootcamps
+* Business users can now update their bootcamp's information
+* Business users can now delete their bootcamps 
+* Business users can now toggle the password visibility when creating their account
+* Business users can now create bootcamps through a modal pop-up
 
 #### Bug Fixes
 *  Fixed a bug where upon registering, the post button did not show
+*  Fixed a bug where bootcamp posts duplicate when searching
+*  Fixed a bug where first option of dropdowns are permanently highlighted
 
 #### Known Issues
 * Length of bootcamp card is sized incorrectly depending on text length
+* User must manually refresh the page when creating a post through the modal
 ### Version 0.3.0
 
 #### New Features
