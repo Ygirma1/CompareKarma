@@ -17,6 +17,7 @@ CompareKarma is a web-based search index that allows you to compare between pric
 #### Known Issues
 * Length of bootcamp card is sized incorrectly depending on text length
 * User must manually refresh the page when creating a post through the modal
+---
 ### Version 0.3.0
 
 #### New Features
@@ -30,7 +31,7 @@ CompareKarma is a web-based search index that allows you to compare between pric
 
 #### Known Issues
 * First option of multiselect of course type in register page is permanently highlighted even when hovering over another option
-## Release Notes
+---
 ### Version 0.2.0
 
 #### New Features
