@@ -42,7 +42,8 @@ const Register = (props) => {
         '&business_password=' + pass)
         .then(response => {
             localStorage.setItem('business_id', JSON.stringify(response.data.business_id));
-            navigate("/");
+            props.onLogin();
+            window.location.href='/';
         })
     };
 
