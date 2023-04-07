@@ -41,7 +41,7 @@ function App() {
                 {isLoggedIn && (
             <Route path="/post" element={<BusinessPost />} />
           )}
-                <Route path='/login' element={currentForm === "login" ? <Login onFormSwitch={toggleForm} onLogin={handleLogin} setIsLoggedIn={setIsLoggedIn}/> : <Register onFormSwitch={toggleForm}/>} /> 
+                <Route path='/login' element={currentForm === "login" ? <Login onFormSwitch={toggleForm} onLogin={handleLogin} setIsLoggedIn={setIsLoggedIn}/> : <Register onFormSwitch={toggleForm} onLogin={handleLogin} />} /> 
             </Routes>
         </Router>
         </>
