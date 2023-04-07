@@ -103,7 +103,7 @@ const Post = ({ post }) => {
                     </div>
                     <div className="margin3">
                         <div className="underline">Length:</div>
-                        <div> {post.length_of_course}</div>
+                        <div> {post.length_of_course + " weeks"} </div>
                     </div>
                     <div className="margin4">
                         <div className="underline">Cost of Attendance:</div>

@@ -162,13 +162,13 @@ const BusinessPost = ({ closeModal }) => {
                     }   
                 </div>
                 <div className='length-div'>
-                    <label className='label2' htmlFor="length">Length of Course</label>
+                    <label className='label2' htmlFor="length">Length of Course (in weeks)</label>
                     {!dataToFill? 
                         ( <input
                             className='length'
                             value={length}
                             onChange={(e) => setLength(e.target.value)}
-                            placeholder='Length of Course'
+                            placeholder='# of weeks'
                         />) : 
                         ( <input
                             className='length'

@@ -42,6 +42,10 @@ const Search = () => {
             return data.sort((a,b) => a.cost - b.cost)
         } else if (sortParam == "Descending") {
             return data.sort((a,b) => b.cost - a.cost)
+        } else if (sortParam == "Ascending_Length") {
+            return data.sort((a,b) => a.length_of_course - b.length_of_course)
+        } else if (sortParam == "Descending_Length") {
+            return data.sort((a,b) => b.length_of_course - a.length_of_course)
         } else {
             return data
         }
@@ -85,6 +89,15 @@ const Search = () => {
             }}
             className="custom-select">
                 <option value="Unsorted">Price</option>
+                <option value="Ascending">Ascending</option>
+                <option value="Descending">Descending</option>
+        </select>
+        <select
+            onChange={(e) => {
+                setSortParam(e.target.value)
+            }}
+            className="custom-select">
+                <option value="Unsorted">Course Length</option>
                 <option value="Ascending">Ascending</option>
                 <option value="Descending">Descending</option>
         </select>
