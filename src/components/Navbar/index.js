@@ -46,6 +46,11 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
               Post
             </NavLink>
           )}
+                 {isLoggedIn && (
+            <NavLink to='/profile'>
+              Profile
+            </NavLink>
+          )}
                        {!isLoggedIn && (
             <NavBtnLink to='/login'>
               Login

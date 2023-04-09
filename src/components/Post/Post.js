@@ -73,13 +73,33 @@ const Post = ({ post }) => {
         };
         navigate('/post', { state: { dataToFill } });
     }
-   
+    const [imageUrl, setImageUrl] = useState('');
+    const [image, setImage] = useState({ preview: '', data: '' })
+      useEffect( () => {
+        fetch('http://localhost:8080/imagepathcourse?course_id='+post.course_id, {
+        
+        method:'GET',
+        headers: {
+        //"Content-Type": 'application/json, charset=UTF-8',
+        "Accept": "application/json, text/html",
+        
+        }, credentials:"include"
+        
+          }).then(data=> data.json())
+          .then((data)=> {
+        console.log(data + "This is the packet img returned")
+        setImage("http://localhost:8080/getimg/"+ data.image)
+        console.log(image)
+        
+          });
+        })
+
 
     return (
         
         <article className='delete-container'>
             {/* <img className="images" src={post.img_url} alt="new"></img> */}
-            {post.img_url ? <img className="images" src={post.img_url}/> : null}
+           
             <div className="test1">
                 <div className='test2'>
                     <h2 className="company-name">{post.company_name}</h2>
@@ -92,8 +112,11 @@ const Post = ({ post }) => {
                     </div>
                     <a className="linkToBootcamp" href={post.link}>Visit Their Website</a>
                 </div>
+                <img src={image} alt="Loaded Image" />
                 <div className="container">
                     <div className="margin1">
+                   
+                    
                         <div className="underline">Course Type:</div>
                         <div> {post.course_type}</div>
                     </div>

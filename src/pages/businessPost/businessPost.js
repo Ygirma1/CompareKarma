@@ -22,7 +22,14 @@ const BusinessPost = ({ closeModal }) => {
   const [format, setFormat] = useState(dataToFill ? dataToFill.course_format : '');
   const [courseTypes, setCourseTypes] = useState(dataToFill ? dataToFill.course_type : '');
   const [length, setLength] = useState(dataToFill ? dataToFill.length_of_course : '');
-
+  const [image, setImage] = useState({ preview: '', data: '' })
+  const handleFileChange = (e) => {  // this just changes the file image when you upload it
+    const img = {
+      preview: URL.createObjectURL(e.target.files[0]),
+      data: e.target.files[0],
+    }
+    setImage(img)
+  }
   useEffect(() => {
         const retrieveBusinessInfo = async() => {
             const res = await axios.get(`${base_url}/getBusinessInformation?` + 'business_id=' + id);
@@ -46,6 +53,26 @@ const BusinessPost = ({ closeModal }) => {
         
       }, []);
 
+    //   useEffect( () => {
+    //     fetch('http://localhost:8080/imagepathcourse?course='+course_id, {
+        
+    //     method:'GET',
+    //     headers: {
+    //     //"Content-Type": 'application/json, charset=UTF-8',
+    //     "Accept": "application/json, text/html",
+        
+    //     }, credentials:"include"
+        
+    //       }).then(data=> data.json())
+    //       .then((data)=> {
+    //     console.log(data)
+    //     setImage("http://localhost:8080/getimg/"+ data.image)
+    //     console.log(image)
+        
+    //       });
+    //     })
+        var course_id;
+
   const handleSubmit = async(e) => {
     e.preventDefault();
 
@@ -59,7 +86,44 @@ const BusinessPost = ({ closeModal }) => {
         '&description_of_bootcamp=' + desc + 
         '&course_type=' + courseTypes + 
         '&link=' + link +
-        '&business_id=' + id);
+        '&business_id=' + id)
+        .then(res=> {
+                console.log(res);
+          course_id = res.data.course_id;
+
+         e.preventDefault()
+         let formData = new FormData()
+         formData.append('file', image.data)
+         
+       
+      
+         return fetch('http://localhost:8080/imagecourse?course_id='+course_id,{
+     
+           method:"POST",
+           body: formData,
+           headers:{
+               "Accept": "multipart/form-data",
+     
+           },
+           credentials:"include"
+     
+         }).then(res=>res.json())
+         .then(res=>{
+           
+       
+         // navigate("/");
+         }).catch(error=>{
+     
+             console.error(error)
+     
+         })
+
+        });
+
+
+    
+
+        // set image path
 
     } else {
         const res = axios.put(`${base_url}/updateBusinessCourse?`+
@@ -71,7 +135,38 @@ const BusinessPost = ({ closeModal }) => {
         '&description_of_bootcamp=' + desc + 
         '&course_type=' + courseTypes + 
         '&link=' + link + 
-        '&sponsored=' + dataToFill.sponsored);
+        '&sponsored=' + dataToFill.sponsored).then(res=> {
+            console.log(res);
+      course_id = dataToFill.course_id;
+
+     e.preventDefault()
+     let formData = new FormData()
+     formData.append('file', image.data)
+     
+   
+  
+     return fetch('http://localhost:8080/imagecourse?course_id='+course_id,{
+ 
+       method:"POST",
+       body: formData,
+       headers:{
+           "Accept": "multipart/form-data",
+ 
+       },
+       credentials:"include"
+ 
+     }).then(res=>res.json())
+     .then(res=>{
+       
+   
+     // navigate("/");
+     }).catch(error=>{
+ 
+         console.error(error)
+ 
+     })
+
+    });;
     }
 
     try {
@@ -206,6 +301,21 @@ const BusinessPost = ({ closeModal }) => {
                         avoidHighlightFirstOption={true}
                         options={['UX/UI', 'Project Management', 'Product Management', 'Data Analytics', 'Technology Sales', 'Software Engineering', 'Digital Marketing']}
                     />
+          
+      <h1>Upload Logo</h1>
+      {image.preview && <img src={image.preview} width='100' height='100' />}
+      <hr></hr>
+     
+        <input type='file' name='file' onChange={handleFileChange}></input>   
+       
+     
+     
+     
+  
+      
+      
+    
+            
                     <div className='post-bootcamp-button-div'>
                         <button type="submit" className='submit-post-bootcamp-button'>Submit</button>
                     </div>

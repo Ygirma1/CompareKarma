@@ -13,6 +13,7 @@ const base_url = "http://localhost:8080"
 
 const Register = (props) => {
     const navigate = useNavigate();
+    const [image, setImage] = useState({ preview: '', data: '' })
 
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
@@ -24,14 +25,14 @@ const Register = (props) => {
     const [passwordShown, setPasswordShown] = useState(false);
 
     // handles submission of form
-    const handleSubmit = (e) => {
+    const handleSubmit =  (e) => {
         e.preventDefault();
 
         // get just keys from course type array
         let newCourseTypes = [];
         courseTypes.forEach((e) => newCourseTypes.push(e.key));
 
-        const res = axios.put(`${base_url}/newUser?`+
+        const res =  axios.put(`${base_url}/newUser?`+
         'business_name=' + name + 
         '&phone_number=' + phone +
         '&business_desc=' + desc + 
@@ -177,8 +178,11 @@ const Register = (props) => {
             
             <button className='submit-register-button'/*onClick={event => window.location.href='/'}*/ type='submit'>Sign Up</button>
         </form>
+        
         <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
+        
     </div>
+    
   );
 };
 

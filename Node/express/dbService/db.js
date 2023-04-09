@@ -135,12 +135,15 @@ module.exports = {
 
     return new Promise((resolve, reject) => {
       const query = "select email from comparekarma.business_user where email=\"" + email + "\";"; 
+      console.log(query);
       con.query(query, (err, result) => {
         console.log("duplicate email check result: ", result);
         if (err) {
           console.error(err.message);
           console.log("failed to insert business user");
         } else if (result.length > 0) {
+
+          console.log(result);
           console.error("Error adding user: email already exists");
           reject(false);
           return;
@@ -358,8 +361,91 @@ module.exports = {
         }
       })
     })
+  },
+
+  imageUploadSQL : (req)=> {
+    var image = req.file.filename
+    var business_id = req.query.business_id;
+
+
+    return new Promise((resolve, reject) => {
+      con.query("update comparekarma.business_user set imgpath = ?  where business_id = ?;", [image,business_id],
+      (err, result) => {
+        if (err) {
+          console.log("could not update path");
+          console.log(err);
+          reject(false);
+        } else {
+          console.log(result);
+          resolve(result);
+        }
+      })
+    })
+  },
+  getimgpath: (req)=> {
+  
+    var business_id = req.query.business_id;
+
+
+    return new Promise((resolve, reject) => {
+      con.query("select imgpath from comparekarma.business_user where  business_id = ?;", [business_id],
+      (err, result) => {
+        if (err) {
+          console.log("could not update path");
+          console.log(err);
+          reject(false);
+        } else {
+          console.log(result);
+          resolve(result);
+        }
+      })
+    })
+  },
+
+  imageUploadSQLCourse : (req)=> {
+    var image = req.file.filename
+    var course_id = req.query.course_id;
+
+
+    return new Promise((resolve, reject) => {
+      con.query("update comparekarma.bootcamps set imgpathcourse = ?  where course_id = ?;", [image,course_id],
+      (err, result) => {
+        if (err) {
+          console.log("could not update path");
+          console.log(err);
+          reject(false);
+        } else {
+          console.log(result);
+          resolve(result);
+        }
+      })
+    })
+  },
+  getimgpathCourse: (req)=> {
+  
+    var course_id = req.query.course_id;
+
+
+    return new Promise((resolve, reject) => {
+      con.query("select imgpathcourse from comparekarma.bootcamps where  course_id = ?;", [course_id],
+      (err, result) => {
+        if (err) {
+          console.log("could not update path");
+          console.log(err);
+          reject(false);
+        } else {
+          console.log(result);
+          resolve(result);
+        }
+      })
+    })
   }
+
+
 }
+
+
+
 
 function comparePassword(plaintextPassword, hash) {
 console.log(plaintextPassword);
