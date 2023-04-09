@@ -76,10 +76,10 @@ console.error(error)
         <button type='submit'>Submit</button>
       </form>
       {status && <h4>{status}</h4>}
-      {images && <img src={images} alt="img"/>}
+      {image && <img src={image} alt="img"/>}
   
       
-        <button type='submit'>Submit</button>
+      
     
     </div>
   

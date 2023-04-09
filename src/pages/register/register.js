@@ -180,7 +180,9 @@ const Register = (props) => {
         </form>
         
         <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
+        
     </div>
+    
   );
 };
 

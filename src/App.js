@@ -9,7 +9,7 @@ import Search from './pages/search/search';
 import Register from './pages/register/register';
 import BusinessPost from './pages/businessPost/businessPost';
 import Profile from './pages/profile';
-import Profile from './pages/profile';
+
 
 function App() {
     const [currentForm, setCurrentForm] = useState('login');
@@ -47,7 +47,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
           )}
 
-                <Route path='/login' element={currentForm === "login" ? <Login onFormSwitch={toggleForm} onLogin={handleLogin} setIsLoggedIn={setIsLoggedIn}/> : <Register onFormSwitch={toggleForm}/>} /> 
+<Route path='/login' element={currentForm === "login" ? <Login onFormSwitch={toggleForm} onLogin={handleLogin} setIsLoggedIn={setIsLoggedIn}/> : <Register onFormSwitch={toggleForm} onLogin={handleLogin} />} />
             </Routes>
         </Router>
         </>

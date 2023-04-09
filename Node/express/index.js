@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
 const upload = multer({ 
   storage: storage 
 })
-
+app.use('/getimg/', express.static(path.join(__dirname, 'imgUploadBusiness')));
 
 var nodemailer = require('nodemailer');
 
@@ -64,6 +64,30 @@ app.post('/image', upload.single('file'), (req, res) => {
 
 })
 
+
+app.post('/imagecourse', upload.single('file'), (req, res) => {
+
+
+  if (!req.file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
+    res.send({ msg:'Only image files (jpg, jpeg, png) are allowed!'})}
+    else {
+
+      
+          db.imageUploadSQLCourse(req).then(courses=> {
+
+          res.send(JSON.stringify(courses));
+      
+        }).catch(err => 
+        
+          res.status(500).json({ error: err })
+            
+        );
+    }
+
+
+
+})
+
 app.get("/imagepath", function(req,res) {
   console.log("imgpath here")
 
@@ -71,6 +95,26 @@ app.get("/imagepath", function(req,res) {
     if (result)
     res.send({
       image:result[0].imgpath
+    })
+
+  }).catch(err => 
+  
+    res.status(500).json({ error: err })
+      
+  );
+
+
+
+})
+
+
+app.get("/imagepathcourse", function(req,res) {
+  console.log("imgpath here in courses")
+
+  db.getimgpathCourse(req).then((result)=> {
+    if (result)
+    res.send({
+      image:result[0].imgpathcourse
     })
 
   }).catch(err => 
@@ -185,11 +229,11 @@ app.put("/newBusinessCourse", function(req, res) {
     .then(course => {
 
       console.log(JSON.stringify(course));
-      res.status(200).json({ status: true, result: "Course Added Succesfully!" });
+      res.status(200).json({ status: true, result: "Course Added Succesfully!" , course_id: course.insertId });
     })
     .catch(err => {
 
-      console.error(err);
+      console.error(err.json);
       
       res.status(500).json({ status: false, result: "Course Not Added." });
     });
