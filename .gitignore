@@ -5,7 +5,10 @@ node_modules
 /.pnp
 .pnp.js
 
+imgUploadBusiness
+
 # testing
+
 /coverage
 
 # production
