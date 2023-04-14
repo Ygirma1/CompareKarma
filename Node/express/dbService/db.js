@@ -226,6 +226,7 @@ module.exports = {
     });
     });
   },
+
   getBusinessInformation: (req)=> {
     return new Promise((resolve, reject) => {
       var business_id = req.query.business_id;
@@ -246,6 +247,7 @@ module.exports = {
       })
     });
   },
+
   getBusinessCourses: (req)=> {
     // provide me the user ID
     //I pull all from the backend
@@ -348,8 +350,8 @@ module.exports = {
 
     return new Promise((resolve, reject) => {
       con.query("update comparekarma.bootcamps set " +
-      "course_format = ?, course_name = ?, length_of_course = ?, cost = ?, description_of_bootcamp = ?, course_type = ?, link = ?, sponsored = ? where course_id = ?",
-      [course_format, course_name, length_of_course, cost, description_of_bootcamp, course_type, link, sponsored, course_id],
+      "course_format = ?, course_name = ?, length_of_course = ?, cost = ?, description_of_bootcamp = ?, course_type = ?, link = ?, sponsored = ?, imgpath = ? where course_id = ?",
+      [course_format, course_name, length_of_course, cost, description_of_bootcamp, course_type, link, sponsored, imgpath, course_id],
       (err, result) => {
         if (err) {
           console.log("could not update bootcamp");
@@ -367,7 +369,6 @@ module.exports = {
     var image = req.file.filename
     var business_id = req.query.business_id;
 
-
     return new Promise((resolve, reject) => {
       con.query("update comparekarma.business_user set imgpath = ?  where business_id = ?;", [image,business_id],
       (err, result) => {
@@ -382,6 +383,7 @@ module.exports = {
       })
     })
   },
+
   getimgpath: (req)=> {
   
     var business_id = req.query.business_id;
@@ -421,10 +423,10 @@ module.exports = {
       })
     })
   },
+
   getimgpathCourse: (req)=> {
   
     var course_id = req.query.course_id;
-
 
     return new Promise((resolve, reject) => {
       con.query("select imgpathcourse from comparekarma.bootcamps where  course_id = ?;", [course_id],
@@ -439,13 +441,27 @@ module.exports = {
         }
       })
     })
+  },
+
+  updatePassword: (req)=> {
+    var business_id = req.query.business_id;
+    var business_password = req.query.business_password;
+
+    return new Promise((resolve, reject) => {
+      con.query("update comparekarma.business_user set business_password = ? where business_id = ?", [business_password, business_id],
+      (err, result) => {
+        if (err) {
+          console.log("could not update password");
+          console.log(err);
+          reject(false);
+        } else {
+          console.log(result);
+          resolve(result);
+        }
+      })
+    })
   }
-
-
 }
-
-
-
 
 function comparePassword(plaintextPassword, hash) {
 console.log(plaintextPassword);
