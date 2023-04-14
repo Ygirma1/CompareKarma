@@ -81,6 +81,9 @@ app.post('/imagecourse', upload.single('file'), (req, res) => {
             
         );
     }
+
+
+
 })
 
 app.get("/imagepath", function(req,res) {
@@ -121,6 +124,10 @@ app.get("/imagepathcourse", function(req,res) {
 
 
 })
+
+
+
+
 
 app.get("/query", function(req,res) {
   console.log("we got here");
@@ -248,18 +255,6 @@ app.put("/updateBusinessCourse", function(req, res) {
     .catch(err => {
       console.error(err);
       res.status(500).json({ status: false, result: "Bootcamp update unsuccessful" });
-    })
-})
-
-app.put("/updatePassword", function(req, res) {
-  db.updatePassword(req)
-    .then(result => {
-      console.log(JSON.stringify(result));
-      res.status(200).json({ status: true, result: "Password successfully updated" });
-    })
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({ status: false, result: "Password update unsuccessful" });
     })
 })
 
