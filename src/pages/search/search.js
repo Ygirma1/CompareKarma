@@ -13,9 +13,10 @@ const Search = () => {
     const [data, setData] = useState([]);
     const [filterParam, setFilterParam] = useState(["All"]);
     const [sortParam, setSortParam] = useState(["All"])
+    const [filterParamFormat, setFilterParamFormat] = useState(["All"]);
 
     // search by company name, course name, and course type
-    const keys = ["company_name", "course_name", "course_type"];
+    const keys = ["company_name", "course_name", "course_type","course_format"];
     
     // search and filter while typing
     const search = (data) => {
@@ -27,6 +28,24 @@ const Search = () => {
                     )
                 })
             } else if (filterParam == "All") {
+                return keys.some((key) => {
+                    return (
+                        item[key].toLowerCase().includes(query.toLowerCase())
+                    )
+                })
+            }
+        })
+    }
+
+    const searchFormat = (data) => {
+        return data.filter((item) => {
+            if (item.course_format == filterParamFormat) {
+                return keys.some((key) => {
+                    return (
+                        item[key].toLowerCase().includes(query.toLowerCase())
+                    )
+                })
+            } else if (filterParamFormat == "All") {
                 return keys.some((key) => {
                     return (
                         item[key].toLowerCase().includes(query.toLowerCase())
@@ -74,7 +93,7 @@ const Search = () => {
         </button>
     </form>
     <div className='custom-select-container'>
-        <select
+        <select                     //select  the course type
             onChange={(e) => {
                 setFilterParam(e.target.value);
             }}
@@ -82,6 +101,16 @@ const Search = () => {
                 <option value="All">Course Type</option>
                 <option value="UI/UX">UI/UX</option>
                 <option value="SWE">SWE</option>
+        </select>
+        <select                     //select  the course type
+            onChange={(e) => {
+                setFilterParamFormat(e.target.value);
+            }}
+            className="custom-select">
+                 <option value="All">Course Format</option>
+                <option value="Online">Online</option>
+                <option value="Hybrid">Hybrid</option>
+                <option value="In-Person">In-Person</option>
         </select>
         <select
             onChange={(e) => {
@@ -102,10 +131,10 @@ const Search = () => {
                 <option value="Descending">Descending</option>
         </select>
     </div>
-    {<Table data={search(sort(data))}/>}
+    {<Table data={searchFormat(search(sort(data)))}/>} 
     </div>
   );
 };
-
+// basically the table entry does the parameters by sorting then searches through that
 export default Search;
 
