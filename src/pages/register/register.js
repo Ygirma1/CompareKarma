@@ -143,7 +143,7 @@ const Register = (props) => {
 
             Course Type
             <Multiselect
-                className='course-type'
+                className='register-coursetype'
                 displayValue="key"
                 onKeyPressFn={function noRefCheck(){}}
                 onRemove={handleRemove}

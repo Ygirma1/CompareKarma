@@ -10,8 +10,12 @@
     align-items: center;
 }
 
-.login-input2 {
+.login-input1, .login-input2 {
     width: 350px;
+    margin: 0.5rem 0;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
 }
 
 .login-toggle-password-visibility-button {

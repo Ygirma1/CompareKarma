@@ -196,7 +196,7 @@ const BusinessPost = ({ closeModal }) => {
         <form onSubmit = {handleSubmit} className='post-form'>
             <div className='post-form-div'> 
                 <div className="coursename-div">
-                    <label className='label2' htmlFor="name">Course Name</label>
+                    <label className='label-coursename' htmlFor="name">Course Name</label>
                     {!dataToFill?
                         (<input
                             className='courseName'
@@ -213,7 +213,7 @@ const BusinessPost = ({ closeModal }) => {
                     }
                 </div>
                 <div className='description-div'>
-                    <label className='label2' htmlFor="description">Description</label>
+                    <label className='label-description' htmlFor="description">Description</label>
                     {!dataToFill?
                         ( <textarea
                             className='postbootcamp-description'
@@ -229,8 +229,9 @@ const BusinessPost = ({ closeModal }) => {
                         />)
                     }
                 </div>
-                  <label className='label2'>Location</label>
+                  <label className='label-location'>Location</label>
                     <Multiselect
+                        className = 'businesspost-location-select'
                         isObject={false}
                         onRemove={handleRemoveFormat}
                         onSelect={handleSelectFormat2}
@@ -240,7 +241,7 @@ const BusinessPost = ({ closeModal }) => {
                         avoidHighlightFirstOption={true}
                     />
                 <div className='price-div'>
-                    <label className='label2' htmlFor="price">Estimated Cost</label>
+                    <label className='label-price' htmlFor="price">Estimated Cost</label>
                     {!dataToFill?
                             (<input
                                 className='price'
@@ -257,7 +258,7 @@ const BusinessPost = ({ closeModal }) => {
                     }   
                 </div>
                 <div className='length-div'>
-                    <label className='label2' htmlFor="length">Length of Course (in weeks)</label>
+                    <label className='label-courselength' htmlFor="length">Length of Course (in weeks)</label>
                     {!dataToFill? 
                         ( <input
                             className='length'
@@ -274,7 +275,7 @@ const BusinessPost = ({ closeModal }) => {
                     }
                 </div>
                 <div className='link-div'>
-                    <label className='label2'>Website Link</label>
+                    <label className='label-link'>Website Link</label>
                     {!dataToFill? 
                         (<input
                             className='link'
@@ -291,8 +292,9 @@ const BusinessPost = ({ closeModal }) => {
                     }
                 </div>
                 <div className='coursetype-div'>
-                    <label className='label2'>Course Type</label>
+                    <label className='label-coursetype'>Course Type</label>
                     <Multiselect
+                        className = 'businesspost-coursetype-select'
                         isObject={false}
                         onRemove={handleRemoveCourseTypes}
                         onSelect={handleSelectCourseTypes2}
@@ -300,25 +302,15 @@ const BusinessPost = ({ closeModal }) => {
                         singleSelect={true}
                         avoidHighlightFirstOption={true}
                         options={['UX/UI', 'Project Management', 'Product Management', 'Data Analytics', 'Technology Sales', 'Software Engineering', 'Digital Marketing']}
-                    />
-          
-      <h1>Upload Logo</h1>
-      {image.preview && <img src={image.preview} width='100' height='100' />}
-      <hr></hr>
-     
-        <input type='file' name='file' onChange={handleFileChange}></input>   
-       
-     
-     
-     
-  
-      
-      
-    
-            
-                    <div className='post-bootcamp-button-div'>
-                        <button type="submit" className='submit-post-bootcamp-button'>Submit</button>
-                    </div>
+                    />     
+                </div>
+                <div className='upload-logo-div'>
+                    <h1 className="upload-logo-h1">Upload Logo</h1>
+                        {image.preview && <img className='img-bootcamp-logo' src={image.preview} width='100' height='100' />}
+                    <input type='file' name='file' onChange={handleFileChange}></input>
+                </div>
+                <div className='post-bootcamp-button-div'>
+                    <button type="submit" className='submit-post-bootcamp-button'>Post Bootcamp</button>
                 </div>
             </div>
         </form>

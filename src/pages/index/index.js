@@ -50,7 +50,7 @@ const Home = () => {
   {openModal && <div onClick={() => {setOpenModal(false)}} className="businesspost-modal-backdrop"></div>}
   <div className="test">
     <div className="header">
-      <h1>{companyName}</h1>
+      <h1>{companyName + ' Dashboard'}</h1>
     </div>
     <div className='wrapper'> 
       {<Columns data={data}/>}
