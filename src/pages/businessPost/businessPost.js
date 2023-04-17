@@ -229,6 +229,7 @@ const BusinessPost = ({ closeModal }) => {
                         />)
                     }
                 </div>
+                <div className='location-div'>
                   <label className='label-location'>Location</label>
                     <Multiselect
                         className = 'businesspost-location-select'
@@ -240,6 +241,7 @@ const BusinessPost = ({ closeModal }) => {
                         singleSelect={true}
                         avoidHighlightFirstOption={true}
                     />
+                </div>
                 <div className='price-div'>
                     <label className='label-price' htmlFor="price">Estimated Cost</label>
                     {!dataToFill?
@@ -311,6 +313,7 @@ const BusinessPost = ({ closeModal }) => {
                 </div>
                 <div className='post-bootcamp-button-div'>
                     <button type="submit" className='submit-post-bootcamp-button'>Post Bootcamp</button>
+                    <button className='cancel-post-bootcamp-button'>Cancel</button>
                 </div>
             </div>
         </form>
