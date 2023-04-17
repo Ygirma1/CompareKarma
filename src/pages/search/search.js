@@ -12,11 +12,12 @@ const Search = () => {
     const [query, setQuery] = useState("");
     const [data, setData] = useState([]);
     const [filterParam, setFilterParam] = useState(["All"]);
-    const [sortParam, setSortParam] = useState(["All"])
+    const [sortParam, setSortParam] = useState(["All"]);
     const [filterParamFormat, setFilterParamFormat] = useState(["All"]);
+    const [filterParamLength, setFilterParamLength] = useState(["All"]);
 
     // search by company name, course name, and course type
-    const keys = ["company_name", "course_name", "course_type","course_format"];
+    const keys = ["company_name", "course_name", "course_type", "course_format", "course_length"];
     
     // search and filter while typing
     const search = (data) => {
@@ -53,6 +54,10 @@ const Search = () => {
                 })
             }
         })
+    }
+
+    const searchLength = (data) => {
+        return data.filter(item => item.length_of_course > min_length && item.length_of_course < max_length);
     }
 
     // sort by cost
@@ -130,8 +135,21 @@ const Search = () => {
                 <option value="Ascending">Ascending</option>
                 <option value="Descending">Descending</option>
         </select>
+        <select
+            onChange={(e) => {
+                setFilterParamLength(e.target.value)
+            }}
+            className="custom-select">
+                <option value="Unsorted">Course Length</option>
+                <option value="13">1-3 weeks</option>
+                <option value="46">4-6 weeks</option>
+                <option value="79">7-9 weeks</option>
+                <option value="1012">10-12 weeks</option>
+                <option value="1315">13-15 weeks</option>
+                <option value="15+">15+ weeks</option>
+        </select>
     </div>
-    {<Table data={searchFormat(search(sort(data)))}/>} 
+    {<Table data={searchLength(searchFormat(search(sort(data))))}/>} 
     </div>
   );
 };
