@@ -4,6 +4,7 @@ import './index.css';
 import Columns from './Columns';
 import { useNavigate } from 'react-router-dom';
 import BusinessPost from '../businessPost/businessPost';
+import StarRatings from 'react-star-ratings';
 
 const base_url = "http://localhost:8080"
 
@@ -56,12 +57,13 @@ const Home = () => {
       {<Columns data={data}/>}
     <div className="dashboard-rightcolumn">
       <div>
-        <button className='dashboard-post-bootcamp-button' onClick={() => {setOpenModal(true)}}>Add New Course</button>
+        <button className='dashboard-post-bootcamp-button' onClick={() => {setOpenModal(true)}}>Add Course</button>
       </div>
       <div className="dashboard-card">
-        <h2 >Total Review</h2>
-          <p>Average stars out of five for the entire account.</p>
-          <p> Some text about total reviews of all the account's bootcamps</p>
+        <h2 className='header2' >Average Course Rating</h2>
+        <StarRatings className='stars' rating={4} starRatedColor='gold' starDimension='30px' starSpacing='6px'></StarRatings>
+        <br/>
+          <p>The average rating for {companyName}'s courses is 4/5 stars meaning this bootcamp provider performs better than 80% of bootcamps on CompareKarma. </p>
       </div>
     </div>
     </div>

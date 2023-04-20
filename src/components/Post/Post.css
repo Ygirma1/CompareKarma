@@ -109,12 +109,12 @@ p {
     margin-left: 2em;
 }
 
-.stars {
+/* .stars {
     margin: 2em;
-}
+} */
 
 .linkToBootcamp {
-    color: black;
+    color: #2e3f55;
     align-self: center;
     text-decoration: none;
 }
