@@ -112,7 +112,7 @@ const Post = ({ post }) => {
                     </div>
                     <a className="linkToBootcamp" href={post.link}>Visit Their Website</a>
                 </div>
-                <img src={image} alt="Loaded Image" />
+                {/* <img src={image} alt="Loaded Image" /> */}
                 <div className="container">
                     <div className="margin1">
                         <div className="underline">Course Type:</div>
@@ -134,7 +134,10 @@ const Post = ({ post }) => {
                 {/* <div className="container2">
                     <div className="course-name">{post.course_name}</div>
                 </div> */}
-                <div className="description">{post.description_of_bootcamp}</div>
+                <div className='container2'>
+                    <div className="description">{post.description_of_bootcamp}</div>
+                </div>
+                
                 <div className='edit-delete'>
                     {showDeleteButton ?  <button className='delete-button' onClick={showDeleteModal}>
                         <FontAwesomeIcon icon={faTrash} size="2x" color="grey" />
