@@ -22,7 +22,6 @@ article {
 }
 
 .underline, .course-name {
-    /* text-decoration: underline; */
     font-weight: 500;
     font-size: large;
     display: block;
@@ -39,7 +38,6 @@ p {
     display: inline;
 }
 
-/* styling course type --> cost  */
 .container {
     display: flex;
     flex-wrap: nowrap;
@@ -49,7 +47,6 @@ p {
     width: 100%;
 }
 
-/* styling for course name and description */
 .container2 {
     border: 2px solid #fceede;
     background-color: #fceede;
@@ -66,14 +63,7 @@ p {
     width: 25%;
 }
 
-.margin2 {
-    border-right: 2px solid #FFFFFF;
-    margin-right: 1em;
-    padding: 0.5em;
-    width: 25%;
-}
-
-.margin3 {
+.margin2, .margin3 {
     border-right: 2px solid #FFFFFF;
     margin-right: 1em;
     padding: 0.5em;
@@ -124,9 +114,9 @@ p {
 }
 
 .linkToBootcamp {
-    color:black;
-    align-self:center;
-    font-size: larger;
+    color: black;
+    align-self: center;
+    text-decoration: none;
 }
 
 .linkToBootcamp:hover {

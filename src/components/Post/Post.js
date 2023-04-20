@@ -102,7 +102,10 @@ const Post = ({ post }) => {
            
             <div className="test1">
                 <div className='test2'>
-                    <h2 className="company-name">{post.company_name}: {post.course_name}</h2>
+                    <a className="linkToBootcamp" href={post.link} target="_blank">
+                        <h2 className="company-name">{post.company_name}: {post.course_name}</h2>
+                    </a>
+                    
                     { post.sponsored == 1 && 
                         <div className="sponsored-box">
                             <span>Sponsored</span>
@@ -110,7 +113,6 @@ const Post = ({ post }) => {
                     }
                     <div className='stars'>
                     </div>
-                    <a className="linkToBootcamp" href={post.link}>Visit Their Website</a>
                 </div>
                 {/* <img src={image} alt="Loaded Image" /> */}
                 <div className="container">
