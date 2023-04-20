@@ -102,7 +102,7 @@ const Post = ({ post }) => {
            
             <div className="test1">
                 <div className='test2'>
-                    <h2 className="company-name">{post.company_name}</h2>
+                    <h2 className="company-name">{post.company_name}: {post.course_name}</h2>
                     { post.sponsored == 1 && 
                         <div className="sponsored-box">
                             <span>Sponsored</span>
@@ -115,13 +115,11 @@ const Post = ({ post }) => {
                 <img src={image} alt="Loaded Image" />
                 <div className="container">
                     <div className="margin1">
-                   
-                    
                         <div className="underline">Course Type:</div>
                         <div> {post.course_type}</div>
                     </div>
                     <div className="margin2">
-                        <div className="underline">Class Format:</div>
+                        <div className="underline">Location:</div>
                         <div> {post.course_format}</div>
                     </div>
                     <div className="margin3">
@@ -129,14 +127,14 @@ const Post = ({ post }) => {
                         <div> {post.length_of_course + " weeks"} </div>
                     </div>
                     <div className="margin4">
-                        <div className="underline">Cost of Attendance:</div>
+                        <div className="underline">Estimated Cost:</div>
                         <div> {newCost}</div>
                     </div>
                 </div>
-                <div className="container2">
+                {/* <div className="container2">
                     <div className="course-name">{post.course_name}</div>
-                    <div className="description">{post.description_of_bootcamp}</div>
-                </div>
+                </div> */}
+                <div className="description">{post.description_of_bootcamp}</div>
                 <div className='edit-delete'>
                     {showDeleteButton ?  <button className='delete-button' onClick={showDeleteModal}>
                         <FontAwesomeIcon icon={faTrash} size="2x" color="grey" />

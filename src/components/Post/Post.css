@@ -7,8 +7,11 @@ article {
     border-radius: 12px;
     border: solid #fdf8f4;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     box-shadow: 0px 0px 15px -5px grey;
+    /* max-width: 90%; */
+    max-width: 90%;
+    margin: 1em auto;
 }
 
 .company-name {
@@ -19,10 +22,11 @@ article {
 }
 
 .underline, .course-name {
-    text-decoration: underline;
+    /* text-decoration: underline; */
     font-weight: 500;
     font-size: large;
     display: block;
+    padding-bottom: 0.5em;
 }
 
 .description {
@@ -42,16 +46,17 @@ p {
     justify-content: space-evenly;
     background-color: #fceede;
     border-radius: 10px;
+    width: 100%;
 }
 
 /* styling for course name and description */
-.container2 {
+/* .container2 {
     border: 2px solid #fceede;
     background-color: #fceede;
     border-radius: 10px;
     margin-top: 1em;
     padding: 1em;
-}
+} */
 
 .margin1 {
     border-right: 2px solid #FFFFFF;
@@ -125,6 +130,8 @@ p {
 
 .delete-container {
     position: relative;
+    /* max-width: 90%;
+    margin: 0 auto; */
 }
 
 .delete-button, .edit-button {
