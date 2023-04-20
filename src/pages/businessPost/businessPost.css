@@ -7,11 +7,13 @@
 #root {
     align-items: center;
 }
+
 .post-form-container, .post-form {
     display: flex;
     flex-direction: column;
     border-radius: 10px;
-    align-items: center;
+    align-items: left;
+    margin-left: 25px;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     justify-content: space-between;
@@ -19,10 +21,20 @@
     max-height: 100vh;
 }
 
-.coursename-div, .description-div, .link-div, .price-div, .coursetype-div, .length-div {
+.label-coursename, .label-description, .label-location, .label-price, .label-courselength, .label-link, .label-coursetype {
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.coursename-div, .description-div, .location-div, .link-div, .price-div, .coursetype-div, .length-div, .upload-logo-div {
     display: flex;
     flex-direction: column;
     align-items: left;
+}
+
+.upload-logo-h1 {
+    margin-top: 0px;
+    margin-bottom: 15px;
 }
 
 .post-form {
@@ -30,38 +42,35 @@
 }
 
 .postbootcamp-description {
-    font-family: sans-serif;
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-top: 15px;
-    padding-bottom: 100px;
     border-radius: 10px;
-    border-style:solid;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: black;
+    background-color: field;
+    font-family: sans-serif;
     inline-size: 320px;
     word-wrap: break-word;
-    vertical-align: text-top;
+    margin-bottom: 15px;
+    padding: 10px;
 }
 
 /*.search-wrapper is the select box for the multiselect drop-down element*/
-.link, .courseName, .price, .postbootcamp-description, .length, .search-wrapper /*,.react-dropdown-select*/ {
-    max-width: 320px !important;
-    min-width: 320px !important;
+.link, .courseName, .price, .length, .businesspost-coursetype-select .search-wrapper, .businesspost-location-select .search-wrapper /*,.react-dropdown-select*/ {
+    width: 320px;
     border-radius: 10px !important;
     border-style: solid !important;
     border-width: 0.5px !important;
     border-color: black !important;
     background-color: field !important;
+    margin-bottom: 15px;
+    padding: 10px;
 }
 
-input, #multiselectContainerReact {
-    margin-top: -2px;
-}
-
-#multiselectContainerReact {
+/*#multiselectContainerReact {
     max-width: 320px;
     min-width: 320px;
     padding: 0px;
-}
+}*/
 
 .submit-post-bootcamp-button {
     margin-top: 24.75px;
@@ -76,7 +85,21 @@ input, #multiselectContainerReact {
     font-weight: 700;
 }
 
-.submit-post-bootcamp-button:hover {
+.cancel-post-bootcamp-button {
+    margin-top: 24.75px;
+    margin-left: 10px;
+    max-width: 150px;
+    min-width: 150px;
+    padding: 10px;
+    background-color:red;
+    color: white;
+    font-size: smaller;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+.submit-post-bootcamp-button:hover, .cancel-post-bootcamp-button:hover {
     cursor: pointer;
 }
 
@@ -86,7 +109,16 @@ input, #multiselectContainerReact {
     position: absolute;
 }
 
+.img-bootcamp-logo {
+    margin-bottom: 15px;
+}
+
 /* .highlightOption {
     background: transparent !important;
     color: black !important;
 } */
+
+.search-wrapper .chip {
+    padding: 0px 0px;
+    margin: 0px 0px;
+}

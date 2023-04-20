@@ -54,7 +54,7 @@ const Login = (props) => {
         <form className='login-form' onSubmit={handleSubmit}>
             <label htmlFor="email">Email</label>
             <input
-              className='input2'
+              className='login-input1'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               type="email"
