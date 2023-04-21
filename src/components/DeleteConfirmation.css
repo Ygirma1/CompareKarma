@@ -43,3 +43,13 @@
 .footer2 {
     display: inline-flex;
 }
+
+/* .businesspost-modal-backdrop {
+    opacity: 25%;
+    background: #2e3f55;
+    position: fixed;
+    transform: translate(0px,-90px);
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  } */
