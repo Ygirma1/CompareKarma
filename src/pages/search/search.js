@@ -1,5 +1,4 @@
 import React, { Component }  from 'react';
-// import "../../App.css"
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Table from '../../components/Table'
@@ -79,7 +78,6 @@ const Search = () => {
         fetchBootCamps()
     }, []); //no dependencies
 
-
   return (
     <div className='app'>
     <form className='search'>
@@ -93,7 +91,7 @@ const Search = () => {
         </button>
     </form>
     <div className='custom-select-container'>
-        <select                     //select  the course type
+        <select                     
             onChange={(e) => {
                 setFilterParam(e.target.value);
             }}
@@ -101,8 +99,14 @@ const Search = () => {
                 <option value="All">Course Type</option>
                 <option value="UI/UX">UI/UX</option>
                 <option value="SWE">SWE</option>
+                <option value="Project Management">Project Management</option>
+                <option value="Product Management">Product Management</option>
+                <option value="Data Analytics">Data Analytics</option>
+                <option value="Technology Sales">Technology Sales</option>
+                <option value="Digital Marketing">Digital Marketing</option>
+                
         </select>
-        <select                     //select  the course type
+        <select                    
             onChange={(e) => {
                 setFilterParamFormat(e.target.value);
             }}
@@ -131,10 +135,17 @@ const Search = () => {
                 <option value="Descending_Length">Descending</option>
         </select>
     </div>
-    {<Table data={searchFormat(search(sort(data)))}/>} 
+
+    <div>
+        {searchFormat(search(sort(data))).length === 0 ? (
+        <h2 style={{color: '#2e3f55' }}>Uh oh... no bootcamps were found!</h2>
+        ) : (
+        <Table data={searchFormat(search(sort(data)))} />
+        )}
+    </div>
+   
     </div>
   );
 };
 // basically the table entry does the parameters by sorting then searches through that
 export default Search;
-
