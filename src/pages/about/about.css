@@ -15,16 +15,30 @@
   }
   
   /* Header/Blog Title */
-  .header {
+  .header-about {
     padding: 30px;
     text-align: center;
-    background: #f9ebdf;
+    /* background: #f9ebdf; */
+    background: #fdf9f4;
     color: #2e3f55;
     border-radius: 15px;
   }
   
   .header h1 {
     font-size: 50px;
+  }
+
+  .row1 {
+    padding: 30px;
+    text-align: center;
+    background: #f9ebdf;
+    color: #2e3f55;
+  }
+
+  .row2 {
+    color: #2e3f55;
+    padding: 30px;
+    text-align: center;
   }
   
   /* Style the top navigation bar */
@@ -57,32 +71,6 @@
     width: 75%;
   }
   
-  /* Right column */
-  .rightcolumn {
-    float: left;
-    width: 25%;
-    /* background-color: #f1f1f1; */
-    padding-left: 20px;
-  }
-  
-  /* Fake image */
-  .fakeimg {
-    background-color: #aaa;
-    width: 25%;
-    padding: 20px;
-  }
-  
-  /* Add a card effect for articles */
-  .card2 {
-    background-color: #f9ebdf;
-    color: #2e3f55;
-    border-radius: 15px;
-    border: solid #fdf8f4;
-    /* display: flex; */
-    /* justify-content: center; */
-    padding: 20px;
-    margin-top: 20px;
-  }
   
   /* Clear floats after the columns */
   .row:after {

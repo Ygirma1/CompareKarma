@@ -1,7 +1,10 @@
 .post-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
+    /* display: grid; */
+    /* grid-template-columns: repeat(2, 1fr); */
+    /* width: auto; */
+    /* grid-gap: 20px; */
+    width: 100%;
+    padding-left: 50px;
   }
 
 /* .rightcolumn {
@@ -12,8 +15,7 @@
 
 .wrapper {
     display: grid;
-    grid-template-columns: 1fr 300px; /* Set the second column width to 300px */
-    grid-gap: 20px;
+    grid-template-columns: 1fr 500px;
     }
 
 /* .card {

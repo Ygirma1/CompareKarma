@@ -12,6 +12,10 @@
     border-width: 3px;
     outline: none;
   }
+
+  .search-button:hover {
+    cursor: pointer;
+  }
   
   .search-button,
   .search-input {
@@ -19,6 +23,8 @@
     border-style: solid;
     border-width: 1px;
     border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom:10px;
   }
   
   .search-input {

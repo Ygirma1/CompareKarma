@@ -132,8 +132,8 @@ const Search = () => {
             }}
             className="custom-select">
                 <option value="Unsorted">Course Length</option>
-                <option value="Ascending">Ascending</option>
-                <option value="Descending">Descending</option>
+                <option value="Ascending_Length">Ascending</option>
+                <option value="Descending_Length">Descending</option>
         </select>
         <select
             onChange={(e) => {
