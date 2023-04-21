@@ -7,7 +7,7 @@ import { ReactComponent as WomanStandingSVG } from './woman_standing.svg';
 const About = () => {
   return (
     <body>
-      <div className='header'>
+      <div className='header-about'>
         <PeopleTalkingSVG/>
         <h2>Who We Are: CompareKarma's Mission</h2>
         <p>In a world where opportunities are overwhelming, CompareKarma aims to be the most effective online education search tool on the market. 

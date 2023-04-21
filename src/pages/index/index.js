@@ -55,17 +55,19 @@ const Home = () => {
     </div>
     <div className='wrapper'> 
       {<Columns data={data}/>}
-    <div className="dashboard-rightcolumn">
-      <div>
-        <button className='dashboard-post-bootcamp-button' onClick={() => {setOpenModal(true)}}>Add Course</button>
-      </div>
-      <div className="dashboard-card">
-        <h2 className='header2' >Average Course Rating</h2>
-        <StarRatings className='stars' rating={4} starRatedColor='gold' starDimension='30px' starSpacing='6px'></StarRatings>
-        <br/>
-          <p>The average rating for {companyName}'s courses is 4/5 stars meaning this bootcamp provider performs better than 80% of bootcamps on CompareKarma. </p>
-      </div>
-    </div>
+      {!! companyName && (
+        <div className="dashboard-rightcolumn">
+          <div>
+            <button className='dashboard-post-bootcamp-button' onClick={() => {setOpenModal(true)}}>Add Course</button>
+          </div>
+          <div className="dashboard-card">
+            <h2 className='header2' >Average Course Rating</h2>
+            <StarRatings className='stars' rating={4} starRatedColor='gold' starDimension='30px' starSpacing='6px'></StarRatings>
+            <br/>
+              <p>The average rating for {companyName}'s courses is 4/5 stars meaning this bootcamp provider performs better than 80% of bootcamps on CompareKarma. </p>
+          </div>
+        </div>
+    )}
     </div>
   </div>
   {openModal && <div className="businesspost-modal">
