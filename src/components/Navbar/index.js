@@ -8,6 +8,7 @@ import {
     NavBtn,
     NavBtnLink
   } from './NavbarElements';
+import { ReactComponent as YourSvg } from './comparekarma_banner_logo.svg';
   
   const handleLogout = () => {
     
@@ -31,7 +32,7 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
     <>
         <Nav>
             <NavLink to="/">
-                <h1>CompareKarma</h1>
+                  <YourSvg style={{ marginLeft: '-300', maxWidth: '480%' }}/>
             </NavLink>
             <Bars />
             <NavMenu>
