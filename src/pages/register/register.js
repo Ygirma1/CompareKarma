@@ -42,7 +42,7 @@ const Register = (props) => {
         '&course_type=' + newCourseTypes + 
         '&business_password=' + pass)
         .then(response => {
-            localStorage.setItem('business_id', JSON.stringify(response.data.business_id));
+            sessionStorage.setItem('business_id', JSON.stringify(response.data.business_id));
             props.onLogin();
             window.location.href='/';
         })
