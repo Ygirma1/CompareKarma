@@ -9,7 +9,7 @@ import StarRatings from 'react-star-ratings';
 const base_url = "http://localhost:8080"
 
 const Home = () => {
-  const id = localStorage.getItem('business_id');
+  var id = sessionStorage.getItem('business_id');
   const navigate = useNavigate();
 
   const [data, setData] = useState([]);

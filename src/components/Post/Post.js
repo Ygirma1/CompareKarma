@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 const base_url = "http://localhost:8080"
 
 const Post = ({ post }) => {
-    const id = localStorage.getItem('business_id');
+    const id = sessionStorage.getItem('business_id');
     const navigate = useNavigate();
     const [showDeleteButton, setShowDeleteButton] = useState(false);
     const [displayConfirmationModal, setDisplayConfirmationModal] = useState(false);
@@ -87,9 +87,9 @@ const Post = ({ post }) => {
         
           }).then(data=> data.json())
           .then((data)=> {
-        console.log(data + "This is the packet img returned")
+        // console.log(data + "This is the packet img returned")
         setImage("http://localhost:8080/getimg/"+ data.image)
-        console.log(image)
+        // console.log(image)
         
           });
         })

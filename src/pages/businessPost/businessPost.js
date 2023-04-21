@@ -9,7 +9,7 @@ const base_url = "http://localhost:8080"
 
 const BusinessPost = ({ closeModal }) => {
   const navigate = useNavigate();
-  const id = localStorage.getItem('business_id');
+  const id = sessionStorage.getItem('business_id');
 
   const [companyName, setCompanyName] = useState('')
   const { state } = useLocation();
