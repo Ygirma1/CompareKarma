@@ -27,19 +27,64 @@
   .header h1 {
     font-size: 50px;
   }
+  .container0 {
+    max-width: 1200px; /* Set a maximum width for the container */
+    margin: 0 auto; /* Center the container horizontally */
+    margin-bottom: 40px;
+  }
+  .row0 {
+    padding: 30px;
+    text-align: center;
+    background: #f9ebdf;
+    color: #2e3f55;
+    width: 100%;
+    margin-bottom: 30px;
 
+  }
   .row1 {
     padding: 30px;
     text-align: center;
     background: #f9ebdf;
     color: #2e3f55;
-  }
+    float: left;
+    width: 60%;
 
-  .row2 {
-    color: #2e3f55;
+  }
+  .row3 {
     padding: 30px;
     text-align: center;
+    background: #f9ebdf;
+    color: #2e3f55;
+    float: left;
+    width: 60%;
+    margin-top: 20px;
+
   }
+
+ 
+  .row2 {
+    color: #2e3f55;
+
+    text-align: left;
+    background: #f9ebdf;
+    padding: 30px;
+    float: right;
+    width: 39%;
+  }
+  .border {
+    margin-right: 5px;
+     
+     float: left;
+     height: 100%; 
+     background-color: #ffffff
+   }
+  .container {
+    
+  background-color: white;
+    margin: auto;
+    overflow: hidden;
+}
+ 
   
   /* Style the top navigation bar */
   .topnav {
@@ -123,4 +168,6 @@
       float: none;
       width: 100%;
     }
+ 
+
   }
