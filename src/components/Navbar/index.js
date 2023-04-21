@@ -42,8 +42,8 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
                     Search
                 </NavLink>
                 {isLoggedIn && (
-            <NavLink to='/post'>
-              Post
+            <NavLink to='/dashboard'>
+              Dashboard
             </NavLink>
           )}
                  {isLoggedIn && (

@@ -37,12 +37,10 @@ function App() {
             <Navbar isLoggedIn={isLoggedIn}/>
             
             <Routes>
-                <Route path='/' element={<Home/>} />
+                <Route path='/' element={<Search/>} />
                 <Route path='/about' element={<About/>} />
                 <Route path='/search' element={<Search/>} />
-                {isLoggedIn && (
-            <Route path="/post" element={<BusinessPost />} />
-          )}
+            <Route path="/dashboard" element={<Home/>} />
               {isLoggedIn && (
             <Route path="/profile" element={<Profile />} />
           )}
