@@ -11,11 +11,13 @@ const Search = () => {
     const [query, setQuery] = useState("");
     const [data, setData] = useState([]);
     const [filterParam, setFilterParam] = useState(["All"]);
-    const [sortParam, setSortParam] = useState(["All"])
+    const [sortParam, setSortParam] = useState(["All"]);
     const [filterParamFormat, setFilterParamFormat] = useState(["All"]);
+    const [minLength, setMinLength] = useState([0]);
+    const [maxLength, setMaxLength] = useState([52]);
 
     // search by company name, course name, and course type
-    const keys = ["company_name", "course_name", "course_type","course_format"];
+    const keys = ["company_name", "course_name", "course_type", "course_format", "course_length"];
     
     // search and filter while typing
     const search = (data) => {
@@ -52,6 +54,20 @@ const Search = () => {
                 })
             }
         })
+    }
+
+    const searchLength = (data) => {
+        return data.filter((item) => {
+            if (minLength === "" && maxLength === "") {
+                return true; 
+            } else if (minLength !== "" && maxLength === "") {
+                return item.length_of_course >= minLength;
+            } else if (minLength === "" && maxLength !== "") {
+                return item.length_of_course <= maxLength;
+            } else {
+                return item.length_of_course >= minLength && item.length_of_course <= maxLength;
+            }
+        });
     }
 
     // sort by cost
@@ -134,6 +150,26 @@ const Search = () => {
                 <option value="Ascending_Length">Ascending</option>
                 <option value="Descending_Length">Descending</option>
         </select>
+        <label>
+            Min Length:
+        </label>
+        <input value={minLength} 
+            type="number"
+            onChange={(e) => {
+                setMinLength(e.target.value);
+            }}
+            className="custom-input">
+        </input>
+        <label>
+            Max Length:
+        </label>
+        <input value={maxLength} 
+            type="number"
+            onChange={(e) => {
+                setMaxLength(e.target.value);
+            }}
+            className="custom-input">
+        </input>
     </div>
 
     <div>
