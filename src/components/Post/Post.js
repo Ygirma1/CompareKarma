@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 const base_url = "http://localhost:8080"
 
 const Post = ({ post }) => {
-    const id = localStorage.getItem('business_id');
+    const id = sessionStorage.getItem('business_id');
     const navigate = useNavigate();
     const [showDeleteButton, setShowDeleteButton] = useState(false);
     const [displayConfirmationModal, setDisplayConfirmationModal] = useState(false);

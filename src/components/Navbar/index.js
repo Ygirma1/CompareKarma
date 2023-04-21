@@ -16,8 +16,8 @@ import { ReactComponent as YourSvg } from './comparekarma_banner_logo.svg';
     sessionStorage.setItem('isLoggedIn', false); 
     console.log("checking the logout function "+ sessionStorage.getItem("isLoggedIn"));
    
-    localStorage.setItem('business_id', null)
-    console.log("checking the business ID "+ localStorage.getItem("business_id"));
+    sessionStorage.setItem('business_id', null)
+    console.log("checking the business ID "+ sessionStorage.getItem("business_id"));
    // setIsLoggedIn(false);
    this.forceUpdate() 
 }
@@ -43,8 +43,8 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
                     Search
                 </NavLink>
                 {isLoggedIn && (
-            <NavLink to='/post'>
-              Post
+            <NavLink to='/dashboard'>
+              Dashboard
             </NavLink>
           )}
                  {isLoggedIn && (

@@ -10,7 +10,7 @@ imgUploadBusiness
 # testing
 
 /coverage
-
+/env
 # production
 /build
 

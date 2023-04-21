@@ -30,7 +30,7 @@ const Login = (props) => {
           //props.setIsLoggedIn(true)
           console.log("TAKE TO HOME PAGE")
           const id = res.data.business_id;
-          localStorage.setItem('business_id', id)
+          sessionStorage.setItem('business_id', id)
          
           window.location.href='/';
     
