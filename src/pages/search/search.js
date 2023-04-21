@@ -57,7 +57,7 @@ const Search = () => {
     }
 
     const searchLength = (data) => {
-        return data.filter(item => item.length_of_course > min_length && item.length_of_course < max_length);
+        return data.filter(item => item.length_of_course > 4);
     }
 
     // sort by cost
