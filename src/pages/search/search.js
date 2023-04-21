@@ -17,7 +17,7 @@ const Search = () => {
     const [maxLength, setMaxLength] = useState([52]);
 
     // search by company name, course name, and course type
-    const keys = ["company_name", "course_name", "course_type", "course_format", "course_length"];
+    const keys = ["company_name", "course_name", "course_type", "course_format"];
     
     // search and filter while typing
     const search = (data) => {
@@ -166,7 +166,15 @@ const Search = () => {
             className="custom-input">
         </input>
     </div>
-    {<Table data={searchLength(searchFormat(search(sort(data))))}/>} 
+
+    <div>
+        {searchLength(searchFormat(search(sort(data)))).length === 0 ? (
+        <h2 style={{color: '#2e3f55' }}>Uh oh... no bootcamps were found!</h2>
+        ) : (
+        <Table data={searchLength(searchFormat(search(sort(data))))} />
+        )}
+    </div>
+   
     </div>
   );
 };
