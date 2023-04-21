@@ -14,7 +14,8 @@ const Search = () => {
     const [filterParam, setFilterParam] = useState(["All"]);
     const [sortParam, setSortParam] = useState(["All"]);
     const [filterParamFormat, setFilterParamFormat] = useState(["All"]);
-    const [filterParamLength, setFilterParamLength] = useState(["All"]);
+    const [minLength, setMinLength] = useState([0]);
+    const [maxLength, setMaxLength] = useState([52]);
 
     // search by company name, course name, and course type
     const keys = ["company_name", "course_name", "course_type", "course_format", "course_length"];
@@ -57,7 +58,17 @@ const Search = () => {
     }
 
     const searchLength = (data) => {
-        return data.filter(item => item.length_of_course > 4);
+        return data.filter((item) => {
+            if (minLength === "" && maxLength === "") {
+                return true; 
+            } else if (minLength !== "" && maxLength === "") {
+                return item.length_of_course >= minLength;
+            } else if (minLength === "" && maxLength !== "") {
+                return item.length_of_course <= maxLength;
+            } else {
+                return item.length_of_course >= minLength && item.length_of_course <= maxLength;
+            }
+        });
     }
 
     // sort by cost
@@ -135,19 +146,26 @@ const Search = () => {
                 <option value="Ascending_Length">Ascending</option>
                 <option value="Descending_Length">Descending</option>
         </select>
-        <select
+        <label>
+            Min Length:
+        </label>
+        <input value={minLength} 
+            type="number"
             onChange={(e) => {
-                setFilterParamLength(e.target.value)
+                setMinLength(e.target.value);
             }}
-            className="custom-select">
-                <option value="Unsorted">Course Length</option>
-                <option value="13">1-3 weeks</option>
-                <option value="46">4-6 weeks</option>
-                <option value="79">7-9 weeks</option>
-                <option value="1012">10-12 weeks</option>
-                <option value="1315">13-15 weeks</option>
-                <option value="15+">15+ weeks</option>
-        </select>
+            className="custom-input">
+        </input>
+        <label>
+            Max Length:
+        </label>
+        <input value={maxLength} 
+            type="number"
+            onChange={(e) => {
+                setMaxLength(e.target.value);
+            }}
+            className="custom-input">
+        </input>
     </div>
     {<Table data={searchLength(searchFormat(search(sort(data))))}/>} 
     </div>

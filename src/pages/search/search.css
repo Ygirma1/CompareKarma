@@ -1,61 +1,75 @@
 /* styling for search bar */
 .search {
-    width: 95%;
-    font-size: 1rem;
-    display: flex;
-    flex-flow: row nowrap;
-    padding-top: 15px;
-  }
+  width: 95%;
+  font-size: 1rem;
+  display: flex;
+  flex-flow: row nowrap;
+  padding-top: 15px;
+}
   
-  .search-input:focus {
-    border-color: #F19E4F;
-    border-width: 3px;
-    outline: none;
-  }
+.search-input:focus {
+  border-color: #F19E4F;
+  border-width: 3px;
+  outline: none;
+}
 
-  .search-button:hover {
-    cursor: pointer;
-  }
-  
-  .search-button,
-  .search-input {
-    background-color: white;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 10px;
-    padding-top: 10px;
-    padding-bottom:10px;
-  }
-  
-  .search-input {
-    padding-left: 2em;
-    width: 90%;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    font-size: 100%;
-    margin: 0px;
-    border-color: lightgrey;
-  }
-  
-  .search-button {
-    width: 10%;
-    color: #ed6e2e;
-    display: grid;
-    place-content: center;
-    border-color: lightgrey;
-    margin-left: 8px;
-  }
+.search-button:hover {
+  cursor: pointer;
+}
 
-  .custom-select {
-    border-radius: 0.5em;
-    font-size: 0.8rem;
-    font-family: 'Poppins', sans-serif;
-    color: gray;
-    padding: 0.25em 0.5em;
-    border: 2px solid lightgray;
-    margin-top: 0.5em;
-    font-size: 100%;
-    margin: 1rem;
+.search-button,
+.search-input {
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-bottom:10px;
+}
+
+.search-input {
+  padding-left: 2em;
+  width: 90%;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 100%;
+  margin: 0px;
+  border-color: lightgrey;
+}
+
+.search-button {
+  width: 10%;
+  color: #ed6e2e;
+  display: grid;
+  place-content: center;
+  border-color: lightgrey;
+  margin-left: 8px;
+}
+
+.custom-select {
+  border-radius: 0.5em;
+  font-size: 0.8rem;
+  font-family: 'Poppins', sans-serif;
+  color: gray;
+  padding: 0.25em 0.5em;
+  border: 2px solid lightgray;
+  margin-top: 0.5em;
+  font-size: 100%;
+  margin: 1rem;
+}
+
+.custom-input {
+  border-radius: 0.5em;
+  font-size: 0.8rem;
+  font-family: 'Poppins', sans-serif;
+  color: gray;
+  width: 10%;
+  padding: 0.25em 0.5em;
+  border: 2px solid lightgray;
+  margin-top: 0.5em;
+  font-size: 100%;
+  margin: 1rem;
+  resize: none;
 }
 
 .custom-select-container {
