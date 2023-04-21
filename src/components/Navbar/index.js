@@ -32,7 +32,7 @@ const Navbar = ({ isLoggedIn, onLogin, onLogout }) => {
     <>
         <Nav>
             <NavLink to="/">
-                  <YourSvg style={{ marginLeft: '-300', maxWidth: '480%' }}/>
+                  <YourSvg className='comparekarma-svg'/>
             </NavLink>
             <Bars />
             <NavMenu>

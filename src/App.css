@@ -17,4 +17,12 @@ body {
     font-weight: 300;
 }
 
+.comparekarma-svg {
+  margin-left: -55%;
+}
 
+@media (max-width: 768px) {
+    .comparekarma-svg {
+      margin-left: 20px;
+    }
+  }

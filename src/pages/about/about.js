@@ -23,9 +23,9 @@ const About = () => {
           that suit their time and budget demands.</p>
       </div>
 
-      <div className='row2'>
+      {/* <div className='row2'>
         <h2>CompareKarma Offers The Following Features:</h2>
-      </div>
+      </div> */}
 
     </body>
   );
