@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
 useEffect( () => {
-  fetch('http://localhost:8080/imagepath?business_id='+localStorage.getItem("business_id"), {
+  fetch('http://localhost:8080/imagepath?business_id='+sessionStorage.getItem("business_id"), {
   
   method:'GET',
   headers: {
@@ -35,7 +35,7 @@ useEffect( () => {
     
   
  
-    const response = fetch('http://localhost:8080/image?business_id='+localStorage.getItem("business_id"),{
+    const response = fetch('http://localhost:8080/image?business_id='+sessionStorage.getItem("business_id"),{
 
       method:"POST",
       body: formData,
