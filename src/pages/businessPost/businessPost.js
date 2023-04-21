@@ -312,7 +312,10 @@ const BusinessPost = ({ closeModal }) => {
                     <input type='file' name='file' onChange={handleFileChange}></input>
                 </div>
                 <div className='post-bootcamp-button-div'>
-                    <button type="submit" className='submit-post-bootcamp-button'>Post Bootcamp</button>
+                <button type="submit" class="submit-post-bootcamp-button" onClick={event => {
+                        event.preventDefault();
+                        window.location.href = '/dashboard';
+                    }}>Post Bootcamp</button>
                     <button className='cancel-post-bootcamp-button'>Cancel</button>
                 </div>
             </div>
