@@ -87,9 +87,9 @@ const Post = ({ post }) => {
         
           }).then(data=> data.json())
           .then((data)=> {
-        console.log(data + "This is the packet img returned")
+        // console.log(data + "This is the packet img returned")
         setImage("http://localhost:8080/getimg/"+ data.image)
-        console.log(image)
+        // console.log(image)
         
           });
         })

@@ -1,5 +1,4 @@
 import React, { Component }  from 'react';
-// import "../../App.css"
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Table from '../../components/Table'
@@ -137,15 +136,16 @@ const Search = () => {
         </select>
     </div>
 
-    {data.length === 0 ? (
-        <div>No results</div>
-    ) : (
-        <Table data={searchFormat(search(sort(data)))}/>
-    )}
+    <div>
+        {searchFormat(search(sort(data))).length === 0 ? (
+        <h2 style={{color: '#2e3f55' }}>Uh oh... no bootcamps were found!</h2>
+        ) : (
+        <Table data={searchFormat(search(sort(data)))} />
+        )}
+    </div>
    
     </div>
   );
 };
 // basically the table entry does the parameters by sorting then searches through that
 export default Search;
-
