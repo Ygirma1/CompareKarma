@@ -17,7 +17,7 @@ const Search = () => {
     const [maxLength, setMaxLength] = useState([52]);
 
     // search by company name, course name, and course type
-    const keys = ["company_name", "course_name", "course_type", "course_format", "course_length"];
+    const keys = ["company_name", "course_name", "course_type", "course_format"];
     
     // search and filter while typing
     const search = (data) => {
@@ -94,6 +94,7 @@ const Search = () => {
         fetchBootCamps()
     }, []); //no dependencies
 
+
   return (
     <div className='app'>
     <form className='search'>
@@ -107,7 +108,7 @@ const Search = () => {
         </button>
     </form>
     <div className='custom-select-container'>
-        <select                     
+        <select                     //select  the course type
             onChange={(e) => {
                 setFilterParam(e.target.value);
             }}
@@ -115,14 +116,8 @@ const Search = () => {
                 <option value="All">Course Type</option>
                 <option value="UI/UX">UI/UX</option>
                 <option value="SWE">SWE</option>
-                <option value="Project Management">Project Management</option>
-                <option value="Product Management">Product Management</option>
-                <option value="Data Analytics">Data Analytics</option>
-                <option value="Technology Sales">Technology Sales</option>
-                <option value="Digital Marketing">Digital Marketing</option>
-                
         </select>
-        <select                    
+        <select                     //select  the course type
             onChange={(e) => {
                 setFilterParamFormat(e.target.value);
             }}
