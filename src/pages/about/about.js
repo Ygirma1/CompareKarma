@@ -27,6 +27,7 @@ const About = () => {
 
 
 
+
       </div>
       <div className='header-about2'>   
 <h2>CompareKarma Offers The Following Features:</h2>  
@@ -79,6 +80,7 @@ const About = () => {
     </button>
     
 </div>
+
 
     </body>
   );

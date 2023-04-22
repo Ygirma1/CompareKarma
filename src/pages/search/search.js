@@ -1,5 +1,4 @@
 import React, { Component }  from 'react';
-// import "../../App.css"
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Table from '../../components/Table'
@@ -12,11 +11,13 @@ const Search = () => {
     const [query, setQuery] = useState("");
     const [data, setData] = useState([]);
     const [filterParam, setFilterParam] = useState(["All"]);
-    const [sortParam, setSortParam] = useState(["All"])
+    const [sortParam, setSortParam] = useState(["All"]);
     const [filterParamFormat, setFilterParamFormat] = useState(["All"]);
+    const [minLength, setMinLength] = useState([0]);
+    const [maxLength, setMaxLength] = useState([52]);
 
     // search by company name, course name, and course type
-    const keys = ["company_name", "course_name", "course_type","course_format"];
+    const keys = ["company_name", "course_name", "course_type", "course_format"];
     
     // search and filter while typing
     const search = (data) => {
@@ -53,6 +54,20 @@ const Search = () => {
                 })
             }
         })
+    }
+
+    const searchLength = (data) => {
+        return data.filter((item) => {
+            if (minLength === "" && maxLength === "") {
+                return true; 
+            } else if (minLength !== "" && maxLength === "") {
+                return item.length_of_course >= minLength;
+            } else if (minLength === "" && maxLength !== "") {
+                return item.length_of_course <= maxLength;
+            } else {
+                return item.length_of_course >= minLength && item.length_of_course <= maxLength;
+            }
+        });
     }
 
     // sort by cost
@@ -101,6 +116,11 @@ const Search = () => {
                 <option value="All">Course Type</option>
                 <option value="UI/UX">UI/UX</option>
                 <option value="SWE">SWE</option>
+                <option value="Project Management">Project Management</option>
+                <option value="Product Management">Product Management</option>
+                <option value="Data Analytics">Data Analytics</option>
+                <option value="Technology Sales">Technology Sales</option>
+                <option value="Digital Marketing">Digital Marketing</option>
         </select>
         <select                     //select  the course type
             onChange={(e) => {
@@ -130,11 +150,38 @@ const Search = () => {
                 <option value="Ascending_Length">Ascending</option>
                 <option value="Descending_Length">Descending</option>
         </select>
+        <label>
+            Min Length:
+        </label>
+        <input value={minLength} 
+            type="number"
+            onChange={(e) => {
+                setMinLength(e.target.value);
+            }}
+            className="custom-input">
+        </input>
+        <label>
+            Max Length:
+        </label>
+        <input value={maxLength} 
+            type="number"
+            onChange={(e) => {
+                setMaxLength(e.target.value);
+            }}
+            className="custom-input">
+        </input>
     </div>
-    {<Table data={searchFormat(search(sort(data)))}/>} 
+
+    <div>
+        {searchLength(searchFormat(search(sort(data)))).length === 0 ? (
+        <h2 style={{color: '#2e3f55' }}>Uh oh... no bootcamps were found!</h2>
+        ) : (
+        <Table data={searchLength(searchFormat(search(sort(data))))} />
+        )}
+    </div>
+   
     </div>
   );
 };
 // basically the table entry does the parameters by sorting then searches through that
 export default Search;
-
