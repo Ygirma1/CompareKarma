@@ -173,10 +173,10 @@ const Search = () => {
     </div>
 
     <div>
-        {searchFormat(search(sort(data))).length === 0 ? (
+        {searchLength(searchFormat(search(sort(data)))).length === 0 ? (
         <h2 style={{color: '#2e3f55' }}>Uh oh... no bootcamps were found!</h2>
         ) : (
-        <Table data={searchFormat(search(sort(data)))} />
+        <Table data={searchLength(searchFormat(search(sort(data))))} />
         )}
     </div>
    
