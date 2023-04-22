@@ -41,10 +41,7 @@ function App() {
                 <Route path='/about' element={<About/>} />
                 <Route path='/search' element={<Search/>} />
             <Route path="/dashboard" element={<Home/>} />
-              {/* {isLoggedIn && (
-            <Route path="/profile" element={<Profile />} />
-          )} */}
-           {isLoggedIn && (
+              {isLoggedIn && (
             <Route path="/post" element={<BusinessPost />} />
           )}
 

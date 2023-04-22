@@ -91,9 +91,10 @@ const BusinessPost = ({ closeModal }) => {
                 console.log(res);
           course_id = res.data.course_id;
 
-         e.preventDefault()
-         let formData = new FormData()
-         formData.append('file', image.data)
+         e.preventDefault();
+         window.location.href = '/dashboard';
+         let formData = new FormData();
+         formData.append('file', image.data);
          
        
       
@@ -139,9 +140,11 @@ const BusinessPost = ({ closeModal }) => {
             console.log(res);
       course_id = dataToFill.course_id;
 
-     e.preventDefault()
-     let formData = new FormData()
-     formData.append('file', image.data)
+     e.preventDefault();
+     window.location.href = '/dashboard';
+     let formData = new FormData();
+     formData.append('file', image.data);
+     
      
    
   
@@ -171,9 +174,9 @@ const BusinessPost = ({ closeModal }) => {
 
     try {
         closeModal(false);
-        navigate('/');
+        navigate('/dashboard');
     } catch {
-        navigate('/');
+        navigate('/dashboard');
     }
   };
 
@@ -312,10 +315,7 @@ const BusinessPost = ({ closeModal }) => {
                     <input type='file' name='file' onChange={handleFileChange}></input>
                 </div>
                 <div className='post-bootcamp-button-div'>
-                <button type="submit" class="submit-post-bootcamp-button" onClick={event => {
-                        event.preventDefault();
-                        window.location.href = '/dashboard';
-                    }}>Post Bootcamp</button>
+                <button type="submit" class="submit-post-bootcamp-button">Post Bootcamp</button>
                     <button className='cancel-post-bootcamp-button'>Cancel</button>
                 </div>
             </div>
