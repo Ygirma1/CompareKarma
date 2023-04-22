@@ -2,8 +2,10 @@ import React from 'react';
 import './about.css';
 import { ReactComponent as PeopleTalkingSVG } from './people_talking.svg';
 import { ReactComponent as WomanStandingSVG } from './woman_standing.svg';
-
-
+const handleHomeButton = () => {
+    
+  window.location.href='/';
+}
 const About = () => {
   return (
     <body>
@@ -22,32 +24,60 @@ const About = () => {
           tech industry. With this information, we knew what to pursue next: creating a tool that allows people to better find learning opportunities
           that suit their time and budget demands.</p>
       </div>
+
+
+
       </div>
+      <div className='header-about2'>   
+<h2>CompareKarma Offers The Following Features:</h2>  
+</div>
+
+
 <div className="container">
       <div className='row1'>
       <h2>For Industry Newcomers</h2>
-        <p>Easily search for online education choices by filtering from costs, availability, and course type
-Select options and compare between options using an intuitive and helpful interace
-Leaving ratings for individual courses that you took, helping education companies better serve future customers 
-Recommend courses to your friends</p>
+      <ul>
+  <li>Easily search for online education choices by filtering from costs, availability, and course type</li>
+  <li>Select options and compare between options using an intuitive and helpful interface  </li>
+  <li>Leaving ratings for individual courses that you took, helping education companies better serve future customers 
+</li>
+<li>Recommend courses to your friends
+</li>
+</ul>
       </div>
 <div className="border"> </div>
       <div className='row2'>
-      <h2>Features</h2>
+      <h2>For Businesses</h2>
         <ul>
-  <li>Uncover bootcamps from a wider variety of disciplines such UI/UX, Project Management and Software Engineering</li>
-  <li>Compare bootcamps by length, price and course type and many other options   </li>
-  <li>Businesses can promote bootcamps with a sponsored status for more exposure</li>
+  <li>Create a business profile and add courses via the website</li>
+  <li>Easily view the ratings that course-takers have left on your business profile and improve upon the quality of your content   </li>
+  <li>Build a better understanding of your customers as they engage with your posts and enter your sales funnels</li>
+  <li>Post courses via our website, customizing courses through lengths of time, cost, and course type</li>
 </ul>
       </div>
 </div>
 <div>
 <div className='row3'>
-      <h2>Why choose compareKarma?</h2>
-        <p> CompareKarma provides both businesses the opportunity to gain exposure and reach individuals that may not have considered their bootcamps.
-          Our feature of sponsoring a bootcamp makes this possible. Backed by user research, we provide filtering options that potential bootcamp particpants look for ensuring they find the
-          best fit. </p>
+      <h2>We’re Dedicated To Everyone’s Success</h2>
+        <p> Businesses, industry newcomers, you name it - CompareKarma was designed to serve these audiences and bring them closer to their goals. As a product build on selflessness, CompareKarma’s mission is to build a community of success-seekers dedicated to landing a job in their ideal career. We aim to be a technology that’s powered by possibility.</p>
       </div>
+</div>
+<div className='pic'> <WomanStandingSVG/>
+<h2>Interested in trying CompareKarma?</h2>
+        <p className='bottomp'>
+        Click the button below to enter the main page and start using the site to search - or sign up as a business today! 
+        </p>
+  
+    
+</div>
+
+<div className='pic2'> 
+
+   
+        <button onClick={handleHomeButton} className='bottom'>
+      {"Go to homepage"}
+    </button>
+    
 </div>
 
     </body>

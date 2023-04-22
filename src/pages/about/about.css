@@ -23,6 +23,15 @@
     color: #2e3f55;
     border-radius: 15px;
   }
+  .header-about2 {
+    padding: 10px;
+    text-align: center;
+    /* background: #f9ebdf; */
+    background: #fdf9f4;
+    color: #2e3f55;
+    border-radius: 15px;
+    margin-bottom: 20px;
+  }
   
   .header h1 {
     font-size: 50px;
@@ -41,26 +50,61 @@
     margin-bottom: 30px;
 
   }
-  .row1 {
-    padding: 30px;
-    text-align: center;
-    background: #f9ebdf;
-    color: #2e3f55;
-    float: left;
-    width: 60%;
-
-  }
+ 
   .row3 {
     padding: 30px;
     text-align: center;
     background: #f9ebdf;
     color: #2e3f55;
     float: left;
-    width: 60%;
+    width: 100%;
     margin-top: 20px;
+    margin-bottom: 20px;
 
   }
+  .pic {
+    margin-top:10px;
+    float: center;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .pic2 {
+    margin-top: 10px;
+    float: center;
+    text-align: center;
+    margin-bottom: 100px;
+  }
 
+  .button2 {
+   
+    float: center;
+  
+    margin-bottom: 60px;
+    background-color: black;
+    border-radius: 10px;
+  }
+  
+  .bottom {
+   
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px; 
+    cursor: pointer;
+    width: 300px;
+    margin-bottom: 100px;
+  }
+
+  .row1 {
+    padding: 30px;
+    text-align: left;
+    background: #f9ebdf;
+    color: #2e3f55;
+    float: left;
+    width: 50%;
+
+  }
  
   .row2 {
     color: #2e3f55;
@@ -76,11 +120,11 @@
      
      float: left;
      height: 100%; 
-     background-color: #ffffff
+     background-color: #fdf9f4
    }
   .container {
     
-  background-color: white;
+  background-color: #fdf9f4;
     margin: auto;
     overflow: hidden;
 }
