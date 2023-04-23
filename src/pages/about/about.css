@@ -85,7 +85,6 @@
   }
   
   .bottom {
-   
     background-color: black;
     color: white;
     border: none;
@@ -108,28 +107,26 @@
  
   .row2 {
     color: #2e3f55;
-
     text-align: left;
     background: #f9ebdf;
     padding: 30px;
     float: right;
     width: 39%;
   }
+
   .border {
     margin-right: 5px;
-     
-     float: left;
-     height: 100%; 
-     background-color: #fdf9f4
+    float: left;
+    height: 100%; 
+    background-color: #fdf9f4
    }
-  .container {
-    
-  background-color: #fdf9f4;
+
+  .about-container {
+    background-color: #fdf9f4;
     margin: auto;
     overflow: hidden;
 }
  
-  
   /* Style the top navigation bar */
   .topnav {
     overflow: hidden;
