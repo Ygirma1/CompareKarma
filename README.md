@@ -103,7 +103,7 @@ Type the command "cd src"
 
 You should be in the file path JIE-2317-CompareKarma\src
 
-Type npm install at this point and it mayt take a few moments to finish
+Type "npm install" at this point and it mayt take a few moments to finish
 
 After it is done, type in "npm start"
 
