@@ -1,4 +1,4 @@
-article {
+/* article {
     margin: 1em;
     padding: 1em;
     background-color: #FFFFFF;
@@ -8,9 +8,8 @@ article {
     display: flex;
     box-shadow: 0px 0px 15px -5px grey;
     max-width: 90%;
-    min-width: 165vh;
     margin: 1em auto;
-}
+} */
 
 .company-name {
     text-align: left;
@@ -119,6 +118,30 @@ p {
 
 .delete-container {
     position: relative;
+    margin: 1em;
+    padding: 1em;
+    background-color: #FFFFFF;
+    color: #2e3f55;
+    border-radius: 12px;
+    border: solid #fdf8f4;
+    display: flex;
+    box-shadow: 0px 0px 15px -5px grey;
+    max-width: 90%;
+    margin: 1em auto;
+}
+
+.delete-container-2 {
+    position: relative;
+    margin: 1em;
+    padding: 1em;
+    background-color: #FFFFFF;
+    color: #2e3f55;
+    border-radius: 12px;
+    border: solid #fdf8f4;
+    display: flex;
+    box-shadow: 0px 0px 15px -5px grey;
+    width: 90vw;
+    margin: 1em auto;
 }
 
 .delete-button, .edit-button {

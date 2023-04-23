@@ -5,6 +5,7 @@ import './Post.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencil } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 
 const base_url = "http://localhost:8080"
@@ -94,10 +95,12 @@ const Post = ({ post }) => {
           });
         })
 
+    const location = useLocation();
+    const isDashboard = location.pathname === '/dashboard';
 
     return (
         
-        <article className='delete-container'>
+        <article className={isDashboard ? 'delete-container' : 'delete-container-2'}>
             {/* <img className="images" src={post.img_url} alt="new"></img> */}
            
             <div className="test1">
@@ -133,9 +136,6 @@ const Post = ({ post }) => {
                         <div> {newCost}</div>
                     </div>
                 </div>
-                {/* <div className="container2">
-                    <div className="course-name">{post.course_name}</div>
-                </div> */}
                 <div className='container2'>
                     <div className="description">{post.description_of_bootcamp}</div>
                 </div>
