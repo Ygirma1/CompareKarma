@@ -64,7 +64,7 @@ const Home = () => {
             <h2 className='header2' >Average Course Rating</h2>
             <StarRatings className='stars' rating={4} starRatedColor='gold' starDimension='30px' starSpacing='6px'></StarRatings>
             <br/>
-              <p>The average rating for {companyName}'s courses is 4/5 stars meaning this bootcamp provider performs better than 80% of bootcamps on CompareKarma. </p>
+              <p>The average rating for {companyName}'s courses is 4/5 stars meaning this bootcamp provider has an average rating of 4/5 stars across all their bootcamps. </p>
           </div>
         </div>
     )}
