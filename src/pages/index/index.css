@@ -28,28 +28,6 @@
     font-size: 50px;
   }
   
-  /* Style the top navigation bar */
-  .topnav {
-    overflow: hidden;
-    background-color: #000542;
-  }
-  
-  /* Style the topnav links */
-  .topnav a {
-    float: left;
-    display: block;
-    /* color: #f2f2f2; */
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  /* Change color on hover */
-  .topnav a:hover {
-    background-color: #F28417;
-    color: #000542;
-  }
-  
   /* Create two unequal columns that floats next to each other */
   /* Left column */
   .leftcolumn {   
@@ -57,12 +35,6 @@
     width: 75%;
   }
   
-  /* Fake image */
-  .fakeimg {
-    background-color: #aaa;
-    width: 25%;
-    padding: 20px;
-  }
   
   .dashboard-rightcolumn {
     background-color: white;
@@ -116,18 +88,6 @@
     margin-bottom: 0.5rem;
     color: #2e3f55;
   }
-
-  /* Add a card effect for articles */
-  /* .dashboard-card {
-    background-color: #f9ebdf;
-    color: #2e3f55;
-    border-radius: 15px;
-    border: solid #fdf8f4;
-    display: inline-block;
-    padding: 20px;
-    margin-top: 20px;
-    min-width: 280px;
-  } */
   
   /* Clear floats after the columns */
   .row:after {
