@@ -25,6 +25,7 @@ const Login = (props) => {
           '&password=' + pass);
         console.log(res.data.status);
         if (res.data.status) {
+          alert("Successfully Logged In!");
           console.log("Props Login")
           props.onLogin();
           //props.setIsLoggedIn(true)
@@ -37,7 +38,10 @@ const Login = (props) => {
           
         } else {
           console.log("ERROR MESSAGE")
-          setErrorMessage('Incorrect Login!');
+          // var popup = document.getElementById("myPopup");
+          // popup.classList.toggle("show");
+          // setErrorMessage('Incorrect Login!');
+          alert("Incorrect Login!");
         }
     }
 
